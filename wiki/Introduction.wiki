@@ -1,0 +1,13 @@
+#summary A quick introduction as to what you'll find
+
+= Introduction =
+
+The base project is IOCSample. This project contains examples where ioc frameworks can be useful.
+
+All the other projects are derivations of the base project. They follow the naming convention of:
+IOCSample_%nameOfFramework% for example: IOCSample_flicc.
+
+As new problems are entered into the base project, the plan is to then show how each framework would address it.
+
+
+= Details =
