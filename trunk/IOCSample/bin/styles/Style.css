@@ -1,0 +1,18 @@
+/* CSS file */
+Application {
+   backgroundColor: #cccccc;
+   backgroundGradientColors: #00ff00, #68808c;
+   backgroundGradientAlphas: 0.46, 0.81;
+   themeColor: #00ff66;
+}
+
+Box{
+	border-color: #224422;
+	border-style: solid;
+	border-thickness: 1;
+}
+
+.header
+{
+	font-size: 20px;
+}
