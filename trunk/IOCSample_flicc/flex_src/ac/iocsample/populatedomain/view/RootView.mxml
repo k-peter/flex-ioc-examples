@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="100%" height="100%" 
+	xmlns:injection="flicc.injection.*" 
+	xmlns:view="ac.iocsample.populatedomain.view.*">
+	<injection:Configure />
+	<mx:Script>
+		<![CDATA[
+			import ac.iocsample.populatedomain.model.pm.OtherPM;
+			import ac.iocsample.populatedomain.model.pm.BackendPM;
+			
+			[Bindable]
+			public var backendPM : BackendPM;
+			
+			[Bindable]
+			public var otherPM : OtherPM;
+			
+		
+		]]>
+	</mx:Script>
+	<mx:Text 
+		text="This sample looks at how domains are populated"/>
+	<mx:Text 
+		text="In flicc the pms are injected by the flicc from the factory config"/>
+	<mx:HBox>
+		
+		<view:BackendView
+				backendPM="{ backendPM }" />
+		<view:OtherView
+			otherPM="{ otherPM }"/>
+	</mx:HBox>
+			
+			
+</mx:Panel>

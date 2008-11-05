@@ -1,0 +1,91 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>EventHandler.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">flicc</span>.<span class="ActionScriptDefault_Text">config</span>.<span class="ActionScriptDefault_Text">mxml</span>
+<span class="ActionScriptBracket/Brace">{</span>
+
+<span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flicc</span>.<span class="ActionScriptDefault_Text">config</span>.<span class="ActionScriptDefault_Text">event</span>.<span class="ActionScriptDefault_Text">IEventHandler</span>;
+
+<span class="ActionScriptASDoc">/**
+ * An IEventHandler to be used with an MxmlFactoryConfig.
+ * 
+ * @mxml
+ * &lt;pre&gt;
+ * &amp;lt;ObjectDescriptor objectId=&quot;Class10Id&quot; clazz=&quot;{ Class10 }&quot; &amp;gt;
+ *     &amp;lt;handlers&amp;gt;
+ *      &amp;lt;EventHandler eventName=&quot;{ Class9.EVENT_NAME }&quot; handler=&quot;handleEvent&quot;&amp;gt;
+ *            &amp;lt;source&amp;gt;
+ *                &amp;lt;Ref objectId=&quot;Class9Id&quot; /&amp;gt;
+ *          &amp;lt;/source&amp;gt;
+ *      &amp;lt;/EventHandler&amp;gt;
+ *    &amp;lt;/handlers&amp;gt;
+ * &lt;/pre&gt;
+ * 
+ * @see flicc.config.mxml.ObjectDescriptor#handlers
+ */</span>
+<span class="ActionScriptReserved">public</span> <span class="ActionScriptclass">class</span> <span class="ActionScriptDefault_Text">EventHandler</span> <span class="ActionScriptReserved">implements</span> <span class="ActionScriptDefault_Text">IEventHandler</span>
+<span class="ActionScriptBracket/Brace">{</span>
+    <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_eventName</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">String</span>;
+       <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_source</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptOperator">*</span>;
+             
+    <span class="ActionScriptASDoc">/**
+     * The name of the function that will handle the event. Note that the event
+     * object is always passed.s  
+     */</span> 
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">handler</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">String</span>;
+   
+       <span class="ActionScriptASDoc">/**
+        * @inheritDoc
+        */</span> 
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">source</span><span class="ActionScriptBracket/Brace">()</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptOperator">*</span> 
+    <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_source</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+    
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">source</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">value</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptOperator">*</span> <span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptReserved">void</span>
+    <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptDefault_Text">_source</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">value</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+    
+    <span class="ActionScriptASDoc">/**
+     * @inheritDoc
+    */</span>   
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">eventName</span><span class="ActionScriptBracket/Brace">()</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">String</span>
+    <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_eventName</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+    
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">eventName</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">value</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptReserved">void</span>
+    <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptDefault_Text">_eventName</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">value</span>;        
+    <span class="ActionScriptBracket/Brace">}</span>
+
+    <span class="ActionScriptASDoc">/**
+     * @inheritDoc
+     */</span> 
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">apply</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptOperator">*</span>, <span class="ActionScriptDefault_Text">instance</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">Object</span> <span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptReserved">void</span>
+    <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">handlerFunction</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">Function</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">instance</span><span class="ActionScriptBracket/Brace">[</span> <span class="ActionScriptDefault_Text">handler</span> <span class="ActionScriptBracket/Brace">]</span> <span class="ActionScriptReserved">as</span> <span class="ActionScriptDefault_Text">Function</span>;
+        <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">target</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">Object</span>;
+
+        <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptReserved">is</span> <span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptBracket/Brace">)</span>
+        <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">target</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">instance</span><span class="ActionScriptBracket/Brace">[</span> <span class="ActionScriptDefault_Text">source</span> <span class="ActionScriptBracket/Brace">]</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptReserved">else</span>
+           <span class="ActionScriptBracket/Brace">{</span>
+           <span class="ActionScriptDefault_Text">target</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">source</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+
+        <span class="ActionScriptDefault_Text">target</span>.<span class="ActionScriptDefault_Text">addEventListener</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">eventName</span>, <span class="ActionScriptDefault_Text">handlerFunction</span> <span class="ActionScriptBracket/Brace">)</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+<span class="ActionScriptBracket/Brace">}</span>
+
+<span class="ActionScriptBracket/Brace">}</span></pre></body>
+</html>

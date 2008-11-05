@@ -1,0 +1,53 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>SimpleList.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">flicc</span>.<span class="ActionScriptDefault_Text">config</span>.<span class="ActionScriptDefault_Text">mxml</span>
+<span class="ActionScriptBracket/Brace">{</span>
+    
+<span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">collections</span>.<span class="ActionScriptDefault_Text">ICollectionView</span>;
+<span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">utils</span>.<span class="ActionScriptDefault_Text">StringUtil</span>;
+
+<span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">DefaultProperty</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;simpleValues&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+
+<span class="ActionScriptASDoc">/**
+ * An extension of &lt;code&gt;ListDescriptor&lt;/code&gt; that allows a list of numeric or
+ * string values to be described as a comma delimited list.
+ * 
+ * &lt;p&gt;
+ * Rather than use &lt;code&gt;ListDescriptor&lt;/code&gt; with &lt;code&gt;&amp;lt;mx:String&amp;gt;
+ * &lt;/code&gt; or &lt;code&gt;&amp;lt;mx:Number&amp;gt;&lt;/code&gt;, you can specificy a comma 
+ * delimited string as the direct child of this tag when used in mxml.
+ * &lt;/p&gt;
+ * 
+ * @mxml
+ * &lt;pre&gt;
+ *     &amp;lt;Simple objectId=&quot;listId&quot;&amp;gt;
+ *         One,Two,Three
+ *     &amp;lt;/SimpleList&amp;gt;
+ * &lt;/pre&gt; 
+ */</span> 
+<span class="ActionScriptReserved">public</span> <span class="ActionScriptclass">class</span> <span class="ActionScriptDefault_Text">SimpleList</span> <span class="ActionScriptReserved">extends</span> <span class="ActionScriptDefault_Text">ListDescriptor</span>
+<span class="ActionScriptBracket/Brace">{</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">simpleValues</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">String</span>;
+    
+    <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">dependencies</span><span class="ActionScriptBracket/Brace">()</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">ICollectionView</span>
+    <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptDefault_Text">listDependencies</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">[]</span>
+        
+        <span class="ActionScriptReserved">for</span> <span class="ActionScriptReserved">each</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">sub</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptReserved">in</span> <span class="ActionScriptDefault_Text">simpleValues</span>.<span class="ActionScriptDefault_Text">replace</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptOperator">/</span><span class="ActionScriptDefault_Text">\n</span><span class="ActionScriptOperator">/</span>, <span class="ActionScriptString">&quot;&quot;</span> <span class="ActionScriptBracket/Brace">)</span>.<span class="ActionScriptDefault_Text">split</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptString">&quot;,&quot;</span> <span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">)</span>
+        <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">listDependencies</span>.<span class="ActionScriptDefault_Text">push</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">StringUtil</span>.<span class="ActionScriptDefault_Text">trim</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">sub</span> <span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">)</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptReserved">return</span> <span class="ActionScriptReserved">super</span>.<span class="ActionScriptDefault_Text">dependencies</span>;    
+    <span class="ActionScriptBracket/Brace">}</span> 
+<span class="ActionScriptBracket/Brace">}</span>
+
+<span class="ActionScriptBracket/Brace">}</span></pre></body>
+</html>
