@@ -10,4 +10,5 @@ IOCSample_%nameOfFramework% for example: IOCSample_flicc.
 As new problems are entered into the base project, the plan is to then show how each framework would address it.
 
 
-= Details =
+= Packaging =
+The packaging structure is designed to divide each issue into its own package. I've given the issue a meaningful name (ie: passtheparcel). As more issues are added these should be completely self contained within their own package.
