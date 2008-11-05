@@ -1,0 +1,75 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>IDependency.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">flicc</span>.<span class="ActionScriptDefault_Text">config</span>.<span class="ActionScriptDefault_Text">dependency</span>
+<span class="ActionScriptBracket/Brace">{</span>
+
+<span class="ActionScriptASDoc">/**
+ * A dependency to be applied to an object created from an &lt;code&gt;
+ * IObjectDescriptor&lt;/code&gt;. 
+ * 
+ * &lt;p&gt;
+ * An IDependency is responsible for supplying the &lt;code&gt;value&lt;/code&gt; of the 
+ * dependency, which is may be another IObjectDescriptor or reference to another
+ * descriptor, and being able to &lt;code&gt;apply&lt;/code&gt; the &lt;em&gt;resolved&lt;/em&gt; value 
+ * to an instance of an object. How this is done is left up to implementations 
+ * to decide.
+ * &lt;/p&gt;
+ * 
+ * @see flicc.config.IObjectDescriptor#dependencies
+ * 
+ * @see flicc.config.dependency.PropertyDependency
+ * @see flicc.config.dependency.ListDependency
+ */</span> 
+<span class="ActionScriptReserved">public</span> <span class="ActionScriptinterface">interface</span> <span class="ActionScriptDefault_Text">IDependency</span> 
+<span class="ActionScriptBracket/Brace">{</span>  
+    
+    <span class="ActionScriptASDoc">/**
+     * The value to be applied to the created object. 
+     * 
+     * &lt;p&gt;
+     * If the value is an &lt;code&gt;IObjectDescriptor&lt;/code&gt;, the object described
+     * will be fully instantiated before being passed to the &lt;code&gt;apply&lt;/code&gt;
+     * method.
+     * &lt;/p&gt;
+     * 
+     * &lt;p&gt;
+     * If the value is an &lt;code&gt;IObjectDescriptorReference&lt;/code&gt;, then the 
+     * referenced &lt;code&gt;IObjectDescriptor&lt;/code&gt; will be found and the described
+     * object created before being passed to the &lt;code&gt;apply&lt;/code&gt; method. 
+     * &lt;/p&gt;
+     * 
+     * &lt;p&gt;
+     * If the value is of any other type, it will not be changed before being 
+     * passed to the &lt;code&gt;apply&lt;/code&gt; method.
+     * &lt;/p&gt;
+     * 
+     * @see flicc.config.IObjectDescriptor
+     * @see flicc.config.IObjectDescriptorReference 
+     */</span> 
+    <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">value</span><span class="ActionScriptBracket/Brace">()</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptOperator">*</span>; 
+    
+    
+    <span class="ActionScriptASDoc">/**
+     * Apply &lt;code&gt;value&lt;/code&gt; to the provided object &lt;code&gt;instance&lt;/code&gt;.
+     * 
+     * &lt;p&gt;
+     * How the value is applied on to provided object is implementation 
+     * specific.
+     * &lt;/p&gt;
+     * 
+     * @param value The resolved value of this &lt;code&gt;IDependency&lt;/code&gt;.
+     * @param instance An Object instance that &lt;code&gt;value&lt;/code&gt; should be
+     * applied to.
+     */</span>
+    <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">apply</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">value</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptOperator">*</span>, <span class="ActionScriptDefault_Text">instance</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">Object</span> <span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptReserved">void</span>;
+<span class="ActionScriptBracket/Brace">}</span>
+
+<span class="ActionScriptBracket/Brace">}</span></pre></body>
+</html>

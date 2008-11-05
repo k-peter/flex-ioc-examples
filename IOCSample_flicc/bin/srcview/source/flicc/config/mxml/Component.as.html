@@ -1,0 +1,57 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Component.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">flicc</span>.<span class="ActionScriptDefault_Text">config</span>.<span class="ActionScriptDefault_Text">mxml</span>
+<span class="ActionScriptBracket/Brace">{</span>
+
+<span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flicc</span>.<span class="ActionScriptDefault_Text">error</span>.<span class="ActionScriptDefault_Text">FliccError</span>;
+
+<span class="ActionScriptASDoc">/**
+ * An &lt;code&gt;IObjectDescriptor&lt;/code&gt; that can be used as a place holder for a 
+ * set of dependencies and event handlers to apply when calling 
+ * &lt;code&gt;IObjectFactory.configure()&lt;/code&gt;.
+ * 
+ * &lt;p&gt;
+ * Although the standard &lt;code&gt;ObjectDescriptor&lt;/code&gt; can be used to configure 
+ * objects, this class signals intent more clearly. Attempting to set the 
+ * &lt;code&gt;clazz&lt;/code&gt; property on a &lt;code&gt;Component&lt;/code&gt; will 
+ * cause an error to be thrown. &lt;code&gt;constructorDependencies&lt;/code&gt; are 
+ * ignored.
+ * &lt;/p&gt;
+ * 
+ * @mxml
+ * &lt;p&gt;
+ * The &lt;code&gt;Component&lt;/code&gt; is added to an &lt;code&gt;
+ * MxmlFactoryConfig&lt;/code&gt; like any other &lt;code&gt;ObjectDescriptor&lt;/code&gt;, but 
+ * without a &lt;code&gt;clazz&lt;/code&gt; property:  
+ * 
+ * &lt;pre&gt;
+ *     /&amp;lt;Component objectId=&quot;Class18Dependencies&quot;&amp;gt;
+ *        &amp;lt;prop1&amp;gt;prop1&amp;lt;/prop1&amp;gt;
+ *        &amp;lt;prop2&amp;gt;&amp;lt;Ref objectId=&quot;Class1Id&quot;/&amp;gt;&amp;lt;/prop2&amp;gt;
+ *    &amp;lt;/Component&amp;gt;
+ * &lt;/pre&gt;
+ * &lt;/p&gt;
+ * 
+ * @see com.flicc.factory.IObjectFactory#configure
+ */</span>  
+<span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">dynamic</span> <span class="ActionScriptclass">class</span> <span class="ActionScriptDefault_Text">Component</span> <span class="ActionScriptReserved">extends</span> <span class="ActionScriptDefault_Text">ObjectDescriptor</span>
+<span class="ActionScriptBracket/Brace">{</span>
+    <span class="ActionScriptASDoc">/**
+     * Attempting to set the &lt;code&gt;clazz&lt;/code&gt; property will cause a 
+     * &lt;code&gt;FliccError&lt;/code&gt; to be thrown.   
+     */</span> 
+    <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">clazz</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">value</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">Class</span> <span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptReserved">void</span>
+    <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptReserved">throw</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">FliccError</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptString">&quot;Cannot set class on dependencies place holder&quot;</span> <span class="ActionScriptBracket/Brace">)</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+<span class="ActionScriptBracket/Brace">}</span>
+
+<span class="ActionScriptBracket/Brace">}</span></pre></body>
+</html>
