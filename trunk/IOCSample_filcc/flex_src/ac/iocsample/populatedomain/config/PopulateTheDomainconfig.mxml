@@ -5,32 +5,32 @@
 	 <descriptors>
 
 	 	<ObjectDescriptor
-			objectId="backend"
-			clazz="{ BackEnd }"/>
+			objectId="account"
+			clazz="{ Account }"/>
 
 		<Component
      		objectId="ac.iocsample.populatedomain.control.commands.PopulateBackendCommand">
-     		<backend>
-     			<Ref to="backend"/>
-     		</backend>
+     		<account>
+     			<Ref to="account"/>
+     		</account>
      	</Component>
 	
 	
 		<Component
 			objectId="rootView">
-			<backendPM>
+			<mainPM>
 				<ObjectDescriptor
-					clazz="{ BackendPM }">
+					clazz="{ MainPM }">
 					<constructor>
-						<Ref to="backend" />
+						<Ref to="account" />
 					</constructor>
 				</ObjectDescriptor>
-			</backendPM>
+			</mainPM>
 			<otherPM>
 				<ObjectDescriptor
 					clazz="{ OtherPM }">
 					<constructor>
-						<Ref to="backend" />
+						<Ref to="account" />
 					</constructor>
 				</ObjectDescriptor>
 				
@@ -41,9 +41,9 @@
 	<mx:Script>
 		<![CDATA[
 			import ac.iocsample.populatedomain.model.pm.OtherPM;
-			import ac.iocsample.populatedomain.model.pm.BackendPM;
+			import ac.iocsample.populatedomain.model.pm.MainPM;
 			import ac.iocsample.populatedomain.control.commands.PopulateBackendCommand;
-			import ac.iocsample.populatedomain.model.domain.BackEnd;
+			import ac.iocsample.populatedomain.model.domain.Account;
 		]]>
 	</mx:Script>
 </MxmlObjectDescriptors>

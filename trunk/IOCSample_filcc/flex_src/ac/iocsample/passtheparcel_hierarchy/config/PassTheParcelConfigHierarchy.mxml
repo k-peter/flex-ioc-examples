@@ -4,7 +4,8 @@
 	 xmlns:mx="http://www.adobe.com/2006/mxml">
 	 <descriptors>
 	 	
-		<Component
+	 	
+	 	<Component
 			objectId="startViewHierarchy">
 			<startPM>
 				<ObjectDescriptor
@@ -24,7 +25,7 @@
 	 </descriptors>
 	<mx:Script>
 		<![CDATA[
-			import ac.iocsample.passtheparcel_hieriarchy.model.pm.StartPMHierarchy;
+			import ac.iocsample.passtheparcel_hierarchy.model.pm.StartPMHierarchy;
 			
 		]]>
 	</mx:Script>

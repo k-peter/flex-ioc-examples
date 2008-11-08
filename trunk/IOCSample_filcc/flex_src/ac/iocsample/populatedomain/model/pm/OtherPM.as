@@ -1,16 +1,16 @@
 package ac.iocsample.populatedomain.model.pm
 {
-	import ac.iocsample.populatedomain.model.domain.BackEnd;
+	import ac.iocsample.populatedomain.model.domain.Account;
 	
 	[Bindable]
 	public class OtherPM
 	{
 		
-		public var backend : BackEnd;
+		public var account: Account;
 		
-		public function OtherPM( backend : BackEnd )
+		public function OtherPM( account: Account )
 		{
-			this.backend = backend;
+			this.account= account;
 		}
 
 	}
