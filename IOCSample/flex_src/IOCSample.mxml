@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Application 
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
-	xmlns:control="ac.iocsample.control.*"
+	xmlns:passtheparcel="ac.iocsample.passtheparcel.view.*" 
+	xmlns:populatedomain="ac.iocsample.populatedomain.view.*" 
+	xmlns:populatedomaincontrol="ac.iocsample.populatedomain.control.*" 
+	xmlns:configuredelegate="ac.iocsample.configuredelegate.view.*" 
+	xmlns:cdcontrol="ac.iocsample.configuredelegate.control.*"
+	xmlns:cdbusiness="ac.iocsample.configuredelegate.business.*"
 	creationComplete="init()"
-	layout="vertical" xmlns:pm="ac.iocsample.passtheparcel.model.pm.*" 
-	xmlns:view="ac.iocsample.passtheparcel.view.*" 
-	xmlns:backendview="ac.iocsample.populatedomain.view.*" 
-	xmlns:control1="ac.iocsample.populatedomain.control.*" viewSourceURL="srcview/index.html">
+	layout="vertical">
 	<mx:Script>
 		<![CDATA[
 			import ac.iocsample.populatedomain.model.domain.BackendModelLocator;
-			import ac.iocsample.populatedomain.model.pm.BackendPM;
+			import ac.iocsample.populatedomain.model.pm.MainPM;
 			import ac.iocsample.populatedomain.model.pm.OtherPM;
 			import ac.iocsample.passtheparcel.model.pm.StartPM;
 			import ac.iocsample.passtheparcel.model.domain.PTPModelLocator;
@@ -27,7 +29,7 @@
 	</mx:Script>
 	<mx:Style source="styles/Style.css" />
 	
-	<control1:BackendController />
+	<populatedomaincontrol:PopulateDomainController />
 	<mx:Panel 
 		width="100%"
 		height="100%"
@@ -36,11 +38,15 @@
 			width="100%"
 			text="This is when a model reference is passed into an object for the sole purpose of passing it onto another object."/>
 		
-		<view:StartView
+		<passtheparcel:StartView
 			startPM="{ startPM }" />
 			
 	</mx:Panel>
 
-	<backendview:RootView/>
+	<populatedomain:RootView/>
+	
+	<cdbusiness:Services />
+	<cdcontrol:ConfigureDelegateController />
+	<configuredelegate:ConfigureDelegateView />
 
 </mx:Application>

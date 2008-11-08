@@ -2,7 +2,7 @@ package ac.iocsample.populatedomain.model.domain
 {
 	public class BackendModelLocator
 	{
-		public var backend : BackEnd = new BackEnd();
+		public var backend : Account = new Account();
 		
 		private static var instance : BackendModelLocator;
 		

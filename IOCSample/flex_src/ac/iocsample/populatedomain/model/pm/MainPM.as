@@ -1,18 +1,16 @@
 package ac.iocsample.populatedomain.model.pm
 {
 	import ac.iocsample.populatedomain.control.events.PopulateBackendEvent;
-	import ac.iocsample.populatedomain.model.domain.BackEnd;
+	import ac.iocsample.populatedomain.model.domain.Account;
 	
 	[Bindable]
-	public class BackendPM
+	public class MainPM
 	{
-		public var backend : BackEnd;
+		public var account : Account;
 		
-		public function BackendPM( backend : BackEnd )
+		public function MainPM( account : Account )
 		{
-			
-			this.backend = backend;
-			
+			this.account = account;
 			new PopulateBackendEvent().dispatch();
 		}
 	}
