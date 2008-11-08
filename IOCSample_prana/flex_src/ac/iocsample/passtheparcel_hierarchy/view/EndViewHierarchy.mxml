@@ -4,8 +4,7 @@
 	xmlns:pm="ac.iocsample.passtheparcel.model.pm.*" 
 	layout="absolute" 
 	borderColor="#ff9933"
-	title="{ endPM.name }" 
-	>
+	title="{ endPM.name }">
 	<mx:Script>
 		<![CDATA[
 			import ac.iocsample.prana.factory.PranaFactory;
