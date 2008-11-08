@@ -11,7 +11,7 @@
 	xmlns:configuredelegate="ac.iocsample.configuredelegate.view.*" 
 	xmlns:configuredelegatecontrol="ac.iocsample.configuredelegate.control.*"
 	creationComplete="init()"
-	layout="vertical" >
+	layout="vertical">
 	<mx:Script>
 		<![CDATA[
 			import ac.iocsample.passtheparcel.model.pm.StartPM;
