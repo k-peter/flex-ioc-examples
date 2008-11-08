@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Application 
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
-	xmlns:controller="ac.iocsample.populatedomain.control.*" 
-	xmlns:cdcontroller="ac.iocsample.configuredelegate.control.*" 
+	xmlns:populatedomain="ac.iocsample.populatedomain.view.*" 
 	xmlns:detached="ac.iocsample.passtheparcel.view.*"
-	xmlns:backend="ac.iocsample.populatedomain.view.*" 
 	xmlns:hierarchy="ac.iocsample.passtheparcel_hierarchy.view.*"
-	xmlns:configuredelegate="ac.iocsample.configuredelegate.view.*"
-	layout="vertical" 
-	preinitialize="preInit()"
-	>
+	xmlns:populatedomaincontrol="ac.iocsample.populatedomain.control.*"
+	xmlns:configuredelegate="ac.iocsample.configuredelegate.view.*" 
+	xmlns:configuredelegatecontrol="ac.iocsample.configuredelegate.control.*"
+	preinitialize="preInitialize()"
+	layout="vertical">
 	<mx:Script>
 		<![CDATA[
 			import ac.iocsample.prana.factory.PranaFactory;
 			
-			private function preInit() : void
+			private function preInitialize() : void
 			{
 				PranaFactory.init();
 			}
@@ -23,16 +22,15 @@
 	</mx:Script>
 	<mx:Style source="styles/Style.css" />
 	
-	<controller:PopulateDomainController />
-	
 	<mx:HBox>
 		<detached:MainPanelView />
 		<hierarchy:MainPanelViewHierarchy />	
 	</mx:HBox>
 	
-	<backend:RootView/>
+	<populatedomaincontrol:PopulateDomainController />
+	<populatedomain:RootView/>
 	
-	<cdcontroller:ConfigureDelegateController />
+	<configuredelegatecontrol:ConfigureDelegateController />
 	<configuredelegate:ConfigureDelegateView />
 
 </mx:Application>
