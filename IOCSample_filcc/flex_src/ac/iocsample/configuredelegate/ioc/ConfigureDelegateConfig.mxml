@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MxmlObjectDescriptors 
+	xmlns="flicc.config.mxml.*" 
+	 xmlns:mx="http://www.adobe.com/2006/mxml">
+	 <descriptors>
+	 	
+	 	<ObjectDescriptor
+			objectId="mockDelegate"
+			clazz="{ SimpleDelegateMock }"/>
+			
+		<ObjectDescriptor
+			objectId="remoteObject"
+			clazz="{ RemoteObject }">
+			<destination>GenericDestination</destination>
+			<endpoint>myendpoint</endpoint>
+			<source>ac.iocsample.configuredelegate.business.SimpleService</source>
+		</ObjectDescriptor>
+
+		<ObjectDescriptor
+			objectId="delegate"
+			clazz="{ SimpleDelegate }">
+			<service>
+				<Ref to="remoteObject"/>
+			</service>
+		</ObjectDescriptor>
+			
+		<Component
+			objectId="ac.iocsample.configuredelegate.control.commands.PingServerCommand">
+			<delegate>
+				<Ref to="delegate"/>
+			</delegate>
+		</Component>
+		
+	 </descriptors>
+	 <mx:Script>
+	 	<![CDATA[
+	 		import ac.iocsample.configuredelegate.business.SimpleDelegate;
+	 		import mx.rpc.remoting.mxml.RemoteObject;
+	 		import ac.iocsample.configuredelegate.business.SimpleDelegateMock;
+	 	]]>
+	 </mx:Script>
+</MxmlObjectDescriptors>
