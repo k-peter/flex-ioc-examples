@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Panel 
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:view="ac.iocsample.passtheparcel.view.*"
 	layout="vertical"
 	width="100%"
 	height="100%"
-	title="Pass the parcel" 
-	xmlns:view="ac.iocsample.passtheparcel.view.*">
+	title="Pass the parcel">
 		<mx:Text
 			width="100%"
 			text="This is when a model reference is passed into an object for the sole purpose of passing it onto another object."/>
