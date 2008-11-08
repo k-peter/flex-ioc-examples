@@ -4,12 +4,14 @@
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
 	xmlns:ptpconfig="ac.iocsample.passtheparcel.config.*" 
 	xmlns:domainconfig="ac.iocsample.populatedomain.config.*" 
-	xmlns:ptpconfighierarchy="ac.iocsample.passtheparcel_hierarchy.config.*">
+	xmlns:ptpconfighierarchy="ac.iocsample.passtheparcel_hierarchy.config.*" 
+	xmlns:cdioc="ac.iocsample.configuredelegate.ioc.*">
 	
 	<externalDescriptors>
 		<ptpconfig:PassTheParcelConfig/>
 		<ptpconfighierarchy:PassTheParcelConfigHierarchy/>
 		<domainconfig:PopulateTheDomainconfig />
+		<cdioc:ConfigureDelegateConfig />
 	</externalDescriptors>
 		
 </MxmlFactoryConfig>

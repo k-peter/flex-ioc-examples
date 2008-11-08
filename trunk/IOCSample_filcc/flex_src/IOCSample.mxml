@@ -6,10 +6,13 @@
 	xmlns:mxml="flicc.factory.mxml.*" 
 	xmlns:pm="ac.iocsample.passtheparcel.model.pm.*" 
 	xmlns:passtheparcel="ac.iocsample.passtheparcel.*" 
-	xmlns:detachedview="ac.iocsample.passtheparcel.view.*" 
+	xmlns:detached="ac.iocsample.passtheparcel.view.*" 
 	xmlns:config="ac.iocsample.config.*" 
 	xmlns:controller="ac.iocsample.populatedomain.control.*" 
-	xmlns:backendview="ac.iocsample.populatedomain.view.*" xmlns:hierarchyview="ac.iocsample.passtheparcel_hierarchy.view.*">
+	xmlns:backend="ac.iocsample.populatedomain.view.*" 
+	xmlns:hierarchy="ac.iocsample.passtheparcel_hierarchy.view.*" 
+	xmlns:cd="ac.iocsample.configuredelegate.view.*" 
+	xmlns:cdcontrol="ac.iocsample.configuredelegate.control.*">
 	<mx:Script>
 		<![CDATA[
 			import ac.iocsample.passtheparcel.model.pm.StartPM;
@@ -38,9 +41,13 @@
 	
 	<mx:Style source="styles/Style.css" />
 	<mx:HBox>
-		<detachedview:MainPanelView />
-		<hierarchyview:MainPanelViewHierarchy />	
+		<detached:MainPanelView />
+		<hierarchy:MainPanelViewHierarchy />	
 	</mx:HBox>
 	
-	<backendview:RootView id="rootView"/>
+	<backend:RootView id="rootView"/>
+	
+	<cdcontrol:ConfigureDelegateController
+		factory="{ factory }" />
+	<cd:ConfigureDelegateView />
 </mx:Application>
