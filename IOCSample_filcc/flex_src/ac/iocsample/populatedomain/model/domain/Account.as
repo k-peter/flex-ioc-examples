@@ -1,13 +1,13 @@
 package ac.iocsample.populatedomain.model.domain
 {
-	import ac.iocsample.populatedomain.view.BackendView;
+	import ac.iocsample.populatedomain.view.MainView;
 	
 	[Bindable]
-	public class BackEnd
+	public class Account
 	{
 		public var uniqueId : Number;
 		
-		public function BackEnd()
+		public function Account()
 		{
 		}
 

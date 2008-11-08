@@ -8,7 +8,7 @@
 	xmlns:injection="flicc.injection.*">
 	<mx:Script>
 		<![CDATA[
-			import ac.iocsample.passtheparcel_hieriarchy.model.pm.EndPMHierarchy;
+			import ac.iocsample.passtheparcel_hierarchy.model.pm.EndPMHierarchy;
 			
 			[Bindable]
 			public var endPM : EndPMHierarchy;		

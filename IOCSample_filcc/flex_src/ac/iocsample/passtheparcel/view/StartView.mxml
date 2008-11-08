@@ -12,6 +12,13 @@
 			public var startPM : StartPM;
 		]]>
 	</mx:Script>
-	<injection:Configure/>
+	<injection:Configure />
+	
+	<!--
+	<injection:Configure
+		target="{ startPM }"
+		objectId="startPM"/>
+	-->
+		
 	<view:MiddleView id="middleView" />
 </mx:Panel>

@@ -20,6 +20,12 @@
 			</startPM>
 		</Component>
 		
+		<!--
+		<ObjectDescriptor
+			clazz="{ StartPM }"
+			objectId="startPM" />
+		-->
+		
 		<Component
 			objectId="middleView">
 			<middlePM>

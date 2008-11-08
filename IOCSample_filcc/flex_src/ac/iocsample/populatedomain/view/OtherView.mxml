@@ -12,5 +12,5 @@
 		]]>
 	</mx:Script>
 	<mx:Label 
-		text="{ otherPM.backend.uniqueId }" />
+		text="{ otherPM.account.uniqueId }" />
 </mx:Panel>

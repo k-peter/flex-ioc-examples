@@ -4,7 +4,7 @@
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
 	xmlns:ptpconfig="ac.iocsample.passtheparcel.config.*" 
 	xmlns:domainconfig="ac.iocsample.populatedomain.config.*" 
-	xmlns:ptpconfighierarchy="ac.iocsample.passtheparcel_hieriarchy.config.*">
+	xmlns:ptpconfighierarchy="ac.iocsample.passtheparcel_hierarchy.config.*">
 	
 	<externalDescriptors>
 		<ptpconfig:PassTheParcelConfig/>

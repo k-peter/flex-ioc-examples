@@ -8,10 +8,10 @@
 	<mx:Script>
 		<![CDATA[
 			import ac.iocsample.populatedomain.model.pm.OtherPM;
-			import ac.iocsample.populatedomain.model.pm.BackendPM;
+			import ac.iocsample.populatedomain.model.pm.MainPM;
 			
 			[Bindable]
-			public var backendPM : BackendPM;
+			public var mainPM : MainPM;
 			
 			[Bindable]
 			public var otherPM : OtherPM;
@@ -19,14 +19,16 @@
 		
 		]]>
 	</mx:Script>
+	<injection:Configure />
+	
 	<mx:Text 
 		text="This sample looks at how domains are populated"/>
 	<mx:Text 
 		text="In flicc the pms are injected by the flicc from the factory config"/>
 	<mx:HBox>
 		
-		<view:BackendView
-				backendPM="{ backendPM }" />
+		<view:MainView
+				mainPM="{ mainPM }" />
 		<view:OtherView
 			otherPM="{ otherPM }"/>
 	</mx:HBox>

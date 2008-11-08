@@ -3,16 +3,18 @@
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
 	title="{ startPM.name }"
 	xmlns:injection="flicc.injection.*" 
-	xmlns:hierarchyview="ac.iocsample.passtheparcel_hieriarchy.view.*">
+	xmlns:hierarchyview="ac.iocsample.passtheparcel_hierarchy.view.*">
 	<mx:Script>
 		<![CDATA[
-			import ac.iocsample.passtheparcel_hieriarchy.model.pm.StartPMHierarchy;
+			import ac.iocsample.passtheparcel_hierarchy.model.pm.StartPMHierarchy;
 			
 			[Bindable]
 			public var startPM : StartPMHierarchy;
 		]]>
 	</mx:Script>
-	<injection:Configure/>
+	
+	<injection:Configure />
+		
 	<hierarchyview:MiddleViewHierarchy 
 		id="middleView"
 		middlePM="{ startPM.middlePM }" />
