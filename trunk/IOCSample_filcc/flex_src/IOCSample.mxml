@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Application 
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
-	creationComplete="init()"
-	layout="vertical" 
 	xmlns:mxml="flicc.factory.mxml.*" 
-	xmlns:pm="ac.iocsample.passtheparcel.model.pm.*" 
-	xmlns:passtheparcel="ac.iocsample.passtheparcel.*" 
+	xmlns:passtheparcel="ac.iocsample.passtheparcel.view.*" 
+	xmlns:populatedomain="ac.iocsample.populatedomain.view.*" 
 	xmlns:detached="ac.iocsample.passtheparcel.view.*" 
-	xmlns:config="ac.iocsample.config.*" 
-	xmlns:controller="ac.iocsample.populatedomain.control.*" 
-	xmlns:backend="ac.iocsample.populatedomain.view.*" 
 	xmlns:hierarchy="ac.iocsample.passtheparcel_hierarchy.view.*" 
-	xmlns:cd="ac.iocsample.configuredelegate.view.*" 
-	xmlns:cdcontrol="ac.iocsample.configuredelegate.control.*">
+	xmlns:config="ac.iocsample.config.*" 
+	xmlns:populatedomaincontrol="ac.iocsample.populatedomain.control.*" 
+	xmlns:configuredelegate="ac.iocsample.configuredelegate.view.*" 
+	xmlns:configuredelegatecontrol="ac.iocsample.configuredelegate.control.*"
+	creationComplete="init()"
+	layout="vertical" >
 	<mx:Script>
 		<![CDATA[
 			import ac.iocsample.passtheparcel.model.pm.StartPM;
-			import ac.iocsample.passtheparcel.model.domain.PTPModelLocator;
-
+			
 			[Bindable]
 			private var startPM : StartPM;
 			
@@ -36,7 +34,7 @@
 		</mxml:MxmlObjectFactory>
    </mxml:FliccEventFactoryListener>
    
-   <controller:BackendController
+   <populatedomaincontrol:PopulateDomainController
    		factory="{ factory }"/>
 	
 	<mx:Style source="styles/Style.css" />
@@ -45,9 +43,9 @@
 		<hierarchy:MainPanelViewHierarchy />	
 	</mx:HBox>
 	
-	<backend:RootView id="rootView"/>
+	<populatedomain:RootView id="rootView"/>
 	
-	<cdcontrol:ConfigureDelegateController
+	<configuredelegatecontrol:ConfigureDelegateController
 		factory="{ factory }" />
-	<cd:ConfigureDelegateView />
+	<configuredelegate:ConfigureDelegateView />
 </mx:Application>

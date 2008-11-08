@@ -4,9 +4,9 @@ package ac.iocsample.populatedomain.control
 	import ac.iocsample.populatedomain.control.commands.PopulateBackendCommand;
 	import ac.iocsample.populatedomain.control.events.PopulateBackendEvent;
 
-	public class BackendController extends FliccCairngormFrontController
+	public class PopulateDomainController extends FliccCairngormFrontController
 	{
-		public function BackendController()
+		public function PopulateDomainController()
 		{
 			super();
 			initialiseCommands();
