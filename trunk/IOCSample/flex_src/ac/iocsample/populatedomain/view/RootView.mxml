@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Panel
-	title="populatedomain" 
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
-	width="100%" height="100%" 
-	creationComplete="init()"
 	xmlns:injection="flicc.injection.*" 
-	xmlns:view="ac.iocsample.populatedomain.view.*">
+	xmlns:view="ac.iocsample.populatedomain.view.*"
+	title="populatedomain" 
+	width="100%" height="100%" 
+	creationComplete="init()">
 	<mx:Script>
 		<![CDATA[
 			import ac.iocsample.populatedomain.model.domain.PopulateDomainModelLocator;
