@@ -4,14 +4,22 @@
 	layout="absolute"  
 	borderColor="#ff9933"
 	title="{ endPM.name }" 
-	xmlns:pm="ac.iocsample.passtheparcel.model.pm.*" 
-	xmlns:injection="flicc.injection.*">
+	creationComplete="init()"
+	xmlns:pm="ac.iocsample.passtheparcel.model.pm.*" >
 	<mx:Script>
 		<![CDATA[
+			import ac.iocsample.prana.factory.PranaFactory;
+			import org.pranaframework.context.support.XMLApplicationContext;
 			import ac.iocsample.passtheparcel.model.pm.EndPM;
 			
 			[Bindable]
-			public var endPM : EndPM;		
+			public var endPM : EndPM;	
+			
+			private function init() : void
+		    {
+				endPM = PranaFactory.getObject("endPM");
+		    }
+	
 		]]>
 	</mx:Script>
 	<mx:Label text="{ endPM.parcel.contents }" />

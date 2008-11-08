@@ -21,8 +21,8 @@
 			
 			private function init () : void
 			{
-				otherPM = new OtherPM( BackendModelLocator.getInstance().backend );
-				backendPM = new BackendPM( BackendModelLocator.getInstance().backend );
+				//otherPM = new OtherPM( BackendModelLocator.getInstance().backend );
+				//backendPM = new BackendPM( BackendModelLocator.getInstance().backend );
 			}
 		
 		]]>

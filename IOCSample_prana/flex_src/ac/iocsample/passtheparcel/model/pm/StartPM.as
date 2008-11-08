@@ -7,10 +7,10 @@ package ac.iocsample.passtheparcel.model.pm
 	{
 		public var middlePM : MiddlePM;
 		
-		public function StartPM( parcel : Parcel )
+		public function StartPM()
 		{
 			super( "Start" );
-			middlePM = new MiddlePM( parcel );
+			middlePM = new MiddlePM();
 		}
 
 	}

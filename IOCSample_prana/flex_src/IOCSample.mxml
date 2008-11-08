@@ -2,6 +2,7 @@
 <mx:Application 
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
 	xmlns:control="ac.iocsample.control.*"
+	preinitialize="preInit()"
 	creationComplete="init()"
 	layout="vertical" xmlns:pm="ac.iocsample.passtheparcel.model.pm.*" 
 	xmlns:view="ac.iocsample.passtheparcel.view.*" 
@@ -9,6 +10,8 @@
 	xmlns:control1="ac.iocsample.populatedomain.control.*" viewSourceURL="srcview/index.html">
 	<mx:Script>
 		<![CDATA[
+			import ac.iocsample.prana.factory.PranaFactory;
+			import org.pranaframework.context.support.XMLApplicationContext;
 			import ac.iocsample.populatedomain.model.domain.BackendModelLocator;
 			import ac.iocsample.populatedomain.model.pm.BackendPM;
 			import ac.iocsample.populatedomain.model.pm.OtherPM;
@@ -18,9 +21,14 @@
 			[Bindable]
 			private var startPM : StartPM;
 			
+			private function preInit() : void
+			{
+				PranaFactory.init();
+			}
+
 			private function init() : void
 			{
-				startPM = new StartPM( PTPModelLocator.getInstance().parcel );
+				startPM = new StartPM();
 			}
 			
 		]]>
