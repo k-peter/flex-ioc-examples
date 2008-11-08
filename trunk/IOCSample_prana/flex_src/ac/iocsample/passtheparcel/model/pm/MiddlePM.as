@@ -5,12 +5,10 @@ package ac.iocsample.passtheparcel.model.pm
 	[Bindable]
 	public class MiddlePM extends BasePM
 	{
-		public var endPM : EndPM;
 		
-		public function MiddlePM( parcel : Parcel )
+		public function MiddlePM()
 		{
 			super("Middle");
-			endPM = new EndPM( parcel );
 		}
 		
 	}

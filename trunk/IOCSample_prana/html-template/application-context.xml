@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<objects 
+	xmlns="http://www.pranaframework.org/objects" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.pranaframework.org/objects http://www.pranaframework.org/schema/objects/prana-objects-0.6.xsd">
+
+ 	<object 
+ 		id="endPM" 
+  		class="ac.iocsample.passtheparcel.model.pm.EndPM">
+  		<constructor-arg ref="parcel"/>
+  	</object>
+	
+ 	<object 
+ 		id="otherPM" 
+  		class="ac.iocsample.populatedomain.model.pm.OtherPM">
+  		<constructor-arg ref="backend"/>
+  	</object>
+
+ 	<object 
+ 		id="otherPM" 
+  		class="ac.iocsample.populatedomain.model.pm.OtherPM">
+  		<constructor-arg ref="backend"/>
+  	</object>
+
+ 	<object 
+ 		id="backendPM" 
+  		class="ac.iocsample.populatedomain.model.pm.BackendPM">
+  		<constructor-arg ref="backend"/>
+  	</object>
+	
+	<!--  domains  -->
+	<object 
+		id="parcel"
+		class="ac.iocsample.passtheparcel.model.domain.Parcel">
+    	<constructor-arg value="I'm the prana parcel"/>
+    </object>
+	
+	<object 
+		id="backend"
+		class="ac.iocsample.populatedomain.model.domain.Backend"/>
+    	
+	
+	
+</objects>

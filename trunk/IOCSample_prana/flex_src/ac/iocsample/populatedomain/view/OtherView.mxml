@@ -2,13 +2,22 @@
 <mx:Panel 
 	title="This mimics another view that is bound to the same domain"
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	creationComplete="init()"
 	layout="vertical">
 	<mx:Script>
 		<![CDATA[
+			import ac.iocsample.prana.factory.PranaFactory;
+			import org.pranaframework.context.support.XMLApplicationContext;
 			import ac.iocsample.populatedomain.model.pm.OtherPM;
 			
 			[Bindable]
 			public var otherPM : OtherPM;
+
+			private function init() : void
+		    {
+				otherPM = PranaFactory.getObject("otherPM");
+		    }
+
 			
 		]]>
 	</mx:Script>

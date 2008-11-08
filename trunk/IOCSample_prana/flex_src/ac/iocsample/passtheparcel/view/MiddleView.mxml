@@ -14,6 +14,6 @@
 			public var middlePM : MiddlePM;		
 		]]>
 	</mx:Script>
-	<view:EndView 
-		endPM="{ middlePM.endPM }"/>
+	<!-- pm injected by prana -->
+	<view:EndView />
 </mx:Panel>
