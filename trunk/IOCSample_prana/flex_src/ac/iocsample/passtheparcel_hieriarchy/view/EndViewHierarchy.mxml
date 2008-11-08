@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:pm="ac.iocsample.passtheparcel.model.pm.*" 
+	layout="absolute" 
+	borderColor="#ff9933"
+	title="{ endPM.name }" 
+	creationComplete="initPM()">
+	<mx:Script>
+		<![CDATA[
+			import ac.iocsample.prana.factory.PranaFactory;
+			import ac.iocsample.passtheparcel_hieriarchy.model.pm.EndPMHierarchy;
+			
+			[Bindable]
+			public var endPM : EndPMHierarchy;	
+			
+			private function initPM() : void
+			{
+				//prana init here..
+				PranaFactory.getObject("endPM");
+			}	
+		]]>
+	</mx:Script>
+	
+	<mx:Label 
+		text="{ endPM.parcel.contents }" />
+</mx:Panel>
