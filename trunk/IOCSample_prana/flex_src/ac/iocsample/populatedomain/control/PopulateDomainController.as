@@ -5,9 +5,9 @@ package ac.iocsample.populatedomain.control
 	
 	import com.adobe.cairngorm.control.FrontController;
 
-	public class BackendController extends FrontController
+	public class PopulateDomainController extends FrontController
 	{
-		public function BackendController()
+		public function PopulateDomainController()
 		{
 			super();
 			

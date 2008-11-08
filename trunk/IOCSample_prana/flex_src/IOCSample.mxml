@@ -13,12 +13,6 @@
 	<mx:Script>
 		<![CDATA[
 			import ac.iocsample.prana.factory.PranaFactory;
-			import ac.iocsample.passtheparcel.model.pm.StartPM;
-			import ac.iocsample.passtheparcel.model.domain.PTPModelLocator;
-			
-
-			[Bindable]
-			private var startPM : StartPM;
 			
 			private function preInit() : void
 			{
@@ -29,7 +23,7 @@
 	</mx:Script>
 	<mx:Style source="styles/Style.css" />
 	
-	<controller:BackendController />
+	<controller:PopulateDomainController />
 	
 	<mx:HBox>
 		<detached:MainPanelView />
