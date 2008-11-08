@@ -1,0 +1,75 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>MxmlObjectFactory.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">flicc</span>.<span class="ActionScriptDefault_Text">factory</span>.<span class="ActionScriptDefault_Text">mxml</span>
+<span class="ActionScriptBracket/Brace">{</span>
+    
+<span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flicc</span>.<span class="ActionScriptDefault_Text">config</span>.<span class="ActionScriptDefault_Text">IObjectFactoryConfig</span>;
+<span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flicc</span>.<span class="ActionScriptDefault_Text">factory</span>.<span class="ActionScriptDefault_Text">IObjectFactory</span>;
+<span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flicc</span>.<span class="ActionScriptDefault_Text">factory</span>.<span class="ActionScriptDefault_Text">ObjectFactory</span>;
+
+<span class="ActionScriptBracket/Brace">[</span><span class="ActionScriptMetadata">DefaultProperty</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">&quot;config&quot;</span><span class="ActionScriptBracket/Brace">)]</span>
+
+<span class="ActionScriptASDoc">/**
+ * An &lt;code&gt;IObjectFactory&lt;/code&gt; for use in mxml.
+ * 
+ * &lt;p&gt;
+ * The &lt;code&gt;MxmlObjectFactory&lt;/code&gt; is declared and provided with an 
+ * &lt;code&gt;IObjectFactoryConfig&lt;/code&gt; on an mxml document. The configuration
+ * is provided to the factory through the &lt;code&gt;config&lt;/code&gt; property.
+ * &lt;/p&gt;
+ * 
+ * @mxml
+ * &lt;pre&gt; 
+ * &amp;lt;flicc:MxmlObjectFactory id=&quot;factory&quot;&gt;
+ *        &lt;config:FactoryConfig /&gt;        
+ *  &amp;lt;/flicc:MxmlObjectFactory&amp;gt;
+ * &lt;/pre&gt;
+ * 
+ * @see flicc.
+ */</span>
+<span class="ActionScriptReserved">public</span> <span class="ActionScriptclass">class</span> <span class="ActionScriptDefault_Text">MxmlObjectFactory</span> <span class="ActionScriptReserved">implements</span> <span class="ActionScriptDefault_Text">IObjectFactory</span>
+<span class="ActionScriptBracket/Brace">{</span>
+    <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">factoryImpl</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">IObjectFactory</span>;
+    
+    <span class="ActionScriptASDoc">/**
+     * The &lt;code&gt;IObjectFactoryConfig&lt;/code&gt; to be used by this factory.
+     * 
+     * &lt;p&gt;
+     * This can only be set once and must be done before calling &lt;code&gt;
+     * getInstance()&lt;/code&gt; or &lt;code&gt;configure()&lt;/code&gt;.
+     * &lt;/p&gt;  
+     */</span> 
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">config</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">value</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">IObjectFactoryConfig</span> <span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptReserved">void</span>
+    <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptOperator">!</span><span class="ActionScriptDefault_Text">factoryImpl</span> <span class="ActionScriptBracket/Brace">)</span>
+        <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">factoryImpl</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">ObjectFactory</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">value</span> <span class="ActionScriptBracket/Brace">)</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+    <span class="ActionScriptBracket/Brace">}</span>
+    
+    <span class="ActionScriptASDoc">/**
+     * @inheritDoc
+     */</span> 
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">getInstance</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">id</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptOperator">*</span>
+    <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">factoryImpl</span>.<span class="ActionScriptDefault_Text">getInstance</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">id</span> <span class="ActionScriptBracket/Brace">)</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+    
+    <span class="ActionScriptASDoc">/**
+     * @inheritDoc
+     */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">configure</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">object</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">Object</span>, <span class="ActionScriptDefault_Text">id</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptReserved">void</span>
+    <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">factoryImpl</span>.<span class="ActionScriptDefault_Text">configure</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">object</span>, <span class="ActionScriptDefault_Text">id</span> <span class="ActionScriptBracket/Brace">)</span>;            
+    <span class="ActionScriptBracket/Brace">}</span>
+<span class="ActionScriptBracket/Brace">}</span>
+
+<span class="ActionScriptBracket/Brace">}</span></pre></body>
+</html>

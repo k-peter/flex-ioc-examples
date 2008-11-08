@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MxmlFactoryConfig 
+	xmlns="flicc.config.mxml.*" 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:ptpconfig="ac.iocsample.passtheparcel.config.*" 
+	xmlns:domainconfig="ac.iocsample.populatedomain.config.*" 
+	xmlns:ptpconfighierarchy="ac.iocsample.passtheparcel_hieriarchy.config.*">
+	
+	<externalDescriptors>
+		<ptpconfig:PassTheParcelConfig/>
+		<ptpconfighierarchy:PassTheParcelConfigHierarchy/>
+		<domainconfig:PopulateTheDomainconfig />
+	</externalDescriptors>
+		
+</MxmlFactoryConfig>

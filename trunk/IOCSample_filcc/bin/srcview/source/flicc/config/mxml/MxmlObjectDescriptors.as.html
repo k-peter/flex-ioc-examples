@@ -1,0 +1,70 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>MxmlObjectDescriptors.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">flicc</span>.<span class="ActionScriptDefault_Text">config</span>.<span class="ActionScriptDefault_Text">mxml</span>
+<span class="ActionScriptBracket/Brace">{</span>
+
+<span class="ActionScriptASDoc">/**
+ * Defines a collection of &lt;code&gt;IObjectDescriptor&lt;/code&gt;s.
+ * 
+ * &lt;p&gt;
+ * The &lt;code&gt;MxmlObjectDesciptors&lt;/code&gt; class is used to define collections of 
+ * &lt;code&gt;IObjectDescriptor&lt;/code&gt;s referenced by an &lt;code&gt;MxmlFactoryConfig
+ * &lt;/code&gt;s &lt;code&gt;externalDescriptors&lt;/code&gt; property. An instance of &lt;code&gt;
+ * MxmlObjectDescriptors&lt;/code&gt; can itself refer to other instances of &lt;code&gt;
+ * MxmlObjectDescriptors&lt;/code&gt; through its own &lt;code&gt;externalDescriptors&lt;/code&gt;
+ * property and so on.
+ * &lt;/p&gt;
+ * 
+ * &lt;p&gt;
+ * &lt;code&gt;MxmlObjectDescriptors&lt;/code&gt; are usually defined as an mxml sub class.
+ * &lt;/p&gt;
+ * 
+ * @see flicc.config.mxml.MxmlFactoryConfig#externalDescriptors
+ */</span>     
+<span class="ActionScriptReserved">public</span> <span class="ActionScriptclass">class</span> <span class="ActionScriptDefault_Text">MxmlObjectDescriptors</span>
+<span class="ActionScriptBracket/Brace">{</span>
+    <span class="ActionScriptASDoc">/**
+     * An &lt;code&gt;Array&lt;/code&gt; of &lt;code&gt;IObjectDescriptor&lt;/code&gt; implementations.
+     */</span> 
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">descriptors</span> <span class="ActionScriptOperator">:</span>  <span class="ActionScriptDefault_Text">Array</span>;
+    
+    <span class="ActionScriptASDoc">/**
+     * An &lt;code&gt;Array&lt;/code&gt; of other &lt;code&gt;MxmlObjectDescriptor&lt;/code&gt; 
+     * instances. 
+     */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">externalDescriptors</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">Array</span>;
+    
+    <span class="ActionScriptASDoc">/**
+     * Get all &lt;code&gt;IObjectDescriptor&lt;/code&gt;s defined by this 
+     * &lt;code&gt;MxmlObjectDescriptors&lt;/code&gt;.  
+     *  
+     * @return An &lt;code&gt;Array&lt;/code&gt; of all &lt;code&gt;IObjectDescriptor&lt;/code&gt;s 
+     * within the &lt;code&gt;descriptors&lt;/code&gt; property and all &lt;code&gt;
+     * IObjectDescriptors&lt;/code&gt; from other &lt;code&gt;MxmlObjectDescriptors&lt;/code&gt;
+     * instances in the &lt;code&gt;externalDescriptors&lt;/code&gt; property.
+     */</span> 
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">getDescriptors</span><span class="ActionScriptBracket/Brace">()</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">Array</span>
+    <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptReserved">if</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">descriptors</span> <span class="ActionScriptOperator">==</span> <span class="ActionScriptReserved">null</span> <span class="ActionScriptBracket/Brace">)</span>
+        <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">descriptors</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">[]</span>;
+        <span class="ActionScriptBracket/Brace">}</span>
+        
+         <span class="ActionScriptReserved">for</span> <span class="ActionScriptReserved">each</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">external</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">MxmlObjectDescriptors</span> <span class="ActionScriptReserved">in</span> <span class="ActionScriptDefault_Text">externalDescriptors</span> <span class="ActionScriptBracket/Brace">)</span>
+         <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">descriptors</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">descriptors</span>.<span class="ActionScriptDefault_Text">concat</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">external</span>.<span class="ActionScriptDefault_Text">getDescriptors</span><span class="ActionScriptBracket/Brace">()</span> <span class="ActionScriptBracket/Brace">)</span>;
+         <span class="ActionScriptBracket/Brace">}</span>
+        
+        <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">descriptors</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+<span class="ActionScriptBracket/Brace">}</span>
+
+<span class="ActionScriptBracket/Brace">}</span></pre></body>
+</html>

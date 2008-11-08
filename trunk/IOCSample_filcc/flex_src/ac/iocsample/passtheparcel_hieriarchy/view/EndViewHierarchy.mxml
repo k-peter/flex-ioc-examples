@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="absolute" 
+	borderColor="#ff9933"
+	title="{ endPM.name }" 
+	xmlns:pm="ac.iocsample.passtheparcel.model.pm.*" 
+	xmlns:injection="flicc.injection.*">
+	<mx:Script>
+		<![CDATA[
+			import ac.iocsample.passtheparcel_hieriarchy.model.pm.EndPMHierarchy;
+			
+			[Bindable]
+			public var endPM : EndPMHierarchy;		
+		]]>
+	</mx:Script>
+	<injection:Configure
+		target="{ endPM }" 
+		objectId="endPMHierarchy"/>
+		
+	<mx:Label 
+		text="{ endPM.parcel.contents }" />
+</mx:Panel>
