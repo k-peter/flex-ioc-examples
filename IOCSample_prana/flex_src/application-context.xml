@@ -4,14 +4,14 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.pranaframework.org/objects http://www.pranaframework.org/schema/objects/prana-objects-0.6.xsd">
 	
-	<!--  detached pms  -->
- 	<object 
+	<!--  detached pms  --> 
+ 	<object  
  		id="endPM" 
   		class="ac.iocsample.passtheparcel.model.pm.EndPM">
   		<constructor-arg ref="parcel"/>
   	</object>
   	
-  	<!-- hierarchical pms -->
+  	<!-- hierarchical pms --> 
   	<object 
  		id="startPMHierarchy" 
   		class="ac.iocsample.passtheparcel_hierarchy.model.pm.StartPMHierarchy"/>
@@ -40,8 +40,43 @@
 	<object 
 		id="account"
 		class="ac.iocsample.populatedomain.model.domain.Account"/>
-    	
 	
+	<!--  mock instance -->	
+	<!-- 
+	<object
+		id="simpleDelegate"
+		class="ac.iocsample.configuredelegate.business.SimpleDelegateMock">
+	</object>
+	 -->
 	
+	<!--  real instance -->	
+	<object id="endPoint" class="String">
+		<constructor-arg value="http://myendpoint/"/>
+	</object>
 	
+	<object
+		id="simpleDelegate"
+		class="ac.iocsample.configuredelegate.business.SimpleDelegate">
+		<property 
+			name="service" 
+			ref="simpleRemoteObject"/>
+	</object>
+	
+	<object 
+		id="simpleRemoteObject"
+		class="mx.rpc.remoting.mxml.RemoteObject">
+		<property 
+			name="destination"
+			value="GenericDestination"/>
+				
+		<property
+			name="endpoint">
+			<ref>endPoint</ref>
+		</property>
+		
+		<property
+			name="source"
+			value="ac.iocsample.configuredelegate.business.SimpleService"/>
+	</object>
+
 </objects>

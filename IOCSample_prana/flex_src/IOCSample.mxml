@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Application 
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
-	xmlns:control="ac.iocsample.control.*"
-	xmlns:backendview="ac.iocsample.populatedomain.view.*" 
 	xmlns:controller="ac.iocsample.populatedomain.control.*" 
-	xmlns:detachedview="ac.iocsample.passtheparcel.view.*"
-	xmlns:hierarchyview="ac.iocsample.passtheparcel_hierarchy.view.*"
+	xmlns:cdcontroller="ac.iocsample.configuredelegate.control.*" 
+	xmlns:detached="ac.iocsample.passtheparcel.view.*"
+	xmlns:backend="ac.iocsample.populatedomain.view.*" 
+	xmlns:hierarchy="ac.iocsample.passtheparcel_hierarchy.view.*"
+	xmlns:configuredelegate="ac.iocsample.configuredelegate.view.*"
 	layout="vertical" 
 	preinitialize="preInit()"
 	>
@@ -31,10 +32,13 @@
 	<controller:BackendController />
 	
 	<mx:HBox>
-		<detachedview:MainPanelView />
-		<hierarchyview:MainPanelViewHierarchy />	
+		<detached:MainPanelView />
+		<hierarchy:MainPanelViewHierarchy />	
 	</mx:HBox>
 	
-	<backendview:RootView/>
+	<backend:RootView/>
+	
+	<cdcontroller:ConfigureDelegateController />
+	<configuredelegate:ConfigureDelegateView />
 
 </mx:Application>
