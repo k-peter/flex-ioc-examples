@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Panel 
-	title="This mimics another view that is bound to the same domain"
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	title="This mimics another view that is bound to the same domain"
 	layout="vertical">
 	<mx:Script>
 		<![CDATA[
