@@ -1,12 +1,12 @@
 package ac.iocsample.populatedomain.model.domain
 {
-	public class BackendModelLocator
+	public class PopulateDomainModelLocator
 	{
 		public var backend : Account = new Account();
 		
-		private static var instance : BackendModelLocator;
+		private static var instance : PopulateDomainModelLocator;
 		
-		public function BackendModelLocator()
+		public function PopulateDomainModelLocator()
 		{
 			if( instance != null ) 
 			{
@@ -14,11 +14,11 @@ package ac.iocsample.populatedomain.model.domain
 			}
 		}
 		
-		public static function getInstance() : BackendModelLocator
+		public static function getInstance() : PopulateDomainModelLocator
 		{
 			if( instance == null )
 			{
-				instance = new BackendModelLocator();
+				instance = new PopulateDomainModelLocator();
 			}
 			return instance;
 		}

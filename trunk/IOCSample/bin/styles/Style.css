@@ -9,7 +9,7 @@ Application {
 Box{
 	border-color: #224422;
 	border-style: solid;
-	border-thickness: 1;
+	border-thickness: 0;
 }
 
 .header
