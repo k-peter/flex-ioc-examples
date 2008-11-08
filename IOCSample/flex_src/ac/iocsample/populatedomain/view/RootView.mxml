@@ -8,7 +8,7 @@
 	xmlns:view="ac.iocsample.populatedomain.view.*">
 	<mx:Script>
 		<![CDATA[
-			import ac.iocsample.populatedomain.model.domain.BackendModelLocator;
+			import ac.iocsample.populatedomain.model.domain.PopulateDomainModelLocator;
 			import ac.iocsample.populatedomain.model.pm.OtherPM;
 			import ac.iocsample.populatedomain.model.pm.MainPM;
 			
@@ -21,8 +21,8 @@
 			
 			private function init () : void
 			{
-				otherPM = new OtherPM( BackendModelLocator.getInstance().backend );
-				mainPM = new MainPM( BackendModelLocator.getInstance().backend );
+				otherPM = new OtherPM( PopulateDomainModelLocator.getInstance().backend );
+				mainPM = new MainPM( PopulateDomainModelLocator.getInstance().backend );
 			}
 		
 		]]>
