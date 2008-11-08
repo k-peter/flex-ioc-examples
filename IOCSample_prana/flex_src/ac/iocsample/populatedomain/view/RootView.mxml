@@ -10,10 +10,10 @@
 		<![CDATA[
 			import ac.iocsample.populatedomain.model.domain.BackendModelLocator;
 			import ac.iocsample.populatedomain.model.pm.OtherPM;
-			import ac.iocsample.populatedomain.model.pm.BackendPM;
+			import ac.iocsample.populatedomain.model.pm.MainPM;
 			
 			[Bindable]
-			public var backendPM : BackendPM;
+			public var mainPM : MainPM;
 			
 			[Bindable]
 			public var otherPM : OtherPM;
@@ -22,7 +22,7 @@
 			private function init () : void
 			{
 				//otherPM = new OtherPM( BackendModelLocator.getInstance().backend );
-				//backendPM = new BackendPM( BackendModelLocator.getInstance().backend );
+				//mainPM = new BackendPM( BackendModelLocator.getInstance().backend );
 			}
 		
 		]]>
@@ -34,7 +34,7 @@
 	<mx:HBox
 		borderStyle="none">
 		<view:BackendView
-				backendPM="{ backendPM }" />
+				mainPM="{ mainPM }" />
 		<view:OtherView
 			otherPM="{ otherPM }"/>
 	</mx:HBox>

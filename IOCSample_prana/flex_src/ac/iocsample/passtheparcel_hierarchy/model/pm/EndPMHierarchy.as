@@ -1,4 +1,4 @@
-package ac.iocsample.passtheparcel_hieriarchy.model.pm
+package ac.iocsample.passtheparcel_hierarchy.model.pm
 {
 	import ac.iocsample.passtheparcel.model.domain.Parcel;
 	
@@ -9,7 +9,7 @@ package ac.iocsample.passtheparcel_hieriarchy.model.pm
 	[Bindable]
 	public class EndPMHierarchy extends BasePMHierarchy
 	{
-		//injected by flicc
+		//injected by prana
 		public var parcel : Parcel;
 		
 		public function EndPMHierarchy()

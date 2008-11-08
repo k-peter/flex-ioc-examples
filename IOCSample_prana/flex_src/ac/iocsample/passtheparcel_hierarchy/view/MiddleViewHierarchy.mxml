@@ -5,10 +5,10 @@
 	borderColor="#ff9933"
 	title="{ middlePM.name }" 
 	xmlns:injection="flicc.injection.*" 
-	xmlns:hierarchyview="ac.iocsample.passtheparcel_hieriarchy.view.*">
+	xmlns:hierarchyview="ac.iocsample.passtheparcel_hierarchy.view.*">
 	<mx:Script>
 		<![CDATA[
-			import ac.iocsample.passtheparcel_hieriarchy.model.pm.MiddlePMHierarchy;
+			import ac.iocsample.passtheparcel_hierarchy.model.pm.MiddlePMHierarchy;
 			
 			[Bindable]
 			public var middlePM : MiddlePMHierarchy;		

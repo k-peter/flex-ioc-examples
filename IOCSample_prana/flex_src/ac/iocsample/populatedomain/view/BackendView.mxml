@@ -8,24 +8,24 @@
 		<![CDATA[
 			import ac.iocsample.prana.factory.PranaFactory;
 			import org.pranaframework.context.support.XMLApplicationContext;
-			import ac.iocsample.populatedomain.model.pm.BackendPM;
+			import ac.iocsample.populatedomain.model.pm.MainPM;
 			
 			[Bindable]
-			public var backendPM : BackendPM;
+			public var mainPM : MainPM;
 			
 
 		    private function init() : void 
 		    {
-				backendPM = PranaFactory.getObject("backendPM");
+				mainPM = PranaFactory.getObject("mainPM");
 		    }
 
 		]]>
 	</mx:Script>
 	<mx:Label
-		text="{ backendPM.backend.uniqueId }" />
+		text="{ mainPM.account.uniqueId }" />
 	<mx:TextInput
 		id="input"
 		restrict="0-9"
-		text="{ backendPM.backend.uniqueId }"
-		change="backendPM.backend.uniqueId = Number(input.text)"/>
+		text="{ mainPM.account.uniqueId }"
+		change="mainPM.account.uniqueId = Number(input.text)"/>
 </mx:Panel>

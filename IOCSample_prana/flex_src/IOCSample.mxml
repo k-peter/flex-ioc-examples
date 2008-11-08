@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Application 
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
-	xmlns:pm="ac.iocsample.passtheparcel.model.pm.*" 
 	xmlns:control="ac.iocsample.control.*"
-	xmlns:view="ac.iocsample.passtheparcel.view.*" 
 	xmlns:backendview="ac.iocsample.populatedomain.view.*" 
 	xmlns:controller="ac.iocsample.populatedomain.control.*" 
 	xmlns:detachedview="ac.iocsample.passtheparcel.view.*"
-	xmlns:hierarchyview="ac.iocsample.passtheparcel_hieriarchy.view.*"
+	xmlns:hierarchyview="ac.iocsample.passtheparcel_hierarchy.view.*"
 	layout="vertical" 
 	preinitialize="preInit()"
-	creationComplete="init()"
 	>
 	<mx:Script>
 		<![CDATA[
-			import ac.iocsample.populatedomain.model.domain.Backend;
-			import ac.iocsample.populatedomain.model.domain.Backend2;
 			import ac.iocsample.prana.factory.PranaFactory;
 			import ac.iocsample.passtheparcel.model.pm.StartPM;
 			import ac.iocsample.passtheparcel.model.domain.PTPModelLocator;
@@ -27,13 +22,6 @@
 			private function preInit() : void
 			{
 				PranaFactory.init();
-				var backend : Backend;
-				var backend2 : Backend2;
-			}
-
-			private function init() : void
-			{
-				startPM = new StartPM();
 			}
 			
 		]]>
