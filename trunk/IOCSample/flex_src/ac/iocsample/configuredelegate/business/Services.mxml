@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<adobe:ServiceLocator
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:adobe="http://www.adobe.com/2006/cairngorm">
+
+	<mx:RemoteObject
+		id="simpleService"
+		endpoint="http://myendpoint"
+		source="ac.iocsample.configuredelegate.business.SimpleService"
+		destination="GenericDestination">
+	</mx:RemoteObject>
+
+</adobe:ServiceLocator>
