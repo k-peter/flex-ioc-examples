@@ -1,6 +1,7 @@
 package ac.iocsample.populatedomain.control.commands
 {
 	import ac.iocsample.populatedomain.control.events.PopulateBackendEvent;
+	import ac.iocsample.populatedomain.model.domain.Account;
 	import ac.iocsample.prana.factory.PranaFactory;
 	import ac.iocsample.util.LogUtil;
 	
@@ -20,8 +21,8 @@ package ac.iocsample.populatedomain.control.commands
 			var getBackendEvent : PopulateBackendEvent = event as PopulateBackendEvent;
 			var logger : ILogger = LogUtil.getLogger( this );
 			logger.info("setting id");
-			var backend : Object = PranaFactory.getObject("backend");
-			backend.uniqueId = 10101010;
+			var account : Account = PranaFactory.getObject("account");
+			account.uniqueId = 10101010;
 		}
 
 	}

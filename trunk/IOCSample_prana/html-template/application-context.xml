@@ -23,7 +23,7 @@
   	</object>
 
  	<object 
- 		id="backendPM" 
+ 		id="mainPM" 
   		class="ac.iocsample.populatedomain.model.pm.BackendPM">
   		<constructor-arg ref="backend"/>
   	</object>

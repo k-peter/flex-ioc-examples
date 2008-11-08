@@ -1,4 +1,4 @@
-package ac.iocsample.passtheparcel_hieriarchy.model.pm
+package ac.iocsample.passtheparcel_hierarchy.model.pm
 {
 	import flash.events.EventDispatcher;
 	
