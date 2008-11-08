@@ -1,0 +1,76 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>IObjectFactoryConfig.as</title>
+<link rel="stylesheet" type="text/css" href="../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">flicc</span>.<span class="ActionScriptDefault_Text">config</span>
+<span class="ActionScriptBracket/Brace">{</span>
+    
+<span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">collections</span>.<span class="ActionScriptDefault_Text">ICollectionView</span>;
+
+<span class="ActionScriptASDoc">/**
+ * Provides an &lt;code&gt;IObjectFactory&lt;/code&gt; with &lt;/code&gt;IObjectDescriptor
+ * &lt;/code&gt;s.
+ */</span>
+<span class="ActionScriptReserved">public</span> <span class="ActionScriptinterface">interface</span> <span class="ActionScriptDefault_Text">IObjectFactoryConfig</span>
+<span class="ActionScriptBracket/Brace">{</span>
+    <span class="ActionScriptASDoc">/**
+     * Does the IObjectFactoryConfig contain a descriptor for the given
+     * objectId?
+     * 
+     * @param objectId The objectId that identifies the descriptor.
+     * @return &lt;code&gt;true&lt;/code&gt; if the factory config contains a descriptor
+     * for the given objectId, false if not.
+     */</span>
+    <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">hasDescriptorForId</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">objectId</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">Boolean</span>;
+
+    <span class="ActionScriptASDoc">/**
+     * Return the &lt;code&gt;IObjectDescriptor&lt;/code&gt; for the given objectId. If
+     * the descriptor does not exist, an error will be thrown.
+     * 
+     * @param The objectId that indentifies the descriptor.
+     * @return The IObjectDescriptor instance associated with that Id.
+     */</span> 
+    <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">getDescriptorForId</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">objectId</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">IObjectDescriptor</span>;
+    
+    <span class="ActionScriptASDoc">/**
+     * Gets all IObjectDescriptors in this configuration. 
+     * 
+     * @return an ICollectionView of all IObjectDescriptors that this 
+     * configuration contains.
+     */</span> 
+    <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">getAllDescriptors</span><span class="ActionScriptBracket/Brace">()</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">ICollectionView</span>;
+    
+    <span class="ActionScriptASDoc">/**
+     * Add a single IObjectDescriptor to this configuration. The objectId
+     * of the descriptor must be unique within the context of this 
+     * configuration, or an error will be thrown.
+     * 
+     * @param value The IObjectDescriptor to add.
+     */</span>  
+    <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">addDescriptor</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">value</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">IObjectDescriptor</span> <span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptReserved">void</span>;
+    
+    <span class="ActionScriptASDoc">/**
+     * Add many IObjectDescriptors to this configuration.
+     * 
+     * @param value A list of IObjectDescriptors to add.
+     */</span> 
+    <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">addDescriptors</span><span class="ActionScriptBracket/Brace">(</span> ...<span class="ActionScriptDefault_Text">value</span> <span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptReserved">void</span>;
+    
+    <span class="ActionScriptASDoc">/**
+     * Determines wether or not an IObjectFactory configured with this 
+     * IObjectFactoryConfig should pre-instantiate all singletons - that is
+     * all IObjectDescriptors that have the singleton property set to true.
+     * 
+     * @return true if all singletons should be preinstantiated, false if 
+     * not.
+     */</span> 
+    <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">preInstantiateSingletons</span><span class="ActionScriptBracket/Brace">()</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">Boolean</span>;
+<span class="ActionScriptBracket/Brace">}</span>
+
+<span class="ActionScriptBracket/Brace">}</span></pre></body>
+</html>

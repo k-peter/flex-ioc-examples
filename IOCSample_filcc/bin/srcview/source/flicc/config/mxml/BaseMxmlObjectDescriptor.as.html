@@ -1,0 +1,172 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>BaseMxmlObjectDescriptor.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">flicc</span>.<span class="ActionScriptDefault_Text">config</span>.<span class="ActionScriptDefault_Text">mxml</span>
+<span class="ActionScriptBracket/Brace">{</span>
+    
+<span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flicc</span>.<span class="ActionScriptDefault_Text">config</span>.<span class="ActionScriptDefault_Text">IObjectDescriptor</span>;
+<span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flicc</span>.<span class="ActionScriptDefault_Text">config</span>.<span class="ActionScriptDefault_Text">dependency</span>.<span class="ActionScriptDefault_Text">ConstructorDependency</span>;
+
+<span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">collections</span>.<span class="ActionScriptDefault_Text">ArrayCollection</span>;
+<span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">collections</span>.<span class="ActionScriptDefault_Text">ICollectionView</span>;
+
+<span class="ActionScriptASDoc">/**
+ * Base class for mxml implementations of &lt;code&gt;IObjectDescriptor&lt;/code&gt;.
+ * 
+ * &lt;p&gt;
+ * The &lt;code&gt;BaseMxmlObjectDescriptor&lt;/code&gt; exposes public setter methods for 
+ * all the getters defined on &lt;code&gt;IObjectDescriptor&lt;/code&gt;. Event handlers
+ * and constructor arguments are also exposed through public &lt;code&gt;Array&lt;/code&gt;
+ * so they can be set directly in mxml. The &lt;code&gt;BaseMxmlObjectDescriptor
+ * &lt;/code&gt; sets the &lt;code&gt;clazz&lt;/code&gt; to &lt;code&gt;Object&lt;/code&gt; and &lt;code&gt;
+ * isSingleton&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; by default.
+ * &lt;/p&gt;
+ * 
+ * &lt;p&gt;
+ * The &lt;code&gt;BaseMxmlObjectDesciptor&lt;/code&gt; does not define a &lt;code&gt;dependencies
+ * &lt;/code&gt; implementation, this is for sub-classes to provide.
+ * &lt;/p&gt;
+ * 
+ * &lt;p&gt;
+ * This class should not be used directly, one of its sub-classes 
+ * (&lt;code&gt;ObjectDescriptor&lt;/code&gt; or &lt;code&gt;ListDescriptor&lt;/code&gt;) should be used
+ * instead.
+ * &lt;/p&gt;
+ * 
+ * @see flicc.config.mxml.ObjectDescriptor
+ * @see flicc.config.mxml.ListDescriptor
+ */</span>
+<span class="ActionScriptReserved">public</span> <span class="ActionScriptclass">class</span> <span class="ActionScriptDefault_Text">BaseMxmlObjectDescriptor</span> <span class="ActionScriptReserved">implements</span> <span class="ActionScriptDefault_Text">IObjectDescriptor</span>
+<span class="ActionScriptBracket/Brace">{</span>
+      <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_clazz</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">Class</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">Object</span>;
+    <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_singleton</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">Boolean</span> <span class="ActionScriptOperator">=</span>     <span class="ActionScriptReserved">true</span>;
+    <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_objectId</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">String</span>;
+    <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_eventHandlers</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">ICollectionView</span>;   
+    
+    <span class="ActionScriptASDoc">/**
+     * An &lt;code&gt;Array&lt;/code&gt; of &lt;code&gt;IEventHandler&lt;/code&gt;.
+     * 
+     * &lt;p&gt;
+     * This property allows event handlers to be set in mxml without having to
+     * explicitly create an &lt;code&gt;ArrayCollection&lt;/code&gt; - this is done by the
+     * &lt;code&gt;eventHandlers&lt;/code&gt; get implmentation.
+     * &lt;/p&gt;   
+     * 
+     * @see #eventHandlers
+     */</span> 
+      <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">handlers</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">Array</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">[]</span>;  
+      
+      <span class="ActionScriptASDoc">/**
+       * An &lt;code&gt;Array&lt;/code&gt; of values to be used as constructor arguments.
+       * 
+       * &lt;p&gt;
+       * The &lt;code&gt;constructorArgs&lt;/code&gt; get implementation will take these 
+       * values and create a list of &lt;code&gt;IConstructorDependeny&lt;/code&gt; values
+       * using the order in which the values are defined in this &lt;code&gt;Array
+       * &lt;/code&gt; to determine the order in which they are provided as constructor
+       * arguments.
+       * &lt;/p&gt;  
+       */</span> 
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">constructor</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">Array</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptBracket/Brace">[]</span>; 
+    
+    <span class="ActionScriptASDoc">/**
+     * @deprecated Use &lt;code&gt;constructor&lt;/code&gt; instead.
+     */</span> 
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">constructorDependencies</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">value</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">Array</span> <span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptReserved">void</span>
+    <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptDefault_Text">constructor</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">value</span>;    
+    <span class="ActionScriptBracket/Brace">}</span>    
+        
+    <span class="ActionScriptASDoc">/**    
+     * @inheritDoc
+     */</span> 
+      <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">objectId</span><span class="ActionScriptBracket/Brace">()</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">String</span>
+      <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_objectId</span>;
+      <span class="ActionScriptBracket/Brace">}</span>
+    
+    <span class="ActionScriptASDoc">/**
+     * @private
+     */</span> 
+      <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">objectId</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">value</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptReserved">void</span>
+      <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptDefault_Text">_objectId</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">value</span>;
+      <span class="ActionScriptBracket/Brace">}</span>  
+      
+      <span class="ActionScriptASDoc">/**
+       * @inheritDoc
+       */</span> 
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">clazz</span><span class="ActionScriptBracket/Brace">()</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">Class</span> 
+    <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_clazz</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+    
+    <span class="ActionScriptASDoc">/**
+     * @private
+     */</span>
+      <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">clazz</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">value</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">Class</span> <span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptReserved">void</span>
+      <span class="ActionScriptBracket/Brace">{</span>
+         <span class="ActionScriptDefault_Text">_clazz</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">value</span>;
+      <span class="ActionScriptBracket/Brace">}</span>   
+
+    <span class="ActionScriptASDoc">/**
+     * @inheritDoc
+     */</span> 
+      <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">isSingleton</span><span class="ActionScriptBracket/Brace">()</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">Boolean</span>
+      <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_singleton</span> <span class="ActionScriptOperator">&amp;&amp;</span> <span class="ActionScriptDefault_Text">objectId</span><span class="ActionScriptOperator">!=</span><span class="ActionScriptReserved">null</span> <span class="ActionScriptOperator">&amp;&amp;</span> <span class="ActionScriptDefault_Text">objectId</span>.<span class="ActionScriptDefault_Text">length</span><span class="ActionScriptOperator">&gt;</span>0;
+      <span class="ActionScriptBracket/Brace">}</span>
+
+    <span class="ActionScriptASDoc">/**
+     * @private
+     */</span> 
+      <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">isSingleton</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">value</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">Boolean</span> <span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptReserved">void</span>
+      <span class="ActionScriptBracket/Brace">{</span>
+         <span class="ActionScriptDefault_Text">_singleton</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">value</span>;
+      <span class="ActionScriptBracket/Brace">}</span>
+
+    <span class="ActionScriptASDoc">/**
+     * Intentionally unimplemented.
+     * 
+     * &lt;p&gt;
+     * Sub classes should override this method to return a list of &lt;code&gt; 
+     * IDependency&lt;/code&gt; implementations.
+     * &lt;/p&gt;
+     */</span> 
+      <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">dependencies</span><span class="ActionScriptBracket/Brace">()</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">ICollectionView</span>
+      <span class="ActionScriptBracket/Brace">{</span>
+          <span class="ActionScriptReserved">return</span> <span class="ActionScriptReserved">null</span>;
+      <span class="ActionScriptBracket/Brace">}</span>
+  
+      <span class="ActionScriptASDoc">/**
+       * @inheritDoc
+       */</span>
+      <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">eventHandlers</span><span class="ActionScriptBracket/Brace">()</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">ICollectionView</span>
+      <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptReserved">return</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">ArrayCollection</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">handlers</span> <span class="ActionScriptBracket/Brace">)</span>;
+      <span class="ActionScriptBracket/Brace">}</span>
+    
+    <span class="ActionScriptASDoc">/**
+     * @inheritDoc
+     */</span> 
+      <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">constructorArgs</span><span class="ActionScriptBracket/Brace">()</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">ICollectionView</span>
+      <span class="ActionScriptBracket/Brace">{</span>
+          <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">constDeps</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">ArrayCollection</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">ArrayCollection</span><span class="ActionScriptBracket/Brace">()</span>;
+          
+          <span class="ActionScriptReserved">for</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">i</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 0; <span class="ActionScriptDefault_Text">i</span><span class="ActionScriptOperator">!=</span><span class="ActionScriptDefault_Text">constructor</span>.<span class="ActionScriptDefault_Text">length</span>; <span class="ActionScriptDefault_Text">i</span><span class="ActionScriptOperator">++</span><span class="ActionScriptBracket/Brace">)</span>
+          <span class="ActionScriptBracket/Brace">{</span>
+              <span class="ActionScriptDefault_Text">constDeps</span>.<span class="ActionScriptDefault_Text">addItem</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">ConstructorDependency</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">i</span>, <span class="ActionScriptDefault_Text">constructor</span><span class="ActionScriptBracket/Brace">[</span> <span class="ActionScriptDefault_Text">i</span> <span class="ActionScriptBracket/Brace">]</span> <span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptBracket/Brace">)</span>;
+          <span class="ActionScriptBracket/Brace">}</span>
+          
+        <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">constDeps</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+<span class="ActionScriptBracket/Brace">}</span>
+
+<span class="ActionScriptBracket/Brace">}</span></pre></body>
+</html>

@@ -1,0 +1,142 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>MxmlFactoryConfig.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">flicc</span>.<span class="ActionScriptDefault_Text">config</span>.<span class="ActionScriptDefault_Text">mxml</span>
+<span class="ActionScriptBracket/Brace">{</span>
+
+<span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flicc</span>.<span class="ActionScriptDefault_Text">config</span>.<span class="ActionScriptDefault_Text">IObjectDescriptor</span>;
+<span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flicc</span>.<span class="ActionScriptDefault_Text">config</span>.<span class="ActionScriptDefault_Text">IObjectFactoryConfig</span>;
+<span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flicc</span>.<span class="ActionScriptDefault_Text">config</span>.<span class="ActionScriptDefault_Text">ObjectFactoryConfig</span>;
+
+<span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">collections</span>.<span class="ActionScriptDefault_Text">ICollectionView</span>;
+<span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">mx</span>.<span class="ActionScriptDefault_Text">core</span>.<span class="ActionScriptDefault_Text">IMXMLObject</span>;
+
+<span class="ActionScriptASDoc">/**
+ * An &lt;code&gt;IObjectFactoryConfig&lt;/code&gt; used for declaring &lt;code&gt;
+ * ObjectDescriptor&lt;/code&gt;s in mxml.
+ * 
+ * &lt;p&gt;
+ * Creating an mxml sub-class of &lt;code&gt;MxmlFactoryConfig&lt;/code&gt; is the standard
+ * way of creating a factory configuration in Flicc. &lt;code&gt;IObjectDescriptor
+ * &lt;/code&gt;s, usually flicc.config.mxml.ObjectDescriptor, are declared on the 
+ * &lt;code&gt;descriptors&lt;/code&gt;property.
+ * &lt;/p&gt;
+ * 
+ * &lt;p&gt;
+ * &lt;code&gt;IObjectDescriptor&lt;/code&gt;s can be included from other sub-classes of 
+ * &lt;code&gt;MxmlObjectDescriptors&lt;/code&gt; using the &lt;code&gt;externalDescriptors&lt;/code&gt; 
+ * property. Note that when the configuration is initialised, all &lt;code&gt;
+ * IObjectDescriptors&lt;/code&gt; are considered to be &quot;at the same level&quot; so 
+ * objectId&apos;s must be unique across all descriptors included in a single 
+ * instance of &lt;code&gt;MxmlFactoryConfig&lt;/code&gt;. 
+ * &lt;/p&gt;
+ * 
+ * @mxml
+ * &lt;pre&gt; 
+ * &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+ *     &amp;lt;MxmlFactoryConfig xmlns=&quot;flicc.config.mxml.*&quot;
+ *    xmlns:mx=&quot;http://www.adobe.com/2006/mxml&quot;
+ *    xmlns:config=&quot;some.other.app.*&quot;
+ *    preInstantiateSingletons=&quot;true|false&quot;&amp;gt; 
+ * 
+ *  &amp;lt;descriptors&amp;gt;
+ *        &amp;lt;ObjectDescriptor objectId=&quot;Class1Id&quot; clazz=&quot;{ Class1 }&quot; /&amp;gt;
+ *         &amp;lt;ObjectDescriptor objectId=&quot;Class2Id&quot; clazz=&quot;{ Class2 }&quot; /&amp;gt;
+ *     &amp;lt;/descriptors&amp;gt;
+ * 
+ *  &amp;lt;externalDescriptors&amp;gt;
+ *         &lt;config:OtherDescriptors /&gt;
+ *  &amp;lt;/externalDescriptors&amp;gt;
+ *
+ * &amp;lt;/MxmlFactoryConfig&amp;gt;
+ * &lt;/pre&gt;
+ *
+ * @see flicc.config.IObjectFactoryConfig
+ * @see flicc.config.mxml.ObjectDescriptor
+ * @see flicc.config.mxml.MxmlObjectDescriptors
+ */</span>
+<span class="ActionScriptReserved">public</span> <span class="ActionScriptclass">class</span> <span class="ActionScriptDefault_Text">MxmlFactoryConfig</span> <span class="ActionScriptReserved">extends</span> <span class="ActionScriptDefault_Text">MxmlObjectDescriptors</span> 
+        <span class="ActionScriptReserved">implements</span> <span class="ActionScriptDefault_Text">IMXMLObject</span>, <span class="ActionScriptDefault_Text">IObjectFactoryConfig</span> <span class="ActionScriptBracket/Brace">{</span>
+                
+    <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">configImpl</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">ObjectFactoryConfig</span>;
+    <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">_preInstantiateSingletons</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">Boolean</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">false</span>;
+        
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">MxmlFactoryConfig</span><span class="ActionScriptBracket/Brace">()</span>
+    <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptDefault_Text">configImpl</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">ObjectFactoryConfig</span><span class="ActionScriptBracket/Brace">()</span>;    
+    <span class="ActionScriptBracket/Brace">}</span>
+    
+    <span class="ActionScriptASDoc">/**
+     * @inheritDoc
+     */</span> 
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">hasDescriptorForId</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">id</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">Boolean</span>
+    <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">configImpl</span>.<span class="ActionScriptDefault_Text">hasDescriptorForId</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">id</span> <span class="ActionScriptBracket/Brace">)</span>;    
+    <span class="ActionScriptBracket/Brace">}</span>
+    
+    <span class="ActionScriptASDoc">/**
+     * @inheritDoc
+     */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">getDescriptorForId</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">id</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">IObjectDescriptor</span>
+    <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">configImpl</span>.<span class="ActionScriptDefault_Text">getDescriptorForId</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">id</span> <span class="ActionScriptBracket/Brace">)</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+    
+    <span class="ActionScriptASDoc">/**
+     * @inheritDoc
+     */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">addDescriptors</span><span class="ActionScriptBracket/Brace">(</span> ...<span class="ActionScriptDefault_Text">value</span> <span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptReserved">void</span>
+    <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptDefault_Text">configImpl</span>.<span class="ActionScriptDefault_Text">addDescriptors</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">value</span> <span class="ActionScriptBracket/Brace">)</span>;    
+    <span class="ActionScriptBracket/Brace">}</span>
+    
+    <span class="ActionScriptASDoc">/**
+     * @inheritDoc
+     */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">addDescriptor</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">value</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">IObjectDescriptor</span> <span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptReserved">void</span>
+    <span class="ActionScriptBracket/Brace">{</span> 
+        <span class="ActionScriptDefault_Text">configImpl</span>.<span class="ActionScriptDefault_Text">addDescriptor</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">value</span> <span class="ActionScriptBracket/Brace">)</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+    
+    <span class="ActionScriptASDoc">/**
+     * @inheritDoc
+     */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">getAllDescriptors</span><span class="ActionScriptBracket/Brace">()</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">ICollectionView</span>
+    <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">configImpl</span>.<span class="ActionScriptDefault_Text">getAllDescriptors</span><span class="ActionScriptBracket/Brace">()</span>;                
+    <span class="ActionScriptBracket/Brace">}</span>
+    
+    <span class="ActionScriptASDoc">/**
+     * @inheritDoc
+     */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">get</span> <span class="ActionScriptDefault_Text">preInstantiateSingletons</span><span class="ActionScriptBracket/Brace">()</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">Boolean</span>
+    <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">_preInstantiateSingletons</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+    
+    <span class="ActionScriptASDoc">/**
+     * @private
+     */</span> 
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptReserved">set</span> <span class="ActionScriptDefault_Text">preInstantiateSingletons</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">value</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">Boolean</span> <span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptReserved">void</span>
+    <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptDefault_Text">_preInstantiateSingletons</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">value</span>;
+    <span class="ActionScriptBracket/Brace">}</span>
+    
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">initialized</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">document</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">Object</span>, <span class="ActionScriptDefault_Text">id</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptReserved">void</span>
+    <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptReserved">for</span> <span class="ActionScriptReserved">each</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">descriptor</span> <span class="ActionScriptOperator">:</span> <span class="ActionScriptDefault_Text">IObjectDescriptor</span> <span class="ActionScriptReserved">in</span> <span class="ActionScriptDefault_Text">getDescriptors</span><span class="ActionScriptBracket/Brace">()</span> <span class="ActionScriptBracket/Brace">)</span>
+         <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptDefault_Text">configImpl</span>.<span class="ActionScriptDefault_Text">addDescriptor</span><span class="ActionScriptBracket/Brace">(</span> <span class="ActionScriptDefault_Text">descriptor</span> <span class="ActionScriptBracket/Brace">)</span>;
+         <span class="ActionScriptBracket/Brace">}</span>
+    <span class="ActionScriptBracket/Brace">}</span>
+    
+<span class="ActionScriptBracket/Brace">}</span>
+
+<span class="ActionScriptBracket/Brace">}</span></pre></body>
+</html>
