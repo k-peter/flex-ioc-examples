@@ -14,6 +14,8 @@
 	>
 	<mx:Script>
 		<![CDATA[
+			import ac.iocsample.populatedomain.model.domain.Backend;
+			import ac.iocsample.populatedomain.model.domain.Backend2;
 			import ac.iocsample.prana.factory.PranaFactory;
 			import ac.iocsample.passtheparcel.model.pm.StartPM;
 			import ac.iocsample.passtheparcel.model.domain.PTPModelLocator;
@@ -25,6 +27,8 @@
 			private function preInit() : void
 			{
 				PranaFactory.init();
+				var backend : Backend;
+				var backend2 : Backend2;
 			}
 
 			private function init() : void

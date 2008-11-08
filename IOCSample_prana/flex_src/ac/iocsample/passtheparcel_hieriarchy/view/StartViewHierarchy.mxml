@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	title="{ startPM.name }"
+	xmlns:injection="flicc.injection.*" 
+	xmlns:hierarchyview="ac.iocsample.passtheparcel_hieriarchy.view.*">
+	<mx:Script>
+		<![CDATA[
+			import ac.iocsample.passtheparcel_hieriarchy.model.pm.StartPMHierarchy;
+			
+			[Bindable]
+			public var startPM : StartPMHierarchy;
+		]]>
+	</mx:Script>
+	<hierarchyview:MiddleViewHierarchy 
+		id="middleView"
+		middlePM="{ startPM.middlePM }" />
+</mx:Panel>

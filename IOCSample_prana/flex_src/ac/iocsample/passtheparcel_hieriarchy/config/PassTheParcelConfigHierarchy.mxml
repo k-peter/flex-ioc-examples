@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MxmlObjectDescriptors 
+	xmlns="flicc.config.mxml.*" 
+	 xmlns:mx="http://www.adobe.com/2006/mxml">
+	 <descriptors>
+	 	
+		<Component
+			objectId="startViewHierarchy">
+			<startPM>
+				<ObjectDescriptor
+					clazz="{ StartPMHierarchy }"/>
+			</startPM>
+		</Component>
+		
+		<Component
+			objectId="endPMHierarchy">
+			<parcel>
+				<Ref to="parcel" />
+			</parcel>
+		</Component>
+	 	
+	 	
+	 	
+	 </descriptors>
+	<mx:Script>
+		<![CDATA[
+			import ac.iocsample.passtheparcel_hieriarchy.model.pm.StartPMHierarchy;
+			
+		]]>
+	</mx:Script>
+</MxmlObjectDescriptors>
