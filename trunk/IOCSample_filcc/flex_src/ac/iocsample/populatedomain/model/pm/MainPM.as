@@ -1,6 +1,6 @@
 package ac.iocsample.populatedomain.model.pm
 {
-	import ac.iocsample.populatedomain.control.events.PopulateBackendEvent;
+	import ac.iocsample.populatedomain.control.events.PopulateDomainEvent;
 	import ac.iocsample.populatedomain.model.domain.Account;
 	
 	[Bindable]
@@ -13,7 +13,7 @@ package ac.iocsample.populatedomain.model.pm
 			
 			this.account= account;
 			
-			new PopulateBackendEvent().dispatch();
+			new PopulateDomainEvent().dispatch();
 		}
 	}
 }

@@ -42,7 +42,7 @@
 		<![CDATA[
 			import ac.iocsample.populatedomain.model.pm.OtherPM;
 			import ac.iocsample.populatedomain.model.pm.MainPM;
-			import ac.iocsample.populatedomain.control.commands.PopulateBackendCommand;
+			import ac.iocsample.populatedomain.control.commands.PopulateDomainCommand;
 			import ac.iocsample.populatedomain.model.domain.Account;
 		]]>
 	</mx:Script>

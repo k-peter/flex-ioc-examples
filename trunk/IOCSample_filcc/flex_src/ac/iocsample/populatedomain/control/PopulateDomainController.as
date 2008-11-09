@@ -1,8 +1,8 @@
 package ac.iocsample.populatedomain.control
 {
 	import ac.iocsample.common.flicc.control.FliccCairngormFrontController;
-	import ac.iocsample.populatedomain.control.commands.PopulateBackendCommand;
-	import ac.iocsample.populatedomain.control.events.PopulateBackendEvent;
+	import ac.iocsample.populatedomain.control.commands.PopulateDomainCommand;
+	import ac.iocsample.populatedomain.control.events.PopulateDomainEvent;
 
 	public class PopulateDomainController extends FliccCairngormFrontController
 	{
@@ -14,7 +14,7 @@ package ac.iocsample.populatedomain.control
 		
 		protected function initialiseCommands() :void
 		{
-			addCommand( PopulateBackendEvent.GET_BACKEND, PopulateBackendCommand );
+			addCommand( PopulateDomainEvent.GET_BACKEND, PopulateDomainCommand );
 		}
 	}
 }
