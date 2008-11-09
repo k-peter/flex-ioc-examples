@@ -1,7 +1,7 @@
 package ac.iocsample.populatedomain.control
 {
-	import ac.iocsample.populatedomain.control.commands.PopulateBackendCommand;
-	import ac.iocsample.populatedomain.control.events.PopulateBackendEvent;
+	import ac.iocsample.populatedomain.control.commands.PopulateDomainCommand;
+	import ac.iocsample.populatedomain.control.events.PopulateDomainEvent;
 	
 	import com.adobe.cairngorm.control.FrontController;
 
@@ -16,7 +16,7 @@ package ac.iocsample.populatedomain.control
 		
 		protected function initialiseCommands() :void
 		{
-			addCommand( PopulateBackendEvent.GET_BACKEND, PopulateBackendCommand );
+			addCommand( PopulateDomainEvent.POPULATE_DOMAIN, PopulateDomainCommand );
 		}
 		
 	}
