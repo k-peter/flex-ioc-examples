@@ -1,6 +1,6 @@
 package ac.iocsample.populatedomain.control.commands
 {
-	import ac.iocsample.populatedomain.control.events.PopulateBackendEvent;
+	import ac.iocsample.populatedomain.control.events.PopulateDomainEvent;
 	import ac.iocsample.populatedomain.model.domain.PopulateDomainModelLocator;
 	import ac.iocsample.util.LogUtil;
 	
@@ -9,14 +9,14 @@ package ac.iocsample.populatedomain.control.commands
 	
 	import mx.logging.ILogger;
 	
-	public class PopulateBackendCommand implements ICommand
+	public class PopulateDomainCommand implements ICommand
 	{
 		public function execute( event : CairngormEvent ) : void
 		{
-			var getBackendEvent : PopulateBackendEvent = event as PopulateBackendEvent;
+			var getBackendEvent : PopulateDomainEvent = event as PopulateDomainEvent;
 			var logger : ILogger = LogUtil.getLogger( this );
 			logger.info("setting id");
-			PopulateDomainModelLocator.getInstance().backend.uniqueId = 1234567;
+			PopulateDomainModelLocator.getInstance().account.uniqueId = 1234567;
 		}
 
 	}

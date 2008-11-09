@@ -21,8 +21,8 @@
 			
 			private function init () : void
 			{
-				otherPM = new OtherPM( PopulateDomainModelLocator.getInstance().backend );
-				mainPM = new MainPM( PopulateDomainModelLocator.getInstance().backend );
+				otherPM = new OtherPM( PopulateDomainModelLocator.getInstance().account );
+				mainPM = new MainPM( PopulateDomainModelLocator.getInstance().account );
 			}
 		
 		]]>
