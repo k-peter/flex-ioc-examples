@@ -4,12 +4,12 @@ package ac.iocsample.populatedomain.control.events
 
 	public class PopulateDomainEvent extends CairngormEvent
 	{
-		public static const GET_BACKEND : String 
+		public static const POPULATE_DOMAIN : String 
 			= "ac.iocsample.populatedomain.control.events.PopulateDomainEvent";
 		
 		public function PopulateDomainEvent()
 		{
-			super( GET_BACKEND );
+			super( POPULATE_DOMAIN );
 		}
 		
 	}
