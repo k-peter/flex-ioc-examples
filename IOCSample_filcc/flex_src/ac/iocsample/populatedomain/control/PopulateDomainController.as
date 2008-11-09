@@ -14,7 +14,7 @@ package ac.iocsample.populatedomain.control
 		
 		protected function initialiseCommands() :void
 		{
-			addCommand( PopulateDomainEvent.GET_BACKEND, PopulateDomainCommand );
+			addCommand( PopulateDomainEvent.POPULATE_DOMAIN, PopulateDomainCommand );
 		}
 	}
 }
