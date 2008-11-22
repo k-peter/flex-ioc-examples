@@ -16,10 +16,10 @@
 			{
 				_endPM = value;
 				
-				if( _endPM != null )
+				/* if( _endPM != null )
 				{
 					_endPM.parcel = PranaFactory.getObject("parcel");
-				}
+				} */
 			}
 			
 			[Bindable]

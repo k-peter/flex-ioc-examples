@@ -3,15 +3,21 @@
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
 	xmlns:view="ac.iocsample.passtheparcel.view.*" 
 	xmlns:injection="flicc.injection.*"
-	title="{ startPM.name }">
+	title="{ startPM.name }"
+	creationComplete="init()">
 	<mx:Script>
 		<![CDATA[
+			import ac.iocsample.prana.factory.PranaFactory;
 			import ac.iocsample.passtheparcel.model.pm.StartPM;
 			
 			[Bindable]
 			public var startPM : StartPM;
+			
+			private function init() : void
+			{
+				startPM = PranaFactory.getObject("startPM");
+			}
 		]]>
 	</mx:Script>
-	<view:MiddleView 
-		middlePM="{ startPM.middlePM }"/>
+	<view:MiddleView />
 </mx:Panel>

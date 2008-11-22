@@ -11,7 +11,6 @@ package ac.iocsample.passtheparcel_hierarchy.model.pm
 		public function StartPMHierarchy()
 		{
 			super( "Start" );
-			middlePM  = new MiddlePMHierarchy();
 		}
 
 	}

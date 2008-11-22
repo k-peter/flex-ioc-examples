@@ -39,9 +39,8 @@ package ac.iocsample.prana.factory
 
 	    private static function onApplicationContextComplete( event : Event ) : void 
 	    {
-			var logger : ILogger = LogUtil.getLogger( "PranaFactory" );
-	    	logger.info( "factory inited" );
-	    }
+			
+		}
 
 	}
 }

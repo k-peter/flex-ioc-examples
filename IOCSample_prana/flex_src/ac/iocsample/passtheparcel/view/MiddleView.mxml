@@ -5,13 +5,20 @@
 	xmlns:injection="flicc.injection.*"
 	layout="absolute" 
 	borderColor="#ff9933"
-	title="{ middlePM.name }">
+	title="{ middlePM.name }"
+	creationComplete="init()">
 	<mx:Script>
 		<![CDATA[
+			import ac.iocsample.prana.factory.PranaFactory;
 			import ac.iocsample.passtheparcel.model.pm.MiddlePM;
 			
 			[Bindable]
 			public var middlePM : MiddlePM;		
+			
+			private function init() : void
+			{
+				middlePM = PranaFactory.getObject("middlePM");
+			}
 		]]>
 	</mx:Script>
 	<!-- pm injected by prana -->
