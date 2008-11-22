@@ -14,7 +14,6 @@ package ac.iocsample.populatedomain.control.commands
 	
 	public class PopulateDomainCommand implements ICommand
 	{
-		private var _applicationContext : XMLApplicationContext = new XMLApplicationContext( "application-context.xml" );
 
 		public function execute( event : CairngormEvent ) : void
 		{

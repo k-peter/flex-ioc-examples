@@ -4,7 +4,23 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.pranaframework.org/objects http://www.pranaframework.org/schema/objects/prana-objects-0.6.xsd">
 	
+	
+	<!--  domains  -->
+	<object 
+		id="parcel"
+		class="ac.iocsample.passtheparcel.model.domain.Parcel">
+    	<constructor-arg value="I'm the prana parcel"/>
+    </object>
+    
 	<!--  detached pms  --> 
+ 	<object  
+ 		id="startPM" 
+  		class="ac.iocsample.passtheparcel.model.pm.StartPM"/>
+  		
+ 	<object  
+ 		id="middlePM" 
+  		class="ac.iocsample.passtheparcel.model.pm.MiddlePM"/>
+ 	
  	<object  
  		id="endPM" 
   		class="ac.iocsample.passtheparcel.model.pm.EndPM">
@@ -12,17 +28,33 @@
   	</object>
   	
   	<!-- hierarchical pms --> 
+	<!--  need to be careful about the order of instantiation -->
+  	<object 
+ 		id="endPMHierarchy" 
+  		class="ac.iocsample.passtheparcel_hierarchy.model.pm.EndPMHierarchy">
+  		<property name="parcel">
+  			<ref>parcel</ref>
+  		</property>
+  	</object>
+  	
+  	<object 
+ 		id="middlePMHierarchy" 
+  		class="ac.iocsample.passtheparcel_hierarchy.model.pm.MiddlePMHierarchy">
+  		<property name="endPM">
+  			<ref>endPMHierarchy</ref>
+  		</property>
+  	</object>
   	<object 
  		id="startPMHierarchy" 
-  		class="ac.iocsample.passtheparcel_hierarchy.model.pm.StartPMHierarchy"/>
+  		class="ac.iocsample.passtheparcel_hierarchy.model.pm.StartPMHierarchy">
+  		<property 
+			name="middlePM">
+			<ref>middlePMHierarchy</ref>
+		</property>
+  	</object>
+  	
 	
 
-	<!--  domains  -->
-	<object 
-		id="parcel"
-		class="ac.iocsample.passtheparcel.model.domain.Parcel">
-    	<constructor-arg value="I'm the prana parcel"/>
-    </object>
 
 	<!-- populate the domain -->
  	<object 

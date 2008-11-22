@@ -5,12 +5,9 @@ package ac.iocsample.passtheparcel.model.pm
 	[Bindable]
 	public class StartPM extends BasePM
 	{
-		public var middlePM : MiddlePM;
-		
 		public function StartPM()
 		{
 			super( "Start" );
-			middlePM = new MiddlePM();
 		}
 
 	}
