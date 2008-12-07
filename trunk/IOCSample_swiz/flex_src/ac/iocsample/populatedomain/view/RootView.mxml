@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:injection="flicc.injection.*" 
+	xmlns:view="ac.iocsample.populatedomain.view.*"
+	title="populatedomain" 
+	width="100%" height="100%" 
+	creationComplete="init()">
+	<mx:Script>
+		<![CDATA[
+			import ac.iocsample.populatedomain.model.domain.PopulateDomainModelLocator;
+			import ac.iocsample.populatedomain.model.pm.OtherPM;
+			import ac.iocsample.populatedomain.model.pm.MainPM;
+			
+			[Bindable]
+			public var mainPM : MainPM;
+			
+			[Bindable]
+			public var otherPM : OtherPM;
+			
+			
+			private function init () : void
+			{
+				otherPM = new OtherPM( PopulateDomainModelLocator.getInstance().backend );
+				mainPM = new MainPM( PopulateDomainModelLocator.getInstance().backend );
+			}
+		
+		]]>
+	</mx:Script>
+	<mx:Text 
+		text="This sample looks at how domains are populated"/>
+	<mx:Text 
+		text="In the standard cairngorm approach you use the model locator to retrieve your domain"/>
+	<mx:HBox
+		borderStyle="none">
+		<view:MainView
+				mainPM="{ mainPM }" />
+		<view:OtherView
+			otherPM="{ otherPM }"/>
+	</mx:HBox>
+			
+			
+</mx:Panel>

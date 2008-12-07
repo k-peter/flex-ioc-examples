@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	title="This mimics another view that is bound to the same domain"
+	layout="vertical">
+	<mx:Script>
+		<![CDATA[
+			import ac.iocsample.populatedomain.model.pm.OtherPM;
+			
+			[Bindable]
+			public var otherPM : OtherPM;
+			
+		]]>
+	</mx:Script>
+	<mx:Label 
+		text="{ otherPM.backend.uniqueId }" />
+</mx:Panel>

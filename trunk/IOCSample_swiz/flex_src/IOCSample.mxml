@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:populatedomain="ac.iocsample.populatedomain.view.*" 
+	xmlns:detached="ac.iocsample.passtheparcel.view.*"
+	xmlns:hierarchy="ac.iocsample.passtheparcel_hierarchy.view.*" 
+	xmlns:populatedomaincontrol="ac.iocsample.populatedomain.control.*"
+	xmlns:configuredelegate="ac.iocsample.configuredelegate.view.*" 
+	xmlns:configuredelegatecontrol="ac.iocsample.configuredelegate.control.*"
+	xmlns:configuredelegatebusiness="ac.iocsample.configuredelegate.business.*"
+	preinitialize="onPreInitialize()"
+	creationComplete="onCreationComplete()"
+	layout="vertical">
+	<mx:Script>
+		<![CDATA[
+			import ac.iocsample.passtheparcel_hierarchy.config.HierarchyBeans;
+			import mx.logging.ILogger;
+			import ac.iocsample.util.LogUtil;
+			import ac.iocsample.config.Beans;
+			import org.swizframework.Swiz;
+
+			private var log : ILogger =	LogUtil.getLogger( this );
+			
+			private function onPreInitialize() : void 
+			{
+				Swiz.getInstance().loadBeans( [ Beans ] );
+			}
+			
+			private function onCreationComplete() : void 
+			{
+				Swiz.addEventListener("chainCompleteEvent", updateCompleteMessage);
+			}
+			
+			private function updateCompleteMessage( e : Event ) : void 
+			{
+				log.info( "updateComplete" );
+			}
+			
+			
+
+		]]>
+	</mx:Script>
+
+	<mx:Style source="styles/Style.css" />
+	<mx:HBox>
+		<detached:MainPanelView />
+		<hierarchy:MainPanelViewHierarchy />	
+	</mx:HBox>
+	
+	<populatedomaincontrol:PopulateDomainController />
+	<populatedomain:RootView/>
+	
+	<configuredelegatebusiness:Services />
+	<configuredelegatecontrol:ConfigureDelegateController />
+	<configuredelegate:ConfigureDelegateView />
+
+</mx:Application>
