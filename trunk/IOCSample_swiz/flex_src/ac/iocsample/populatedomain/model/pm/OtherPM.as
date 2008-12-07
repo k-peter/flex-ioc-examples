@@ -6,11 +6,10 @@ package ac.iocsample.populatedomain.model.pm
 	public class OtherPM
 	{
 		
-		public var backend : Account;
+		public var account : Account;
 		
-		public function OtherPM( backend : Account )
+		public function OtherPM()
 		{
-			this.backend = backend;
 		}
 
 	}

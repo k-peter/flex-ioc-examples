@@ -12,6 +12,7 @@ package ac.iocsample.configuredelegate.control.commands
  
 	public class PingServerCommand implements ICommand
 	{
+		[Autowire(bean="delegate")]
 		public var delegate : ISimpleDelegate;
 		
 		public function PingServerCommand()
@@ -19,11 +20,7 @@ package ac.iocsample.configuredelegate.control.commands
 			var simpleDelegateMock : SimpleDelegateMock;
 			var simpleDelegate : SimpleDelegate;
 			
-			delegate = new SimpleDelegate();
-			
-			//It would be preferrable to inject delegate instead of request it.
-			//Need to find out if this is possible. So far have only found the getObject( "simpleDelegate" ) call.
-			//Whereas I want populateObject( this );
+			//delegate = new SimpleDelegate();
 		}
 		
 		public function execute(event:CairngormEvent):void

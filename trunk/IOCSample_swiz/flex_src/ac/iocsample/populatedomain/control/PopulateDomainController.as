@@ -1,11 +1,10 @@
 package ac.iocsample.populatedomain.control
 {
+	import ac.iocsample.common.swiz.control.SwizFrontController;
 	import ac.iocsample.populatedomain.control.commands.PopulateBackendCommand;
 	import ac.iocsample.populatedomain.control.events.PopulateBackendEvent;
-	
-	import com.adobe.cairngorm.control.FrontController;
 
-	public class PopulateDomainController extends FrontController
+	public class PopulateDomainController extends SwizFrontController
 	{
 		public function PopulateDomainController()
 		{

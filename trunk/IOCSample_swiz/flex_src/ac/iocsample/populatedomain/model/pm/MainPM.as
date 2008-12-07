@@ -8,9 +8,12 @@ package ac.iocsample.populatedomain.model.pm
 	{
 		public var account : Account;
 		
-		public function MainPM( account : Account )
+		public function MainPM()
 		{
-			this.account = account;
+		}
+		
+		public function populateBackend() : void
+		{
 			new PopulateBackendEvent().dispatch();
 		}
 	}

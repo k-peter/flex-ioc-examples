@@ -4,27 +4,26 @@
 	xmlns:injection="flicc.injection.*" 
 	xmlns:view="ac.iocsample.populatedomain.view.*"
 	title="populatedomain" 
-	width="100%" height="100%" 
-	creationComplete="init()">
+	width="100%" height="100%"
+	addedToStage="populateBackend()">
 	<mx:Script>
 		<![CDATA[
-			import ac.iocsample.populatedomain.model.domain.PopulateDomainModelLocator;
+			import org.swizframework.Swiz;
 			import ac.iocsample.populatedomain.model.pm.OtherPM;
 			import ac.iocsample.populatedomain.model.pm.MainPM;
 			
 			[Bindable]
+			[Autowire(bean="mainPM")]
 			public var mainPM : MainPM;
 			
 			[Bindable]
+			[Autowire(bean="otherPM")]
 			public var otherPM : OtherPM;
 			
-			
-			private function init () : void
+			private function populateBackend() : void
 			{
-				otherPM = new OtherPM( PopulateDomainModelLocator.getInstance().backend );
-				mainPM = new MainPM( PopulateDomainModelLocator.getInstance().backend );
+				mainPM.populateBackend();
 			}
-		
 		]]>
 	</mx:Script>
 	<mx:Text 

@@ -2,7 +2,11 @@
 <BeanLoader xmlns="org.swizframework.util.*" 
 			xmlns:mx="http://www.adobe.com/2006/mxml" 
 			xmlns:pm="ac.iocsample.passtheparcel.model.pm.*" 
-			xmlns:domain="ac.iocsample.passtheparcel.model.domain.*" xmlns:hierarchypm="ac.iocsample.passtheparcel_hierarchy.model.pm.*">
+			xmlns:domain="ac.iocsample.passtheparcel.model.domain.*" 
+			xmlns:hierarchypm="ac.iocsample.passtheparcel_hierarchy.model.pm.*" 
+			xmlns:business="ac.iocsample.configuredelegate.business.*" 
+			xmlns:populatedomainpm="ac.iocsample.populatedomain.model.pm.*" 
+			xmlns:populatedomainmodel="ac.iocsample.populatedomain.model.domain.*">
 	
 	<pm:StartPM
 		id="startPM" />
@@ -30,5 +34,32 @@
 		id="endPMHierarchy"
 		parcel="{ parcel }"/>
 	
-
+	<!-- populate domain -->
+	<!-- mock delegate -->
+	<!--
+	<business:SimpleDelegateMock
+		id="delegate"/>
+	-->
+	
+	<!-- real delegate -->
+	<business:SimpleDelegate
+		id="delegate"/>
+	
+	<mx:RemoteObject
+		id="remoteObject"
+		destination="GenericDestination"
+		endpoint="http://myendpoint/"
+		source="ac.iocsample.configuredelegate.business.SimpleService"/>
+		
+		
+	<!-- populate domain -->
+	<populatedomainmodel:Account
+		id="account"/>
+	<populatedomainpm:MainPM
+		id="mainPM"
+		account="{ account }"/>
+	<populatedomainpm:OtherPM
+		id="otherPM"
+		account="{ account }"/>
+		
 </BeanLoader>
