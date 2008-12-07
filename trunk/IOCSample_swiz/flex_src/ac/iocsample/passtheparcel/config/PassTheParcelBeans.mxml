@@ -3,10 +3,7 @@
 			xmlns:mx="http://www.adobe.com/2006/mxml" 
 			xmlns:pm="ac.iocsample.passtheparcel.model.pm.*" 
 			xmlns:domain="ac.iocsample.passtheparcel.model.domain.*" 
-			xmlns:hierarchypm="ac.iocsample.passtheparcel_hierarchy.model.pm.*" 
-			xmlns:business="ac.iocsample.configuredelegate.business.*" 
-			xmlns:populatedomainpm="ac.iocsample.populatedomain.model.pm.*" 
-			xmlns:populatedomainmodel="ac.iocsample.populatedomain.model.domain.*">
+			xmlns:hierarchypm="ac.iocsample.passtheparcel_hierarchy.model.pm.*">
 	
 	<pm:StartPM
 		id="startPM" />
@@ -33,7 +30,5 @@
 	<hierarchypm:EndPMHierarchy
 		id="endPMHierarchy"
 		parcel="{ parcel }"/>
-	
-	
 		
 </BeanLoader>
