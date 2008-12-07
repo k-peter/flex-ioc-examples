@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BeanLoader xmlns="org.swizframework.util.*" 
+			xmlns:mx="http://www.adobe.com/2006/mxml" 
+			xmlns:business="ac.iocsample.configuredelegate.business.*">
+	
+	<!-- mock delegate -->
+	<!--
+	<business:SimpleDelegateMock
+		id="delegate"/>
+	-->
+	
+	<!-- real delegate -->
+	<business:SimpleDelegate
+		id="delegate"/>
+	
+	<mx:RemoteObject
+		id="remoteObject"
+		destination="GenericDestination"
+		endpoint="http://myendpoint/"
+		source="ac.iocsample.configuredelegate.business.SimpleService"/>
+	
+	
+		
+</BeanLoader>
