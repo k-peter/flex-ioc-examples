@@ -47,11 +47,13 @@
 		<hierarchy:MainPanelViewHierarchy />	
 	</mx:HBox>
 	
-	<populatedomaincontrol:PopulateDomainController />
+	<populatedomaincontrol:PopulateDomainController 
+		swiz="{ Swiz.getInstance() }"/>
 	<populatedomain:RootView/>
 	
 	<configuredelegatebusiness:Services />
-	<configuredelegatecontrol:ConfigureDelegateController />
+	<configuredelegatecontrol:ConfigureDelegateController 
+		swiz="{ Swiz.getInstance() }"/>
 	<configuredelegate:ConfigureDelegateView />
 
 </mx:Application>

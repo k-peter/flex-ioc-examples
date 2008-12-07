@@ -1,11 +1,10 @@
 package ac.iocsample.configuredelegate.control
 {
+	import ac.iocsample.common.swiz.control.SwizFrontController;
 	import ac.iocsample.configuredelegate.control.commands.PingServerCommand;
 	import ac.iocsample.configuredelegate.control.events.PingServerEvent;
 	
-	import com.adobe.cairngorm.control.FrontController;
-	
-	public class ConfigureDelegateController extends FrontController
+	public class ConfigureDelegateController extends SwizFrontController
 	{
 		public function ConfigureDelegateController()
 		{

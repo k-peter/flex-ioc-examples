@@ -1,7 +1,7 @@
 package ac.iocsample.populatedomain.control.commands
 {
 	import ac.iocsample.populatedomain.control.events.PopulateBackendEvent;
-	import ac.iocsample.populatedomain.model.domain.PopulateDomainModelLocator;
+	import ac.iocsample.populatedomain.model.domain.Account;
 	import ac.iocsample.util.LogUtil;
 	
 	import com.adobe.cairngorm.commands.ICommand;
@@ -11,12 +11,14 @@ package ac.iocsample.populatedomain.control.commands
 	
 	public class PopulateBackendCommand implements ICommand
 	{
+		[Autowire(bean="account")]
+		public var account : Account;
 		public function execute( event : CairngormEvent ) : void
 		{
 			var getBackendEvent : PopulateBackendEvent = event as PopulateBackendEvent;
 			var logger : ILogger = LogUtil.getLogger( this );
 			logger.info("setting id");
-			PopulateDomainModelLocator.getInstance().backend.uniqueId = 1234567;
+			account.uniqueId = 110011;
 		}
 
 	}
