@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<application-context 
+   xmlns="http://www.spicefactory.org/parsley/1.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.spicefactory.org/parsley/1.0 
+      http://www.spicefactory.org/parsley/schema/1.0/parsley-context.xsd"
+   >
+   <factory>
+
+	   <!--  domains  -->
+	   <object 
+	      id="parcel"
+	      type="ac.iocsample.passtheparcel.model.domain.Parcel">
+	      <constructor-args>
+	         <string>I'm the parsley parcel!</string>
+	      </constructor-args>
+	    </object>
+	    
+	   <!--  detached pms  --> 
+	   <object  
+	      id="startPM" 
+	      type="ac.iocsample.passtheparcel.model.pm.StartPM"
+	      />
+	      
+	   <object  
+	      id="middlePM" 
+	      type="ac.iocsample.passtheparcel.model.pm.MiddlePM"
+	      />
+	   
+	   <object  
+	      id="endPM" 
+	      type="ac.iocsample.passtheparcel.model.pm.EndPM">
+	      <constructor-args>
+            <object-ref id="parcel"/>
+	      </constructor-args>
+	   </object>
+	   
+	   <!-- hierarchical pms --> 
+	   <!--  need to be careful about the order of instantiation -->
+	   <object 
+	      id="endPMHierarchy" 
+	      type="ac.iocsample.passtheparcel_hierarchy.model.pm.EndPMHierarchy">
+	      <property name="parcel" ref="parcel"/>
+	   </object>
+	   
+	   <object 
+	      id="middlePMHierarchy" 
+	      type="ac.iocsample.passtheparcel_hierarchy.model.pm.MiddlePMHierarchy">
+	      <property name="endPM" ref="endPMHierarchy"/>
+	   </object>
+	
+	   <object 
+	      id="startPMHierarchy" 
+	      type="ac.iocsample.passtheparcel_hierarchy.model.pm.StartPMHierarchy">
+	      <property name="middlePM" ref="middlePMHierarchy"/>
+	   </object>
+	
+	   <!--  populate the domain  -->
+	   <object 
+	      id="otherPM" 
+	      type="ac.iocsample.populatedomain.model.pm.OtherPM">
+	      <constructor-args>
+	         <object-ref id="account"/>
+	      </constructor-args>
+	   </object>
+	
+	   <object 
+	      id="mainPM" 
+	      type="ac.iocsample.populatedomain.model.pm.MainPM">
+	      <constructor-args>
+            <object-ref id="account"/>
+	      </constructor-args>
+	   </object>
+	   
+	   <object 
+	      id="account"
+	      type="ac.iocsample.populatedomain.model.domain.Account"
+	      />
+	   
+	   <!--  mock instance --> 
+	   <!-- 
+	   <object
+	      id="simpleDelegate"
+	      type="ac.iocsample.configuredelegate.business.SimpleDelegateMock"
+	      />
+	    -->
+	   
+	   <!--  real instance --> 
+	   <object id="endPoint" type="String">
+	      <constructor-args>
+	         <string>http://myendpoint/</string>
+	      </constructor-args>
+	   </object>
+	   
+	   <object
+	      id="simpleDelegate"
+	      type="ac.iocsample.configuredelegate.business.SimpleDelegate">
+	      <property name="service" ref="simpleRemoteObject"/>
+	   </object>
+	   
+	   <object 
+	      id="simpleRemoteObject"
+	      type="mx.rpc.remoting.mxml.RemoteObject">
+	      <property name="destination" value="GenericDestination"/>
+	      <property name="endpoint" ref="endPoint"/>
+	      <property name="source" value="ac.iocsample.configuredelegate.business.SimpleService"/>
+	   </object>
+
+   </factory>
+</application-context>
