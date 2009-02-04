@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:view="ac.iocsample.passtheparcel.view.*" 
+	xmlns:injection="flicc.injection.*"
+	title="{ startPM.name }"
+	creationComplete="init()">
+	<mx:Script>
+		<![CDATA[
+		   import org.spicefactory.parsley.context.ApplicationContext;
+			import ac.iocsample.passtheparcel.model.pm.StartPM;
+			
+			[Bindable]
+			private var startPM : StartPM;
+			
+			private function init() : void
+			{
+            startPM = StartPM( ApplicationContext.root.getObject( "startPM" ) );
+			}
+		]]>
+	</mx:Script>
+	<view:MiddleView />
+</mx:Panel>
