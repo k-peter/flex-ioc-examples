@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel 
+   xmlns:mx="http://www.adobe.com/2006/mxml" 
+   title="This is the backend view - it requests the domain to be poulated"
+   creationComplete="init()"
+   layout="vertical">
+   <mx:Script>
+      <![CDATA[
+         import org.spicefactory.parsley.context.ApplicationContext;
+         import ac.iocsample.populatedomain.model.pm.MainPM;
+         
+         [Bindable]
+         private var mainPM : MainPM;
+         
+         private function init() : void 
+         {
+            mainPM = MainPM( ApplicationContext.root.getObject( "mainPM" ) );
+         }
+
+      ]]>
+   </mx:Script>
+   <mx:Label
+      text="{ mainPM.account.uniqueId }" />
+   <mx:TextInput
+      id="input"
+      restrict="0-9"
+      text="{ mainPM.account.uniqueId }"
+      change="mainPM.account.uniqueId = Number(input.text)"/>
+</mx:Panel>
