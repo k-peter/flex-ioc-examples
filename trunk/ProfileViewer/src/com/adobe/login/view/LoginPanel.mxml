@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Panel
-	xmlns:mx="http://www.adobe.com/2006/mxml" 
-	title="Welcome" 
+<mx:Panel 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:presentationModel="com.adobe.login.presentationModel.*"
-	creationComplete="init()">
+	creationComplete="init()"
+	title="Welcome">
+
 	<mx:Script>
 		<![CDATA[
 			import com.adobe.login.control.event.LoginEvent;
-			
+						
 			
 			private function init() : void
 			{
