@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel 
+	xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%"
+	title="Your details">
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.dashboard.presentationModel.user.DetailsPM;
+			
+			[Bindable]
+			public var pm : DetailsPM;
+		]]>
+	</mx:Script>
+	<mx:Form>
+		<mx:FormItem label="forename">
+			<mx:Label text="{ pm.user.forename }"/>
+		</mx:FormItem>
+		<mx:FormItem label="surname">
+			<mx:Label text="{ pm.user.surname }"/>
+		</mx:FormItem>
+		<mx:FormItem label="nickname">
+			<mx:Label text="{ pm.user.nickname }"/>
+		</mx:FormItem>
+	</mx:Form>
+</mx:Panel>
