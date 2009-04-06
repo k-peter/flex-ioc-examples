@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Application 
-	xmlns:mx="http://www.adobe.com/2006/mxml" 
-	layout="absolute" 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:control="com.adobe.login.control.*"
+	xmlns:dashboard="com.adobe.dashboard.view.*"
+	xmlns:handler="com.adobe.login.control.handler.*"
+	xmlns:view="com.adobe.login.view.*"
 	currentState="{ pm.state }"
-	xmlns:view="com.adobe.login.view.*" 
-	xmlns:control="com.adobe.login.control.*" 
-	xmlns:dashboard="com.adobe.dashboard.view.*" 
-	xmlns:handler="com.adobe.login.control.handler.*">
+	layout="absolute">
+
 	<mx:Script>
 		<![CDATA[
 			import com.adobe.dashboard.domain.ModelLocator;
-			
+						
 			[Bindable]
 			private var modelLocator : ModelLocator = ModelLocator.getInstance();
 
@@ -18,7 +19,7 @@
 			private var pm : MainPM = new MainPM();
 			
 		]]>
-	</mx:Script>
+	</mx:Script> 
 	<mx:Style source="styles/yourProfileStyle.css"/>
 	
 	<control:SimpleController>
