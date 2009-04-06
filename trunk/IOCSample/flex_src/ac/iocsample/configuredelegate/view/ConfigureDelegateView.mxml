@@ -8,6 +8,7 @@
 			
 			private function pingServer() :void
 			{
+				dispatchEvent( new PingServerEvent() );
 				new PingServerEvent().dispatch();
 			}
 		]]>
