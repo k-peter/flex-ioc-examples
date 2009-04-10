@@ -3,8 +3,6 @@
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:flicc="http://flicc.sourceforge.net"
 	title="Welcome">
-
-
 	<mx:Script>
 		<![CDATA[
 			import com.adobe.login.presentationModel.LoginPM;
@@ -21,7 +19,10 @@
 			} 
 		]]>
 	</mx:Script>
-	<flicc:Configure objectId="loginPanel"/>
+	
+	<flicc:Configure 
+		objectId="loginPanel"/>
+	
 	<mx:Form
 		keyDown="handleKeyDown( event )">
 		<mx:FormItem label="name">
