@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	height="100%"
+	title="Your details"
+	width="100%" xmlns:flicc="http://flicc.sourceforge.net" xmlns:user="com.adobe.dashboard.presentationModel.user.*">
+
+	<flicc:Configure
+		objectId="userClient"
+		target="{ pm }"/>
+	<user:DetailsPM id="pm"/>
+	<mx:Form>
+		<mx:FormItem label="forename">
+			<mx:Label text="{ pm.user.forename }"/>
+		</mx:FormItem>
+		<mx:FormItem label="surname">
+			<mx:Label text="{ pm.user.surname }"/>
+		</mx:FormItem>
+		<mx:FormItem label="nickname">
+			<mx:Label text="{ pm.user.nickname }"/>
+		</mx:FormItem>
+	</mx:Form>
+</mx:Panel>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:presentationModel="com.adobe.login.presentationModel.*"
+	title="Welcome" xmlns:flicc="http://flicc.sourceforge.net">
+
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.login.presentationModel.LoginPM;
+
+			[Bindable]
+			public var loginPM : LoginPM;
+			
+			private function handleKeyDown( event : KeyboardEvent ) : void
+			{
+				if( event.keyCode == Keyboard.ENTER )
+				{
+					loginPM.login();
+				}
+			} 
+		]]>
+	</mx:Script>
+	<flicc:Configure objectId="loginPanel"/>
+	<mx:Form
+		keyDown="handleKeyDown( event )">
+		<mx:FormItem label="name">
+			<mx:TextInput 
+				id="usernameInput"
+				text="{ loginPM.username }"
+				change="loginPM.setUsername( usernameInput.text )"/>
+		</mx:FormItem>
+		<mx:FormItem label="password">
+			<mx:TextInput 
+				id="passwordInput" 
+				text="{ loginPM.password }"
+				change="loginPM.setPassword( passwordInput.text )"
+				displayAsPassword="true"/>
+		</mx:FormItem>
+	</mx:Form>
+	<mx:ControlBar>
+		<mx:Button 
+			label="login"
+			click="loginPM.login()"/>
+	</mx:ControlBar>
+</mx:Panel>

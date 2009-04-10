@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:control="com.adobe.login.control.*"
+	xmlns:dashboard="com.adobe.dashboard.view.*"
+	xmlns:handler="com.adobe.login.control.handler.*"
+	xmlns:view="com.adobe.login.view.*"
+	currentState="{ pm.state }"
+	layout="absolute" 
+	xmlns:flicc="http://flicc.sourceforge.net" xmlns:ioc="com.adobe.ioc.*">
+
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.login.control.SimpleController;
+
+			[Bindable]
+			public var pm : MainPM;
+			
+			[Bindable]
+			public var controller : SimpleController;
+		]]>
+	</mx:Script> 
+	
+	<mx:Style source="styles/yourProfileStyle.css"/>
+	
+	<flicc:FliccListener>
+		<flicc:MxmlObjectFactory>
+			<ioc:Config/>
+		</flicc:MxmlObjectFactory>
+	</flicc:FliccListener>
+	
+	<flicc:Configure objectId="main"/>
+	
+	<mx:states>
+      <mx:State name="{ MainPM.AUTHENTICATED }">
+         <mx:RemoveChild target="{loginContainer}"/>
+         <mx:AddChild position="lastChild">
+   
+	 		<dashboard:Dashboard 
+            	id="dashboardContainer" 
+            	verticalCenter="0" 
+            	horizontalCenter="0"/>
+           
+         </mx:AddChild>
+      </mx:State>
+   </mx:states>
+            	
+	<view:LoginContainer
+		id="loginContainer" />
+
+</mx:Application>

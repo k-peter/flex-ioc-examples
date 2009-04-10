@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flicc:MxmlObjectDescriptors
+		xmlns:mx="http://www.adobe.com/2006/mxml" 
+		xmlns:flicc="http://flicc.sourceforge.net">
+		<flicc:descriptors>
+			
+			<flicc:Component
+			objectId="main">
+			<flicc:controller>
+				<flicc:Ref to="controller"/>
+			</flicc:controller>
+			<flicc:pm>
+				<flicc:Ref to="mainPM"/>
+			</flicc:pm>
+		</flicc:Component>
+		
+		<!--
+		It would be nice if we could just register the loginPM instance that is created in the view.
+		Then once its created, hook up the listener declared above
+		-->
+		<flicc:Component
+			objectId="loginPanel">
+			<flicc:loginPM>
+				<flicc:Ref to="loginPM"/>
+			</flicc:loginPM>
+		</flicc:Component>
+			
+			
+		<!-- dashboard -->
+		<flicc:Component
+			objectId="dashboardPanel">
+			<flicc:pm>
+				<flicc:Ref to="dashboardPM"/>
+			</flicc:pm>
+		</flicc:Component>
+		
+		</flicc:descriptors>
+		
+</flicc:MxmlObjectDescriptors>

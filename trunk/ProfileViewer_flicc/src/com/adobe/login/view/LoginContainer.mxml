@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:view="com.adobe.login.view.*"
+	height="100%"
+	width="100%">
+
+	<view:LoginPanel
+		horizontalCenter="0"
+		verticalCenter="0"/>
+</mx:Canvas>
