@@ -5,6 +5,7 @@
 	height="100%"
 	width="100%">
 
+
 	<view:LoginPanel
 		horizontalCenter="0"
 		verticalCenter="0"/>

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Panel 
 	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:flicc="http://flicc.sourceforge.net"
+	xmlns:user="com.adobe.dashboard.presentationModel.user.*"
 	height="100%"
 	title="Friends"
-	width="100%" xmlns:user="com.adobe.dashboard.presentationModel.user.*" xmlns:flicc="http://flicc.sourceforge.net">
+	width="100%">
+
 	
 	<flicc:Configure
 		objectId="friendsClient"

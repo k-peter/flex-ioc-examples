@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Panel 
 	xmlns:mx="http://www.adobe.com/2006/mxml"
-	xmlns:presentationModel="com.adobe.login.presentationModel.*"
-	title="Welcome" xmlns:flicc="http://flicc.sourceforge.net">
+	xmlns:flicc="http://flicc.sourceforge.net"
+	title="Welcome">
+
 
 	<mx:Script>
 		<![CDATA[
 			import com.adobe.login.presentationModel.LoginPM;
-
+			
 			[Bindable]
 			public var loginPM : LoginPM;
 			

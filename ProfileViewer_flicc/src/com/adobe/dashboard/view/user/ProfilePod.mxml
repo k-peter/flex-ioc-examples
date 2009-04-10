@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:HBox 
 	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:flicc="http://flicc.sourceforge.net"
 	xmlns:user="com.adobe.dashboard.view.user.*"
+	xmlns:user1="com.adobe.dashboard.presentationModel.user.*"
 	height="100%"
-	width="100%" xmlns:flicc="http://flicc.sourceforge.net" xmlns:user1="com.adobe.dashboard.presentationModel.user.*">
+	width="100%">
+
 
 	<flicc:Configure
 		objectId="userClient"

@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Canvas 
 	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:flicc="http://flicc.sourceforge.net"
 	xmlns:user="com.adobe.dashboard.view.user.*"
 	xmlns:view="com.adobe.dashboard.view.*"
 	height="100%"
-	width="100%" xmlns:flicc="http://flicc.sourceforge.net">
+	width="100%">
+
 
 	<mx:Script>
 		<![CDATA[
 			import com.adobe.dashboard.presentationModel.DashboardPM;
-						
+									
 			[Bindable]
 			public var pm : DashboardPM;
 		]]>
