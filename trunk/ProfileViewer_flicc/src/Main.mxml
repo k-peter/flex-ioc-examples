@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Application 
 	xmlns:mx="http://www.adobe.com/2006/mxml"
-	xmlns:control="com.adobe.login.control.*"
 	xmlns:dashboard="com.adobe.dashboard.view.*"
-	xmlns:handler="com.adobe.login.control.handler.*"
+	xmlns:flicc="http://flicc.sourceforge.net"
+	xmlns:ioc="com.adobe.ioc.*"
 	xmlns:view="com.adobe.login.view.*"
 	currentState="{ pm.state }"
-	layout="absolute" 
-	xmlns:flicc="http://flicc.sourceforge.net" xmlns:ioc="com.adobe.ioc.*">
+	layout="absolute">
+
 
 	<mx:Script>
 		<![CDATA[
 			import com.adobe.login.control.SimpleController;
-
+			
 			[Bindable]
 			public var pm : MainPM;
 			

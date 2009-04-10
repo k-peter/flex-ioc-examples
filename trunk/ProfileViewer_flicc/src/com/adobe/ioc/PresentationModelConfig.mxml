@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<flicc:MxmlObjectDescriptors
-		xmlns:mx="http://www.adobe.com/2006/mxml" 
-		xmlns:flicc="http://flicc.sourceforge.net">
+<flicc:MxmlObjectDescriptors 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:flicc="http://flicc.sourceforge.net">
+
 		<flicc:descriptors>
 			
 			<flicc:Object
@@ -40,8 +41,8 @@
 		
 		<mx:Script>
 			<![CDATA[
-				import com.adobe.login.presentationModel.LoginPM;
 				import com.adobe.dashboard.presentationModel.DashboardPM;
-			]]>
+				import com.adobe.login.presentationModel.LoginPM;
+											]]>
 		</mx:Script>
 </flicc:MxmlObjectDescriptors>

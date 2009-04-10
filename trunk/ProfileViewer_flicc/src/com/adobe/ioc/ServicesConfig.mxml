@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<flicc:MxmlObjectDescriptors
-		xmlns:mx="http://www.adobe.com/2006/mxml" 
-		xmlns:flicc="http://flicc.sourceforge.net">
+<flicc:MxmlObjectDescriptors 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:flicc="http://flicc.sourceforge.net">
+
 		<flicc:descriptors>
 				<flicc:Object
 					objectId="loginDelegate"
@@ -20,8 +21,9 @@
 		
 		<mx:Script>
 			<![CDATA[
-				import mx.rpc.remoting.RemoteObject;
 				import com.adobe.login.service.LoginDelegate;
-			]]>
+
+				import mx.rpc.remoting.RemoteObject;
+											]]>
 		</mx:Script>
 </flicc:MxmlObjectDescriptors>

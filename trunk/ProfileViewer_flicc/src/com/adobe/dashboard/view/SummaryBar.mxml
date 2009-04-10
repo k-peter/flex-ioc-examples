@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Canvas 
 	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:flicc="http://flicc.sourceforge.net"
+	xmlns:presentationModel="com.adobe.dashboard.presentationModel.*"
 	height="50"
-	width="100%" xmlns:presentationModel="com.adobe.dashboard.presentationModel.*" xmlns:flicc="http://flicc.sourceforge.net">
+	width="100%">
+
 
 	<flicc:Configure
 		objectId="friendsClient"
