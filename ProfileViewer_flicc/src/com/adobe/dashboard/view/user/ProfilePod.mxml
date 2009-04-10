@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:user="com.adobe.dashboard.view.user.*"
+	height="100%"
+	width="100%" xmlns:flicc="http://flicc.sourceforge.net" xmlns:user1="com.adobe.dashboard.presentationModel.user.*">
+
+	<flicc:Configure
+		objectId="userClient"
+		target="{ pm }"/>
+	<user1:ProfilePM id="pm"/>
+	<user:DetailsPod />
+	<user:FriendsPod />
+</mx:HBox>

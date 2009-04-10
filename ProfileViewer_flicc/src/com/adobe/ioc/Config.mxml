@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flicc:MxmlFactoryConfig
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:flicc="http://flicc.sourceforge.net" 
+	xmlns:ioc="com.adobe.ioc.*">
+	
+	<flicc:externalDescriptors>
+		<ioc:ServicesConfig />
+		<ioc:ControllerConfig />
+		<ioc:PresentationModelConfig />
+		<ioc:ModelConfig />
+		<ioc:ViewConfig />
+	</flicc:externalDescriptors>
+				
+</flicc:MxmlFactoryConfig>

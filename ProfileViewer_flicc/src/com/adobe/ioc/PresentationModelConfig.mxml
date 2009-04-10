@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flicc:MxmlObjectDescriptors
+		xmlns:mx="http://www.adobe.com/2006/mxml" 
+		xmlns:flicc="http://flicc.sourceforge.net">
+		<flicc:descriptors>
+			
+			<flicc:Object
+				objectId="mainPM"
+				clazz="{ MainPM }"/>
+			
+			<flicc:Object
+				objectId="loginPM"
+				clazz="{ LoginPM }"/>
+				
+			<flicc:Object
+				objectId="dashboardPM"
+				clazz="{ DashboardPM }">
+				<flicc:constructor>
+					<flicc:Ref to="user"/>
+				</flicc:constructor>
+			</flicc:Object>
+			
+			<!-- any model that has a user setter can subscribe to this component configuration -->
+			<flicc:Component
+				objectId="userClient">
+				<flicc:user>
+					<flicc:Ref to="user"/>
+				</flicc:user>
+			</flicc:Component>
+			
+			<!-- any model that has a friends setter can subscribe to this component configuration -->
+			<flicc:Component
+				objectId="friendsClient">
+				<flicc:friends>
+					<flicc:Ref to="friends"/>
+				</flicc:friends>
+			</flicc:Component>
+		
+		</flicc:descriptors>
+		
+		<mx:Script>
+			<![CDATA[
+				import com.adobe.login.presentationModel.LoginPM;
+				import com.adobe.dashboard.presentationModel.DashboardPM;
+			]]>
+		</mx:Script>
+</flicc:MxmlObjectDescriptors>

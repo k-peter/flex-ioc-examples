@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	height="50"
+	width="100%" xmlns:presentationModel="com.adobe.dashboard.presentationModel.*" xmlns:flicc="http://flicc.sourceforge.net">
+
+	<flicc:Configure
+		objectId="friendsClient"
+		target="{ pm }"/>
+	
+	<presentationModel:SummaryPM 
+		id="pm"/>
+	
+	<mx:Label text="You have { pm.numberOfFriends } friends"/>
+</mx:Canvas>

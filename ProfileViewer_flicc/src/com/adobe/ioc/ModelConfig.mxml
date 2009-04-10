@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flicc:MxmlObjectDescriptors
+		xmlns:mx="http://www.adobe.com/2006/mxml" 
+		xmlns:flicc="http://flicc.sourceforge.net">
+		<flicc:descriptors>
+			
+			<flicc:Object
+				objectId="user"
+				clazz="{ User }">
+			</flicc:Object>
+	
+			<flicc:Object
+				objectId="friends"
+				clazz="{ Friends }">
+			</flicc:Object>
+		
+		</flicc:descriptors>
+		
+		<mx:Script>
+			<![CDATA[
+				import com.adobe.dashboard.domain.User;
+				import com.adobe.dashboard.domain.Friends;
+			]]>
+		</mx:Script>
+</flicc:MxmlObjectDescriptors>
