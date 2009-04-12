@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:parsley="com.adobe.ioc.parsley.*"
+	height="50"
+	width="100%">
+
+
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.dashboard.presentationModel.SummaryPM;
+									
+			[Bindable]
+			public var pm : SummaryPM;
+			
+		]]>
+	</mx:Script>
+	<parsley:Inject
+		contextName="{ MainContext.CONTEXT_NAME }"
+		objectId="{ MainContext.SUMMARY_PM }"
+		property="pm"/>
+		
+	<mx:Label text="You have { pm.numberOfFriends } friends"/>
+</mx:Canvas>

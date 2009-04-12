@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<application-context 
+   xmlns="http://www.spicefactory.org/parsley/1.0"
+   xmlns:mvc="http://www.spicefactory.org/parsley/1.0/mvc"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.spicefactory.org/parsley/1.0 
+      http://www.spicefactory.org/parsley/schema/1.0/parsley-context.xsd
+      http://www.spicefactory.org/parsley/1.0/mvc
+      http://www.spicefactory.org/parsley/schema/1.0/parsley-mvc.xsd">
+      
+   <factory>
+   		<object 
+   			id="controller"
+   			type="com.adobe.login.control.SimpleController">
+   		</object>
+   		
+      <!--
+      Presentation models 
+      -->
+		<object 
+			id="mainPM" 
+			type="MainPM"/>
+
+ 		<object 
+      		id="dashboardPM" 
+      		type="com.adobe.dashboard.presentationModel.DashboardPM">
+      		<constructor-args>
+      			 <object-ref id="user"/>
+      			 <object-ref id="friends"/>
+      		</constructor-args>
+      </object>
+      
+      <object
+      	id="profilePM"
+      	type="com.adobe.dashboard.presentationModel.user.ProfilePM"/>
+      
+      <object
+      	id="detailsPM"
+      	type="com.adobe.dashboard.presentationModel.user.DetailsPM">
+      	<constructor-args>
+      		<object-ref id="user"/>
+      	</constructor-args>
+      </object>
+      
+      <object
+      	id="summaryPM"
+      	type="com.adobe.dashboard.presentationModel.SummaryPM">
+		<property name="friends" ref="friends"/>
+      </object>
+     
+      <object
+      	id="friendsPM"
+      	type="com.adobe.dashboard.presentationModel.user.FriendsPM">
+      	<constructor-args>
+      		<object-ref id="friends"/>
+      	</constructor-args>
+      </object>
+      
+      <object 
+      	id="handler" 
+      	type="com.adobe.login.control.handler.LoginHandler">
+         <property name="client" ref="mainPM"/>
+         <property name="user" ref="user"/>
+         <property name="friends" ref="friends"/>
+         <property name="delegate" ref="loginDelegate"/>
+         <!-- 
+         -->
+         <mvc:action 
+   				event-name="com.adobe.login.control.event.LoginEvent"
+   				method="execute"/>
+      </object>
+      
+      <object 
+      	id="user"
+      	type="com.adobe.dashboard.domain.User"/>
+      
+      <object 
+      	id="friends"
+      	type="com.adobe.dashboard.domain.Friends"/>
+      	
+      <object
+      	id="loginDelegate"
+      	type="com.adobe.login.service.LoginDelegate"/>
+      
+
+   </factory>
+</application-context>
