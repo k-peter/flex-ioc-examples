@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:dashboard="com.adobe.dashboard.view.*"
+	xmlns:local="*"
+	xmlns:parsley="com.adobe.ioc.parsley.*"
+	xmlns:view="com.adobe.login.view.*"
+	currentState="{ mainPM.state }"
+	layout="absolute">
+
+
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.dashboard.domain.ModelLocator;
+			import com.adobe.login.control.handler.LoginHandler;
+			import com.adobe.login.service.LoginDelegate;
+															
+			private var handler : LoginHandler;
+			private var delegate : LoginDelegate;
+			
+			[Bindable]
+			private var modelLocator : ModelLocator = ModelLocator.getInstance();
+
+			[Bindable]
+			public var mainPM : MainPM = new MainPM();
+			
+		]]>
+	</mx:Script> 
+	<mx:Style source="styles/yourProfileStyle.css"/>
+	
+	 <local:MainContext 
+	 	id="context" 
+	 	contextReadyEvent="createComponentsFromDescriptors()" />
+   
+   <!-- The 'applicationContext' is bound to 'context.applicationContext' so it fires when the context is ready -->
+   <parsley:Inject
+   		applicationContext="{ context.applicationContext }" 
+   		objectId="{ MainContext.MAIN_CONTAINER_PM }" />
+	
+	<mx:states>
+      <mx:State name="{ MainPM.AUTHENTICATED }">
+         <mx:RemoveChild target="{loginContainer}"/>
+         <mx:AddChild position="lastChild">
+   
+	 		<dashboard:Dashboard 
+            	id="dashboardContainer" 
+            	verticalCenter="0" 
+            	horizontalCenter="0"/>
+           
+         </mx:AddChild>
+      </mx:State>
+   </mx:states>
+            	
+	<view:LoginContainer
+		id="loginContainer" />
+
+</mx:Application>
