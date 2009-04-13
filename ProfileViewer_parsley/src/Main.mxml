@@ -17,12 +17,9 @@
 															
 			private var handler : LoginHandler;
 			private var delegate : LoginDelegate;
-			
-			[Bindable]
-			private var modelLocator : ModelLocator = ModelLocator.getInstance();
 
 			[Bindable]
-			public var mainPM : MainPM = new MainPM();
+			public var mainPM : MainPM;
 			
 		]]>
 	</mx:Script> 

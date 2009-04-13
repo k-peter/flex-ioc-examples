@@ -15,23 +15,15 @@ package com.adobe.login.service
 		
 		public var responder : IResponder;
 		
-		private var remoteObject : RemoteObject;
+		public var remoteObject : RemoteObject;
 		
 		private var log : ILogger = LogUtil.getLogger( this );
 		
-		public function LoginDelegate( responder : IResponder = null ) 
-		{
-			remoteObject = getRemoteObject();
-		
-			log.info("remote object: " );
-			log.info("destination: " + remoteObject.destination );
-		
-			this.responder = responder;
-		}
-		
 		public function authenticate( username : String, password : String ) : void
 		{
-		
+			log.info("remote object: " );
+			log.info("destination: " + remoteObject.destination );
+					
 			if( username.indexOf( "invalidUsername" ) == -1 )
 			{
 				responder.result( 
@@ -43,11 +35,5 @@ package com.adobe.login.service
 			}
 		}
 		
-		private function getRemoteObject() : RemoteObject
-		{
-			var remoteObject : RemoteObject = new RemoteObject();
-			remoteObject.destination = LOGIN_DELEGATE;
-			return remoteObject;
-		}
 	}
 }
