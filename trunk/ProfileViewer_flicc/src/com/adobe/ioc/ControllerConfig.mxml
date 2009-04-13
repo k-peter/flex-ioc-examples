@@ -48,6 +48,6 @@
 				import com.adobe.login.control.event.LoginEvent;
 				import com.adobe.login.control.handler.LoginHandler;
 				import com.adobe.login.control.SimpleController;
-															]]>
+			]]>
 		</mx:Script>
 </flicc:MxmlObjectDescriptors>
