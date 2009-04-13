@@ -19,7 +19,7 @@ package com.adobe.login.service
 		
 		private var log : ILogger = LogUtil.getLogger( this );
 		
-		public function LoginDelegate( responder : IResponder ) 
+		public function LoginDelegate( responder : IResponder = null ) 
 		{
 			remoteObject = getRemoteObject();
 		
