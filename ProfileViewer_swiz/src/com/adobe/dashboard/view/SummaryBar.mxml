@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	height="50"
+	width="100%">
+
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.dashboard.presentationModel.SummaryPM;
+						
+			[Bindable]
+			private var pm : SummaryPM = new SummaryPM();
+			
+		]]>
+	</mx:Script>
+	<mx:Label text="You have { pm.numberOfFriends } friends"/>
+</mx:Canvas>

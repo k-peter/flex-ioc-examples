@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:user="com.adobe.dashboard.view.user.*"
+	height="100%"
+	width="100%">
+
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.dashboard.presentationModel.user.ProfilePM;
+		
+			
+			[Bindable]
+			[Autowire(bean="profilePM")]
+			public var pm : ProfilePM;
+		]]>
+	</mx:Script>
+	<user:DetailsPod />
+	<user:FriendsPod />
+</mx:HBox>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BeanLoader xmlns="org.swizframework.util.*" 
+			xmlns:mx="http://www.adobe.com/2006/mxml" 
+			xmlns:user="com.adobe.dashboard.presentationModel.user.*" 
+			xmlns:domain="com.adobe.dashboard.domain.*" xmlns:local="*" xmlns:presentationModel="com.adobe.dashboard.presentationModel.*" xmlns:presentationModel1="com.adobe.login.presentationModel.*" xmlns:control="com.adobe.login.control.*" xmlns:handler="com.adobe.login.control.handler.*">
+	
+	<handler:LoginHandler 
+		id="loginHandler"/>
+	
+	<local:MainPM
+		id="mainPM"/>
+	
+	<presentationModel1:LoginPM
+		id="loginPM"/>
+		
+	<presentationModel:DashboardPM
+		id="dashboardPM"/>
+	
+	<user:ProfilePM
+		id="profilePM"/>
+	
+	<presentationModel:SummaryPM
+		id="summaryPM"/>
+	
+	<user:DetailsPM 
+		id="detailsPM"/>
+	
+	<domain:User 
+		id="user">
+		<domain:forename>Swiz</domain:forename>
+	</domain:User>	
+		
+</BeanLoader>
