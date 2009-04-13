@@ -28,17 +28,12 @@
 			private function onPreInitialize() : void 
 			{
 				Swiz.getInstance().loadBeans( [ AppBeans ] );
-				Swiz.addEventListener( Swiz.INIT_COMPLETE, initComplete );
-			}
-			
-			private function initComplete( event : Event ) : void
-			{
-				pm = MainPM( Swiz.getBean( "mainPM" ) );
 			}
 			
 			private function initMainBeans() : void
 			{
-			
+				pm = MainPM( Swiz.getBean( "mainPM" ) );
+				loginHandler = LoginHandler( Swiz.getBean( "loginHandler" ) );
 			}
 			
 		]]>

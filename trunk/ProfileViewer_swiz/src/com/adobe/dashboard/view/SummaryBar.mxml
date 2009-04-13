@@ -9,7 +9,8 @@
 			import com.adobe.dashboard.presentationModel.SummaryPM;
 						
 			[Bindable]
-			private var pm : SummaryPM = new SummaryPM();
+			[Autowire(bean="summaryPM")]
+			public var pm : SummaryPM;
 			
 		]]>
 	</mx:Script>

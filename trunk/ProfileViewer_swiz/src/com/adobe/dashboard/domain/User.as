@@ -13,6 +13,13 @@ package com.adobe.dashboard.domain
 			this.surname = surname;
 			this.nickname = nickname;
 		}
-
+		
+		public function update( user : User ) : void
+		{
+			this.forename = user.forename;
+			this.surname = user.surname;
+			this.nickname = user.nickname;
+		}
+		
 	}
 }
