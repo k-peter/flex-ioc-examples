@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	height="50"
+	width="100%" xmlns:springActionscript="com.adobe.ioc.springActionscript.*">
+
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.dashboard.presentationModel.SummaryPM;
+						
+			[Bindable]
+			public var pm : SummaryPM;
+			
+		]]>
+	</mx:Script>
+	
+	<springActionscript:Inject
+		property="pm"
+		objectId="{ MainContext.SUMMARY_PM }"/>
+		
+	<mx:Label text="You have { pm.numberOfFriends } friends"/>
+</mx:Canvas>

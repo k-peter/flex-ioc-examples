@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<objects 
+	xmlns="http://www.pranaframework.org/objects" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.pranaframework.org/objects http://www.pranaframework.org/schema/objects/prana-objects-0.7.xsd">
+	
+	<!-- ////////////////////// -->
+	<!--
+		Presentation models 
+		-->
+		<object 
+			id="mainPM" 
+			class="MainPM"/>
+		
+		<object
+			id="loginPM"
+			class="com.adobe.login.presentationModel.LoginPM">
+		</object>
+ 		
+ 		<object
+ 			id="controller"
+ 			class="com.adobe.login.control.SimpleController">
+ 			<method-invocation name="init"></method-invocation>
+ 			<property name="dispatchers">
+ 				<array>
+ 					<ref>loginPM</ref>
+ 				</array>
+ 			</property>
+ 			
+ 			<property name="handlers">
+ 				<array>
+ 					<ref>handler</ref>
+ 				</array>
+ 			</property>
+ 		
+ 		</object>
+ 		
+ 		
+ 		<object 
+			id="dashboardPM" 
+			class="com.adobe.dashboard.presentationModel.DashboardPM">
+			<constructor-arg ref="user"/>
+			<constructor-arg ref="friends"/>
+		</object>
+		
+		<object
+			id="profilePM"
+			class="com.adobe.dashboard.presentationModel.user.ProfilePM"/>
+		
+		<object
+			id="detailsPM"
+			class="com.adobe.dashboard.presentationModel.user.DetailsPM">
+			<constructor-arg ref="user"/>
+		</object>
+		
+		<object
+			id="summaryPM"
+			class="com.adobe.dashboard.presentationModel.SummaryPM">
+			<property name="friends" ref="friends"/>
+		</object>
+	  
+		<object
+			id="friendsPM"
+			class="com.adobe.dashboard.presentationModel.user.FriendsPM">
+			<constructor-arg ref="friends"/>
+		</object>
+		
+		<!--
+		Handler/Action 
+		-->
+		<object 
+			id="handler" 
+			class="com.adobe.login.control.handler.LoginHandler">
+			<property name="client" ref="mainPM"/>
+			<property name="user" ref="user"/>
+			<property name="friends" ref="friends"/>
+			<property name="delegate" ref="loginDelegate"/>
+			<!--  
+			<mvc:action 
+					event-name="com.adobe.login.control.event.LoginEvent"
+					method="execute"/>
+			-->
+		</object>
+		
+		<!--
+		domains
+		-->
+		<object 
+			id="user"
+			class="com.adobe.dashboard.domain.User"/>
+		
+		<object 
+			id="friends"
+			class="com.adobe.dashboard.domain.Friends"/>
+			
+		<object
+			id="loginDelegate"
+			class="com.adobe.login.service.LoginDelegate">
+			<property name="remoteObject" ref="remoteObject"/>	
+		</object>
+		
+		<object 
+			id="remoteObject"
+			class="mx.rpc.remoting.RemoteObject">
+			<property name="destination" value="SPRING_ACTIONSCRIPT_DESTINATION"/>
+		</object>
+	<!-- ////////////////////// -->
+	
+	
+
+</objects>
