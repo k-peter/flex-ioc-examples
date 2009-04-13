@@ -80,7 +80,15 @@
 			
 		<object
 			id="loginDelegate"
-			type="com.adobe.login.service.LoginDelegate"/>
+			type="com.adobe.login.service.LoginDelegate">
+			<property name="remoteObject" ref="remoteObject"/>	
+		</object>
+		
+		<object 
+			id="remoteObject"
+			type="mx.rpc.remoting.RemoteObject">
+			<property name="destination" value="PARSLEY_DESTINATION"/>
+		</object>
 
 	</factory>
 	
