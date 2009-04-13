@@ -24,6 +24,6 @@
 				import com.adobe.login.service.LoginDelegate;
 
 				import mx.rpc.remoting.RemoteObject;
-											]]>
+			]]>
 		</mx:Script>
 </flicc:MxmlObjectDescriptors>
