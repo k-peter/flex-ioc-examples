@@ -14,6 +14,6 @@
 			public var pm : ProfilePM;
 		]]>
 	</mx:Script>
-	<user:DetailsPod pm="{ pm.detailsPM }"/>
-	<user:FriendsPod pm="{ pm.friendsPM }"/>
+	<user:DetailsPod />
+	<user:FriendsPod />
 </mx:HBox>

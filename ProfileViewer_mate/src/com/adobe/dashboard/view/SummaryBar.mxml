@@ -9,7 +9,7 @@
 			import com.adobe.dashboard.presentationModel.SummaryPM;
 						
 			[Bindable]
-			private var pm : SummaryPM = new SummaryPM();
+			public var pm : SummaryPM;
 			
 		]]>
 	</mx:Script>

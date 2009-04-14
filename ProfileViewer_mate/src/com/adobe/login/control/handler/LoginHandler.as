@@ -1,10 +1,12 @@
 package com.adobe.login.control.handler
 {
 	import com.adobe.dashboard.domain.AuthenticationClient;
-	import com.adobe.dashboard.domain.ModelLocator;
+	import com.adobe.dashboard.domain.Friends;
+	import com.adobe.dashboard.domain.User;
 	import com.adobe.login.control.event.LoginEvent;
 	import com.adobe.login.control.event.LoginResultEvent;
 	import com.adobe.login.service.LoginDelegate;
+	import com.adobe.util.logging.LogUtil;
 	
 	import flash.events.Event;
 	
@@ -13,6 +15,10 @@ package com.adobe.login.control.handler
 	public class LoginHandler implements Handler,IResponder
 	{
 		public var client : AuthenticationClient;
+		public var user : User;
+		public var friends : Friends;
+		public var delegate : LoginDelegate;
+		
 		
 		public function get eventId() : String
 		{
@@ -21,8 +27,8 @@ package com.adobe.login.control.handler
 		
 		public function execute(event:Event):void
 		{
-			var delegate : LoginDelegate = new LoginDelegate( this );
-			trace("executed");
+			LogUtil.getLogger( this ).info( "delegate: {0}", delegate );
+			delegate.responder = this;
 			var loginEvent : LoginEvent = LoginEvent( event );
 			delegate.authenticate( loginEvent.username, loginEvent.password );
 		}
@@ -30,9 +36,8 @@ package com.adobe.login.control.handler
 		public function result(data:Object):void
 		{
 			var resultEvent : LoginResultEvent = LoginResultEvent( data );
-			ModelLocator.getInstance().user = resultEvent.user;
-			ModelLocator.getInstance().friends = resultEvent.friends;
-			
+			user.update( resultEvent.user );
+			friends.update( resultEvent.friends );
 			client.authenticated = true;
 		}
 	
@@ -40,6 +45,5 @@ package com.adobe.login.control.handler
 		{
 			//not in use
 		}
-		
 	}
 }
