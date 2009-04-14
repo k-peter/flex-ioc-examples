@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mate:EventMap 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:mate="http://mate.asfusion.com/" xmlns:handler="com.adobe.login.control.handler.*">
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.login.service.LoginDelegate;
+			import com.adobe.dashboard.domain.User;
+			import com.adobe.dashboard.domain.AuthenticationClient;
+			import com.adobe.login.control.handler.LoginHandler;
+			import com.adobe.dashboard.domain.ModelLocator;
+			import com.asfusion.mate.actions.builders.MethodInvoker;
+			import com.adobe.util.logging.LogUtil;
+			import com.adobe.login.control.event.LoginEvent;
+			
+			[Bindable]
+			public var client : AuthenticationClient;
+
+			[Bindable]
+			public var modelLocator : ModelLocator;
+			
+		]]>
+	</mx:Script>
+	
+	<mate:Debugger level="{Debugger.ALL}"/>
+	
+	<mate:Injectors
+		target="{ LoginHandler }"
+		debug="true">
+		<mate:ObjectBuilder
+			generator="{ LoginDelegate }"
+			registerTarget="true"/>
+		<mate:PropertyInjector
+			targetKey="delegate"
+			source="{ lastReturn }"/>
+		
+	</mate:Injectors>
+	
+	<mate:EventHandlers 
+		type="{ LoginEvent.LOGIN_EVENT }"
+		debug="true">
+		<mate:MethodInvoker
+			id="loginHandler"
+			registerTarget="true"
+			generator="{ LoginHandler }"
+			method="execute"
+			arguments="{ event }">
+			<mate:Properties client="{ client }"/>
+			<mate:Properties user="{ modelLocator.user }"/>
+			<mate:Properties friends="{ modelLocator.friends }"/>
+		</mate:MethodInvoker>
+		
+	</mate:EventHandlers>
+</mate:EventMap>

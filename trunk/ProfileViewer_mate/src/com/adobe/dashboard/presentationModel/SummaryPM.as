@@ -1,6 +1,6 @@
 package com.adobe.dashboard.presentationModel
 {
-	import com.adobe.dashboard.domain.ModelLocator;
+	import com.adobe.dashboard.domain.Friends;
 	
 	import mx.binding.utils.BindingUtils;
 	
@@ -9,9 +9,11 @@ package com.adobe.dashboard.presentationModel
 	{
 		public var numberOfFriends : int;
 		
+		public var friends : Friends;
+		
 		public function SummaryPM()
 		{
-			BindingUtils.bindProperty( this, "numberOfFriends", ModelLocator.getInstance(), ["friends", "friendsList", "length"] );
+			BindingUtils.bindProperty( this, "numberOfFriends", this, ["friends", "friendsList", "length"] );
 		}
 	}
 }

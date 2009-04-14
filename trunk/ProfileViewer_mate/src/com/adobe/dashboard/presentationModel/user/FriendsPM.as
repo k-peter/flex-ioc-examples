@@ -7,7 +7,7 @@ package com.adobe.dashboard.presentationModel.user
 		[Bindable]
 		public var friends : Friends;
 		
-		public function FriendsPM( friends : Friends )
+		public function FriendsPM( friends : Friends = null )
 		{
 			this.friends = friends;
 		}

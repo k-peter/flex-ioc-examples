@@ -7,7 +7,7 @@ package com.adobe.dashboard.presentationModel.user
 	{
 		public var user : User;
 		
-		public function DetailsPM( user : User )
+		public function DetailsPM( user : User = null )
 		{
 			this.user = user;
 		}

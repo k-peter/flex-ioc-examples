@@ -23,8 +23,7 @@
 		<mx:Label 
 			text="Welcome { pm.user.forename } { pm.user.surname }"
 			styleName="header"/>
-		<user:ProfilePod
-			pm="{ pm.profilePM }" />
+		<user:ProfilePod />
 		<view:SummaryBar />
 	</mx:VBox>
 </mx:Canvas>
