@@ -23,7 +23,7 @@ package com.adobe.login.presentationModel
 		
 		public function login() : void
 		{
-			Swiz.dispatchEvent( new  LoginEvent( username, password ) ); 
+			Swiz.dispatchEvent( new LoginEvent( username, password ) ); 
 		}
 
 	}
