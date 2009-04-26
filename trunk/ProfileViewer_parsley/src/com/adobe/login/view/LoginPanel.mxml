@@ -2,11 +2,14 @@
 <mx:Panel 
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:presentationModel="com.adobe.login.presentationModel.*"
-	title="Welcome">
+	title="Welcome" xmlns:parsley="com.adobe.ioc.parsley.*">
 
 
 	<mx:Script>
 		<![CDATA[
+			import com.adobe.login.presentationModel.LoginPM;
+			[Bindable]
+			public var pm : LoginPM;
 			
 			private function handleKeyDown( event : KeyboardEvent ) : void
 			{
@@ -17,8 +20,11 @@
 			}
 		]]>
 	</mx:Script>
-	<presentationModel:LoginPM
-		 id="pm"/>
+	<parsley:Inject
+		property="pm"
+		contextName="{ MainContext.CONTEXT_NAME }"
+		id="loginPM"/>
+
 	<mx:Form
 		keyDown="handleKeyDown( event )">
 		<mx:FormItem label="name">
