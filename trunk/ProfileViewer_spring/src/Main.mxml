@@ -10,10 +10,13 @@
 
 	<mx:Script>
 		<![CDATA[
+			import com.adobe.dashboard.presentationModel.user.ProfilePM;
 			import com.adobe.login.control.handler.LoginHandler;
 			import com.adobe.login.control.SimpleController;
 			
 			private var loginHandler : LoginHandler;
+			
+			private var profilePM : ProfilePM;
 			
 			[Bindable]
 			public var pm : MainPM;

@@ -9,13 +9,9 @@ package com.adobe.dashboard.presentationModel
 	{
 		public var user : User;
 		
-		public var profilePM : ProfilePM;
-		
-		public function DashboardPM( user : User, friends : Friends )
+		public function DashboardPM( user : User )
 		{
 			this.user = user;
-			
-			//profilePM = new ProfilePM( user, friends );
 		}
 
 	}
