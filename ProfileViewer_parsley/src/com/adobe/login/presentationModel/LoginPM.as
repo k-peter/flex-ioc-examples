@@ -25,7 +25,7 @@ package com.adobe.login.presentationModel
 		
 		public function login() : void
 		{
-			var event:ApplicationEvent = new LoginEvent( username, password );
+			var event: ApplicationEvent = new LoginEvent( username, password );
 			FrontController.root.dispatchEvent( event );
 		}
 

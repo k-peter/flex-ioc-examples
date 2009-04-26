@@ -16,6 +16,11 @@
 		<object 
 			id="mainPM" 
 			type="MainPM"/>
+			
+		<object 
+			id="loginPM"
+			type="com.adobe.login.presentationModel.LoginPM">
+		</object>
 
  		<object 
 			id="dashboardPM" 
