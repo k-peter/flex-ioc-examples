@@ -18,7 +18,6 @@
 			{
 				if( event.keyCode == Keyboard.ENTER )
 				{
-					Swiz.dispatchEvent( new LoginEvent( "ed", "test" ) );
 					pm.login();
 				}
 			}

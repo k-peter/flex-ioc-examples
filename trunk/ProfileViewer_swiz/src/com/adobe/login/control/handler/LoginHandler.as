@@ -27,7 +27,6 @@ package com.adobe.login.control.handler
 		public function login( username : String, password : String ) : void
 		{
 			LogUtil.getLogger( this ).info( "username: {0}, password {1} ", username, password );
-			var delegate : LoginDelegate = new LoginDelegate( this );
 			delegate.authenticate( username, password );
 		}
 		
