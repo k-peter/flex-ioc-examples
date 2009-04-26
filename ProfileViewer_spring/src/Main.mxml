@@ -6,7 +6,8 @@
 	xmlns:handler="com.adobe.login.control.handler.*"
 	xmlns:view="com.adobe.login.view.*"
 	currentState="{ pm.state }"
-	layout="absolute" xmlns:springActionscript="com.adobe.ioc.springActionscript.*">
+	layout="absolute" 
+	xmlns:springActionscript="com.adobe.ioc.springActionscript.*">
 
 	<mx:Script>
 		<![CDATA[
