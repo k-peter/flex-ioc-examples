@@ -17,30 +17,30 @@
 			class="com.adobe.login.presentationModel.LoginPM">
 		</object>
  		
+ 		
+ 		
  		<object
  			id="controller"
  			class="com.adobe.login.control.SimpleController">
  			<method-invocation name="init"></method-invocation>
- 			<property name="dispatchers">
+ 			<property name="controllerItems">
  				<array>
- 					<ref>loginPM</ref>
+ 					<ref>controllerItem</ref>
  				</array>
  			</property>
- 			
- 			<property name="handlers">
- 				<array>
- 					<ref>handler</ref>
- 				</array>
- 			</property>
- 		
  		</object>
  		
+ 		<object
+ 			id="controllerItem"
+ 			class="com.adobe.login.control.ControllerPair">
+ 			<property name="dispatcher" ref="loginPM"/>
+ 			<property name="handler" ref="handler"/>
+ 		</object>
  		
  		<object 
 			id="dashboardPM" 
 			class="com.adobe.dashboard.presentationModel.DashboardPM">
 			<constructor-arg ref="user"/>
-			<constructor-arg ref="friends"/>
 		</object>
 		
 		<object
@@ -75,11 +75,6 @@
 			<property name="user" ref="user"/>
 			<property name="friends" ref="friends"/>
 			<property name="delegate" ref="loginDelegate"/>
-			<!--  
-			<mvc:action 
-					event-name="com.adobe.login.control.event.LoginEvent"
-					method="execute"/>
-			-->
 		</object>
 		
 		<!--
