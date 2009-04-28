@@ -4,6 +4,7 @@ package com.adobe.ioc.springActionscript
 	
 	import flash.events.Event;
 	
+	import mx.binding.utils.BindingUtils;
 	import mx.core.IMXMLObject;
 	import mx.events.FlexEvent;
 	
@@ -18,32 +19,23 @@ package com.adobe.ioc.springActionscript
 	public class Inject implements IMXMLObject
 	{
 		public var property : String;
-				
 		public var objectId : String;
-		
+
 		private var target : Object;
-		
-		private static var applicationContext : XMLApplicationContext;
-		private static var contextReady : Boolean;
-		
-		private static var pendingSetters : Array = new Array();
-		
+
+		private var pendingSetters : Array = new Array();
 		
 		public function Inject() : void
-		{
-			if( applicationContext == null )
-			{
-				applicationContext = new XMLApplicationContext( "application-context.xml" );
-				applicationContext.addEventListener(Event.COMPLETE, handleLoadComplete );
-				applicationContext.load();
-			}
+		{		
+			BindingUtils.bindSetter( contextReady, ContextLoader.loader, "isReady" );
 		}
 		
-		private function handleLoadComplete( event : Event ) : void
+		private function contextReady( ready : Boolean ) : void
 		{
-			LogUtil.getLogger( this ).info( "load complete" );
-			initDeferredInjections();
-			contextReady = true;
+			if( ready )
+			{
+				initDeferredInjections();
+			}
 		}
 		
 		public function initialized( document : Object, id : String ) : void
@@ -59,7 +51,7 @@ package com.adobe.ioc.springActionscript
 		
 		private function getObject() : void
 		{
-			if( !contextReady )
+			if( !ContextLoader.isReady )
 			{
 				pendingSetters.push( new DeferredInjection( target, property, objectId ) );
 				return;
@@ -67,7 +59,7 @@ package com.adobe.ioc.springActionscript
 			
 			if ( target != null && objectId != null )
 			{
-				target[ property ] = applicationContext.getObject( objectId );
+				target[ property ] = ContextLoader.applicationContext.getObject( objectId );
 			}
 		}
 		
@@ -76,9 +68,11 @@ package com.adobe.ioc.springActionscript
 			for( var i : int = 0 ; i < pendingSetters.length ; i++ )
 			{
 				var injection : DeferredInjection = DeferredInjection( pendingSetters[i] );
-				injection.executeInjection( applicationContext );
+				injection.executeInjection( ContextLoader.applicationContext );
 			}
+			pendingSetters = null;
 		}
+
 	}
 }
 
