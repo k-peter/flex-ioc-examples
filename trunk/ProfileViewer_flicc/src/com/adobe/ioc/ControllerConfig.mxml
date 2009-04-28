@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<flicc:MxmlObjectDescriptors 
+<MxmlObjectDescriptors 
 	xmlns:mx="http://www.adobe.com/2006/mxml"
-	xmlns:flicc="http://flicc.sourceforge.net">
+	xmlns="http://flicc.sourceforge.net">
 
-		<flicc:descriptors>
+		<descriptors>
 			
-			<flicc:Object
+			<Object
 				objectId="controller"
 				clazz="{ SimpleController }">
-				 <flicc:handlers>
+				 <handlers>
 				 	<!-- add a listener to LoginPM, to be handled by the controller -->
-					<flicc:EventHandler>
-						<flicc:eventName>{ LoginEvent.LOGIN_EVENT }</flicc:eventName>
-						<flicc:handler>handleEvent</flicc:handler>
-						<flicc:source><flicc:Ref to="loginPM"/></flicc:source>
-					</flicc:EventHandler>
-				</flicc:handlers>
+					<EventHandler
+						eventName="{ LoginEvent.LOGIN_EVENT }"
+						handler="handleEvent">
+						<source><Ref to="loginPM"/></source>
+					</EventHandler>
+				</handlers>
 				
-				<flicc:handlerArray>
-					<flicc:List clazz="{ Array }">
-						<flicc:Ref to="loginHandler"/>
-					</flicc:List>
-				</flicc:handlerArray>
-			</flicc:Object>
+				<handlerArray>
+					<List clazz="{ Array }">
+						<Ref to="loginHandler"/>
+					</List>
+				</handlerArray>
+			</Object>
 			
-			<flicc:Object
+			<Object
 				objectId="loginHandler"
 				clazz="{ LoginHandler }">
-				<flicc:user>
-					<flicc:Ref to="user"/>
-				</flicc:user>
-				<flicc:friends>
-					<flicc:Ref to="friends"/>
-				</flicc:friends>
-				<flicc:client>
-					<flicc:Ref to="mainPM"/>
-				</flicc:client>
-				<flicc:delegate>
-					<flicc:Ref to="loginDelegate"/>
-				</flicc:delegate>
-			</flicc:Object>
+				<user>
+					<Ref to="user"/>
+				</user>
+				<friends>
+					<Ref to="friends"/>
+				</friends>
+				<client>
+					<Ref to="mainPM"/>
+				</client>
+				<delegate>
+					<Ref to="loginDelegate"/>
+				</delegate>
+			</Object>
 		
-		</flicc:descriptors>
+		</descriptors>
 		
 		<mx:Script>
 			<![CDATA[
@@ -50,4 +50,4 @@
 				import com.adobe.login.control.SimpleController;
 			]]>
 		</mx:Script>
-</flicc:MxmlObjectDescriptors>
+</MxmlObjectDescriptors>
