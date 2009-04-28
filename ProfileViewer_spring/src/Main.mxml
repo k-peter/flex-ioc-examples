@@ -6,11 +6,13 @@
 	xmlns:handler="com.adobe.login.control.handler.*"
 	xmlns:view="com.adobe.login.view.*"
 	currentState="{ pm.state }"
+	initialize="init()"
 	layout="absolute" 
 	xmlns:springActionscript="com.adobe.ioc.springActionscript.*">
 
 	<mx:Script>
 		<![CDATA[
+			import com.adobe.ioc.springActionscript.ContextLoader;
 			import com.adobe.dashboard.presentationModel.user.ProfilePM;
 			import com.adobe.login.control.handler.LoginHandler;
 			import com.adobe.login.control.SimpleController;
@@ -24,6 +26,11 @@
 			
 			[Bindable]
 			public var controller : SimpleController;
+			
+			private function init() : void
+			{
+				ContextLoader.contextPath = "application-context.xml";
+			}
 			
 		]]>
 	</mx:Script> 
