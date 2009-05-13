@@ -9,12 +9,9 @@ package com.adobe.ioc.springActionscript
 	public class ContextLoader
 	{
 		public static var applicationContext : XMLApplicationContext;
-		
 		public static var loader : Loader = new Loader();
-		
 
 		private static var _contextPath : String;
-				
 		
 		private static function handleLoadComplete( event : Event ) : void
 		{

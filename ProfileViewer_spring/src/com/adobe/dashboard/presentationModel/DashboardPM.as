@@ -13,6 +13,13 @@ package com.adobe.dashboard.presentationModel
 		{
 			this.user = user;
 		}
+		
+		public function capitalise( value : String ) : String
+		{
+			var firstLetter : String = value.charAt( 0 );
+			var remainder : String = value.substr( 1,value.length );
+			return firstLetter.toUpperCase() + remainder;
+		}
 
 	}
 }
