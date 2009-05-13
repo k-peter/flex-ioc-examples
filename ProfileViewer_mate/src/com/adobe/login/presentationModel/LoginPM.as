@@ -1,10 +1,9 @@
 package com.adobe.login.presentationModel
 {
 	import com.adobe.login.control.event.LoginEvent;
+	import com.asfusion.mate.events.Dispatcher;
 	
 	import flash.events.EventDispatcher;
-	
-	import mx.core.IUIComponent;
 	[Bindable]
 	public class LoginPM extends EventDispatcher
 	{
@@ -23,7 +22,8 @@ package com.adobe.login.presentationModel
 		
 		public function login() : void
 		{
-			dispatchEvent( new LoginEvent( username, password ) );
+			var myDispatcher:Dispatcher = new Dispatcher();
+			myDispatcher.dispatchEvent( new LoginEvent( username, password ) );
 		}
 
 	}

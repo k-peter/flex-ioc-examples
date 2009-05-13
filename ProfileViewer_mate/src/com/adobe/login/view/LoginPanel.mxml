@@ -2,35 +2,26 @@
 <mx:Panel 
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:presentationModel="com.adobe.login.presentationModel.*"
-	creationComplete="init()"
 	title="Welcome">
 
 	<mx:Script>
 		<![CDATA[
-			import com.adobe.login.control.event.LoginEvent;
+			import com.adobe.login.presentationModel.LoginPM;
 						
-			
-			private function init() : void
-			{
-				pm.addEventListener( LoginEvent.LOGIN_EVENT, handleLogin );
-			}
-			
-			private function handleLogin( event : LoginEvent ) : void
-			{
-				dispatchEvent( new LoginEvent( event.username, event.password ) );
-			}
-
-			private function handleKeyDown( event : KeyboardEvent ) : void
+		 	private function handleKeyDown( event : KeyboardEvent ) : void
 			{
 				if( event.keyCode == Keyboard.ENTER )
 				{
 					pm.login();
 				}
 			}
+			
+			[Bindable]
+			public var pm : LoginPM;
+			
 		]]>
 	</mx:Script>
-	<presentationModel:LoginPM
-		 id="pm"/>
+	
 	<mx:Form
 		keyDown="handleKeyDown( event )">
 		<mx:FormItem label="name">
@@ -47,6 +38,7 @@
 				displayAsPassword="true"/>
 		</mx:FormItem>
 	</mx:Form>
+
 	<mx:ControlBar>
 		<mx:Button 
 			label="login"

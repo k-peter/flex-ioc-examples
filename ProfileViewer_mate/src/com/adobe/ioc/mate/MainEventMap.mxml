@@ -4,10 +4,10 @@
 	xmlns:mate="http://mate.asfusion.com/" xmlns:handler="com.adobe.login.control.handler.*">
 	<mx:Script>
 		<![CDATA[
+			import com.adobe.login.control.handler.LoginHandler;
 			import com.adobe.login.service.LoginDelegate;
 			import com.adobe.dashboard.domain.User;
 			import com.adobe.dashboard.domain.AuthenticationClient;
-			import com.adobe.login.control.handler.LoginHandler;
 			import com.adobe.dashboard.domain.ModelLocator;
 			import com.asfusion.mate.actions.builders.MethodInvoker;
 			import com.adobe.util.logging.LogUtil;
@@ -37,7 +37,7 @@
 	</mate:Injectors>
 	
 	<mate:EventHandlers 
-		type="{ LoginEvent.LOGIN_EVENT }"
+		type="{ LoginEvent.LOGIN }"
 		debug="true">
 		<mate:MethodInvoker
 			id="loginHandler"

@@ -4,6 +4,9 @@
 	xmlns:mate="http://mate.asfusion.com/" >
 	<mx:Script>
 		<![CDATA[
+			import com.adobe.dashboard.domain.User;
+			import com.adobe.login.presentationModel.LoginPM;
+			import com.adobe.login.view.LoginPanel;
 			import com.adobe.dashboard.presentationModel.DashboardPM;
 			import com.adobe.dashboard.view.Dashboard;
 			import com.adobe.dashboard.presentationModel.SummaryPM;
@@ -49,11 +52,30 @@
 	</mate:Injectors>
 
 	<mate:Injectors
+		target="{ LoginPanel }"
+		debug="true">
+		<mate:ObjectBuilder
+			generator="{ LoginPM }"
+			registerTarget="true">
+			
+		</mate:ObjectBuilder>
+		
+		<mate:PropertyInjector
+			targetKey="pm"
+			source="{ lastReturn }"/>
+	</mate:Injectors>
+	<mate:ObjectBuilder
+		generator="{ User }"
+		cache="global"
+		id="user" />
+		
+	<mate:Injectors
 		target="{ DetailsPod }"
 		debug="true">
 		<mate:ObjectBuilder
 			generator="{ DetailsPM }"
 			registerTarget="true">
+			
 			<mate:Properties 
 				user="{ modelLocator.user }"/>
 		</mate:ObjectBuilder>
