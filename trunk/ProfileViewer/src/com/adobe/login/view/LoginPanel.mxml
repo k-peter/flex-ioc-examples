@@ -12,7 +12,7 @@
 			
 			private function init() : void
 			{
-				pm.addEventListener( LoginEvent.LOGIN_EVENT, handleLogin );
+				pm.addEventListener( LoginEvent.LOGIN, handleLogin );
 			}
 			
 			private function handleLogin( event : LoginEvent ) : void
