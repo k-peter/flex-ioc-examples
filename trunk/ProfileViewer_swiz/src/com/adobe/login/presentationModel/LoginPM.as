@@ -5,6 +5,7 @@ package com.adobe.login.presentationModel
 	import flash.events.EventDispatcher;
 	
 	import org.swizframework.Swiz;
+	
 	[Bindable]
 	public class LoginPM extends EventDispatcher
 	{
