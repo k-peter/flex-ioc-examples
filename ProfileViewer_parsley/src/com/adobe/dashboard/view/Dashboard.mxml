@@ -28,7 +28,7 @@
 		horizontalCenter="0"
 		verticalCenter="0">
 		<mx:Label 
-			text="Welcome { pm.user.forename } { pm.user.surname }"
+			text="Welcome { pm.capitalise( pm.user.forename ) } { pm.user.surname }"
 			styleName="header"/>
 		<user:ProfilePod />
 		<view:SummaryBar />
