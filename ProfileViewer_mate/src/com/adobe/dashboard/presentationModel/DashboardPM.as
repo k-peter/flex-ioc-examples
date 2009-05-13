@@ -8,13 +8,11 @@ package com.adobe.dashboard.presentationModel
 	public class DashboardPM
 	{
 		public var user : User;
-		
 		public var profilePM : ProfilePM;
 		
 		public function DashboardPM( user : User = null, friends : Friends = null )
 		{
 			this.user = user;
-			
 			profilePM = new ProfilePM( user, friends );
 		}
 		
