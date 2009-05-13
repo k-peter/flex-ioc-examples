@@ -4,11 +4,11 @@ package com.adobe.ioc.parsley
 
    public class ContextReadyEvent extends Event
    {
-      private static const EVENT_NAME : String = "contextReadyEvent"; 
+      public static const CONTEXT_READY_EVENT : String = "contextReadyEvent"; 
       
       public function ContextReadyEvent()
       {
-         super( EVENT_NAME );
+         super( CONTEXT_READY_EVENT );
       }
       
       public override function clone() : Event

@@ -12,10 +12,10 @@
 	<mx:Script>
 		<![CDATA[
 			import com.adobe.dashboard.domain.ModelLocator;
-			import com.adobe.login.control.handler.LoginHandler;
+			import com.adobe.login.control.handler.LoginAction;
 			import com.adobe.login.service.LoginDelegate;
 															
-			private var handler : LoginHandler;
+			private var handler : LoginAction;
 			private var delegate : LoginDelegate;
 
 			[Bindable]
@@ -25,7 +25,7 @@
 	</mx:Script> 
 	<mx:Style source="styles/yourProfileStyle.css"/>
 	
-	 <local:MainContext 
+	<local:MainContext 
 	 	id="context" 
 	 	contextReadyEvent="createComponentsFromDescriptors()" />
    
