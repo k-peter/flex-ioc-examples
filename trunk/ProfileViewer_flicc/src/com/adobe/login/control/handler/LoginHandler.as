@@ -20,7 +20,7 @@ package com.adobe.login.control.handler
 		
 		public function get eventId() : String
 		{
-			return LoginEvent.LOGIN_EVENT;
+			return LoginEvent.LOGIN;
 		}
 		
 		public function execute(event:Event):void
