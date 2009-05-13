@@ -23,7 +23,7 @@ package com.adobe.login.control.handler
 		[Autowire(bean="loginDelegate")]
 		public var delegate : LoginDelegate;
 		
-		[Mediate(event="com.adobe.login.control.event.LoginEvent", properties="username,password")]
+		[Mediate(event="LOGIN", properties="username,password")]
 		public function login( username : String, password : String ) : void
 		{
 			LogUtil.getLogger( this ).info( "username: {0}, password {1} ", username, password );

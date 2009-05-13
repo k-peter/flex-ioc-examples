@@ -19,7 +19,7 @@ package com.adobe.login.control
 		
 		public function SimpleController() 
 		{
-			Swiz.addEventListener(LoginEvent.LOGIN_EVENT, handleEvent );
+			Swiz.addEventListener(LoginEvent.LOGIN, handleEvent );
 		}
 		
 		private function handleEvent( event : Event ) : void

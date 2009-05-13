@@ -4,14 +4,14 @@ package com.adobe.login.control.event
 
 	public class LoginEvent extends Event
 	{
-		public static const LOGIN_EVENT : String = "com.adobe.login.control.event.LoginEvent";
+		public static const LOGIN : String = "LOGIN";
 		
 		public var username : String;
 		public var password : String;
 		
 		public function LoginEvent( username : String, password : String )
 		{
-			super( LOGIN_EVENT, true);
+			super( LOGIN, true);
 			this.username = username;
 			this.password = password;
 		}
