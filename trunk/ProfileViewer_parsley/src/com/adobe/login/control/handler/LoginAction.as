@@ -2,7 +2,6 @@ package com.adobe.login.control.handler
 {
 	import com.adobe.dashboard.domain.AuthenticationClient;
 	import com.adobe.dashboard.domain.Friends;
-	import com.adobe.dashboard.domain.ModelLocator;
 	import com.adobe.dashboard.domain.User;
 	import com.adobe.login.control.event.LoginEvent;
 	import com.adobe.login.control.event.LoginResultEvent;
@@ -10,8 +9,10 @@ package com.adobe.login.control.handler
 	
 	import mx.rpc.IResponder;
 	
+	import org.spicefactory.parsley.mvc.Action;
 	import org.spicefactory.parsley.mvc.ApplicationEvent;
-	public class LoginHandler implements Handler,IResponder
+	
+	public class LoginAction implements IResponder, Action
 	{
 		public var user : User;
 		public var friends : Friends;
@@ -21,7 +22,7 @@ package com.adobe.login.control.handler
 		
 		public function get eventId() : String
 		{
-			return LoginEvent.LOGIN_EVENT;
+			return LoginEvent.LOGIN;
 		}
 		
 		public function execute( event : ApplicationEvent ) : void

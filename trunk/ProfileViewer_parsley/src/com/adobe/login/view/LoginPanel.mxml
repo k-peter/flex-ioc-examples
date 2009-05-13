@@ -8,6 +8,7 @@
 	<mx:Script>
 		<![CDATA[
 			import com.adobe.login.presentationModel.LoginPM;
+			
 			[Bindable]
 			public var pm : LoginPM;
 			
@@ -23,7 +24,7 @@
 	<parsley:Inject
 		property="pm"
 		contextName="{ MainContext.CONTEXT_NAME }"
-		id="loginPM"/>
+		objectId="loginPM"/>
 
 	<mx:Form
 		keyDown="handleKeyDown( event )">

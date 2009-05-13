@@ -62,14 +62,12 @@
 		-->
 		<object 
 			id="handler" 
-			type="com.adobe.login.control.handler.LoginHandler">
+			type="com.adobe.login.control.handler.LoginAction">
 			<property name="client" ref="mainPM"/>
 			<property name="user" ref="user"/>
 			<property name="friends" ref="friends"/>
 			<property name="delegate" ref="loginDelegate"/>
-			<mvc:action 
-					event-name="com.adobe.login.control.event.LoginEvent"
-					method="execute"/>
+			<mvc:action event-name="LOGIN"/>
 		</object>
 		
 		<!--
