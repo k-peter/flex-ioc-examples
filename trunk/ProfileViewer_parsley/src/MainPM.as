@@ -20,7 +20,7 @@ package 
 			if( value ) 
 			{
 				var locator : ModelLocator = ModelLocator.getInstance();
-				dashboardPM = new DashboardPM( locator.user, locator.friends );
+				dashboardPM = new DashboardPM( locator.user );
 				state = AUTHENTICATED;
 			}
 			else

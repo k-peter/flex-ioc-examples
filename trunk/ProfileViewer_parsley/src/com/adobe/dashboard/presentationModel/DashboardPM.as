@@ -11,11 +11,16 @@ package com.adobe.dashboard.presentationModel
 		
 		public var profilePM : ProfilePM;
 		
-		public function DashboardPM( user : User, friends : Friends )
+		public function DashboardPM( user : User )
 		{
 			this.user = user;
-			
-			//profilePM = new ProfilePM( user, friends );
+		}
+		
+		public function capitalise( value : String ) : String
+		{
+			var firstLetter : String = value.charAt( 0 );
+			var remainder : String = value.substr( 1,value.length );
+			return firstLetter.toUpperCase() + remainder;
 		}
 
 	}
