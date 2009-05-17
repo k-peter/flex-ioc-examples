@@ -27,7 +27,6 @@
 			type="com.adobe.dashboard.presentationModel.DashboardPM">
 			<constructor-args>
 				 <object-ref id="user"/>
-				 <object-ref id="friends"/>
 			</constructor-args>
 		</object>
 		

@@ -1,7 +1,6 @@
 package 
 {
 	import com.adobe.dashboard.domain.AuthenticationClient;
-	import com.adobe.dashboard.domain.ModelLocator;
 	import com.adobe.dashboard.presentationModel.DashboardPM;
 	
 	[Bindable]
@@ -19,8 +18,6 @@ package 
 		{
 			if( value ) 
 			{
-				var locator : ModelLocator = ModelLocator.getInstance();
-				dashboardPM = new DashboardPM( locator.user );
 				state = AUTHENTICATED;
 			}
 			else
