@@ -11,7 +11,6 @@
 
 	<mx:Script>
 		<![CDATA[
-			import com.adobe.dashboard.domain.ModelLocator;
 			import com.adobe.login.control.handler.LoginAction;
 			import com.adobe.login.service.LoginDelegate;
 															
