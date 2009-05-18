@@ -38,11 +38,11 @@
 	
 	<springActionscript:Inject
 		property="pm"
-		objectId="mainPM"/>
+		objectId="{ ContextIds.MAIN_CONTAINER_PM }"/>
 	
 	<springActionscript:Inject
 		property="controller"
-		objectId="controller"/>
+		objectId="{ ContextIds.CONTROLLER }"/>
 		
 	
 	<mx:states>

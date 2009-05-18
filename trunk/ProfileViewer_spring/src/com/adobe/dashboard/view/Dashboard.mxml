@@ -17,7 +17,7 @@
 	
 	<springActionscript:Inject
 		property="pm"
-		objectId="{ MainContext.DASHBOARD_PM }"/>
+		objectId="{ ContextIds.DASHBOARD_PM }"/>
 		
 		
 	<mx:VBox

@@ -18,7 +18,7 @@
 	
 	<springActionscript:Inject
 		property="pm"
-		objectId="{ MainContext.DETAILS_PM }"/>
+		objectId="{ ContextIds.DETAILS_PM }"/>
 
 
 	<mx:Form>

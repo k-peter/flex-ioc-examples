@@ -18,7 +18,7 @@
 	
 	<springActionscript:Inject
 		property="pm"
-		objectId="{ MainContext.FRIENDS_PM }"/>
+		objectId="{ ContextIds.FRIENDS_PM }"/>
 		
 		
 	<mx:DataGrid
