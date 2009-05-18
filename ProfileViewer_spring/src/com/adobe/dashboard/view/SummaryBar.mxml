@@ -16,7 +16,7 @@
 	
 	<springActionscript:Inject
 		property="pm"
-		objectId="{ MainContext.SUMMARY_PM }"/>
+		objectId="{ ContextIds.SUMMARY_PM }"/>
 		
 	<mx:Label text="You have { pm.numberOfFriends } friends"/>
 </mx:Canvas>

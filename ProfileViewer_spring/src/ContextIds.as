@@ -1,9 +1,10 @@
 package
 {
-   public class MainContext
+   public class ContextIds
    {
       // presentation model ids
       public static const MAIN_CONTAINER_PM : String = "mainPM";
+      public static const CONTROLLER : String = "controller";
       public static const DASHBOARD_PM : String	= "dashboardPM";
       public static const PROFILE_PM : String = "profilePM";
       public static const DETAILS_PM : String = "detailsPM";
