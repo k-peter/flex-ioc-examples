@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<smartypantsBeans:BeansHolder 
+	xmlns:smartypantsBeans="com.adobe.ioc.smartypants.*" 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:control="com.adobe.login.control.*" 
+	xmlns:presentationModel="com.adobe.login.presentationModel.*"
+	xmlns:handler="com.adobe.login.control.handler.*" 
+	xmlns:local="*" 
+	xmlns:dashboard="com.adobe.dashboard.presentationModel.*" 
+	xmlns:user="com.adobe.dashboard.presentationModel.user.*" 
+	xmlns:domain="com.adobe.dashboard.domain.*">
+	
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.login.control.event.LoginEvent;
+		]]>
+	</mx:Script>
+	
+	<!-- event handlers -->
+	<handler:LoginHandler 
+		client="{ mainPM }"
+		eventSource="{ loginPM }"
+		eventType="{ LoginEvent.LOGIN  }"
+		user="{ user }"
+		friends="{ friends }"/>
+	
+	<!-- presentation models -->
+	<presentationModel:LoginPM 
+		id="loginPM"/>
+	
+	<local:MainPM 
+		id="mainPM" />
+	
+	<dashboard:DashboardPM
+		id="dashboardPM"
+		user="{ user }"/>
+	
+	<user:ProfilePM
+		id="profilePM"
+		user="{ user }"/>
+		
+	<user:FriendsPM
+		id="friendsPM"
+		friends="{ friends }"/>
+		
+	<user:DetailsPM
+		id="detailsPM"
+		user="{ user }"/>
+		
+	<dashboard:SummaryPM
+		id="summaryPM"
+		friends="{ friends }"/>
+			
+	<domain:Friends
+		id="friends"/>
+	
+	<domain:User
+		id="user" />
+		
+</smartypantsBeans:BeansHolder>
+
+

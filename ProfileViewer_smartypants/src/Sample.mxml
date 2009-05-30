@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="absolute" 
+	preinitialize="setupInjector()">
+
+    <mx:Script>
+        <![CDATA[
+            import mx.controls.Alert;
+            import net.expantra.smartypants.SmartyPants;
+            import net.expantra.smartypants.Injector;
+
+            private var injector : Injector;
+
+            [Inject(name="wsdl")]
+            [Bindable]
+            public var wsdlLocation : String;
+
+            [Inject(live, name="liveExample")]
+            [Bindable]
+            public var textBox2Value : String = "Not injected";
+
+            private function setupInjector() : void
+            {
+                injector = SmartyPants.getOrCreateInjectorFor(this);
+            }
+
+            private function setUpRules() : void
+            {
+                injector.newRule().whenAskedFor(String).named("wsdl").useValue("http://www.server.com/service/main.wsdl");
+                injector.newRule().whenAskedFor(String).named("liveExample").useBindableProperty(this, ["tb1", "text"]);
+            }
+
+            private function inject() : void
+            {
+                try
+                {
+                    setUpRules();
+                    injector.injectInto(this);
+                }
+                catch (e : Error)
+                {
+                    trace(e.getStackTrace());
+                    Alert.show("Oops! " + e, "Error performing injection");
+                }
+            }
+
+        ]]>
+    </mx:Script>
+
+    <mx:Panel title="Smartypants IOC demo" horizontalCenter="0" verticalCenter="0">
+
+        <mx:Form>
+
+            <mx:FormItem label="WSDL location">
+                <mx:TextInput text="{ wsdlLocation }" editable="false"/>
+            </mx:FormItem>
+
+            <mx:FormItem label="Source Textbox">
+                <mx:TextInput id="tb1"/>
+            </mx:FormItem>
+
+            <mx:FormItem label="Destination Textbox">
+                <mx:TextInput id="tb2" text="{ textBox2Value }"/>
+            </mx:FormItem>
+
+            <mx:HBox width="100%" horizontalAlign="right">
+                <mx:Button label="Inject into this" click="inject()"/>
+            </mx:HBox>
+
+        </mx:Form>
+
+    </mx:Panel>
+
+</mx:Application>

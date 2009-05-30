@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	height="100%"
+	title="Your details"
+	width="100%" xmlns:net="http://net.expantra.smartypants/2008">
+
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.dashboard.presentationModel.user.DetailsPM;
+					
+			[Inject]	
+			[Bindable]
+			public var pm : DetailsPM;
+		]]>
+	</mx:Script>
+	<net:RequestInjection />
+	<mx:Form>
+		<mx:FormItem label="forename">
+			<mx:Label text="{ pm.user.forename }"/>
+		</mx:FormItem>
+		<mx:FormItem label="surname">
+			<mx:Label text="{ pm.user.surname }"/>
+		</mx:FormItem>
+		<mx:FormItem label="nickname">
+			<mx:Label text="{ pm.user.nickname }"/>
+		</mx:FormItem>
+	</mx:Form>
+</mx:Panel>
