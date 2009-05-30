@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:user="com.adobe.dashboard.view.user.*"
+	height="100%"
+	width="100%" xmlns:net="http://net.expantra.smartypants/2008">
+
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.dashboard.presentationModel.user.ProfilePM;
+		
+			[Inject]
+			[Bindable]
+			public var pm : ProfilePM;
+		]]>
+	</mx:Script>
+	
+	<net:RequestInjection/>
+	
+	<user:DetailsPod/>
+	<user:FriendsPod/>
+</mx:HBox>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	height="50"
+	width="100%" xmlns:net="http://net.expantra.smartypants/2008">
+
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.dashboard.presentationModel.SummaryPM;
+						
+			[Inject]
+			[Bindable]
+			public var pm : SummaryPM;
+			
+		]]>
+	</mx:Script>
+	<net:RequestInjection/>
+	<mx:Label 
+		text="You have { pm.numberOfFriends } friends"/>
+</mx:Canvas>

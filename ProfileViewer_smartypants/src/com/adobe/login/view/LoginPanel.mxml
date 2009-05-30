@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:presentationModel="com.adobe.login.presentationModel.*"
+	title="Welcome" xmlns:smartypants="http://net.expantra.smartypants/2008">
+
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.login.presentationModel.LoginPM;
+			import com.adobe.login.control.event.LoginEvent;
+			
+			[Inject]
+			[Bindable]			
+			public var pm : LoginPM;
+			
+			
+			private function handleKeyDown( event : KeyboardEvent ) : void
+			{
+				if( event.keyCode == Keyboard.ENTER )
+				{
+					pm.login();
+				}
+			}
+		]]>
+	</mx:Script>
+	<smartypants:RequestInjection/>
+	
+	<mx:Form
+		keyDown="handleKeyDown( event )">
+		<mx:FormItem label="name">
+			<mx:TextInput 
+				id="usernameInput"
+				text="{ pm.username }"
+				change="pm.setUsername( usernameInput.text )"/>
+		</mx:FormItem>
+		<mx:FormItem label="password">
+			<mx:TextInput 
+				id="passwordInput" 
+				text="{ pm.password }"
+				change="pm.setPassword( passwordInput.text )"
+				displayAsPassword="true"/>
+		</mx:FormItem>
+	</mx:Form>
+	<mx:ControlBar>
+		<mx:Button 
+			label="login"
+			click="pm.login()"/>
+	</mx:ControlBar>
+</mx:Panel>

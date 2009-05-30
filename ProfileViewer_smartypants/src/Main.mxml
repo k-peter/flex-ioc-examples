@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:control="com.adobe.login.control.*"
+	xmlns:dashboard="com.adobe.dashboard.view.*"
+	xmlns:handler="com.adobe.login.control.handler.*"
+	xmlns:view="com.adobe.login.view.*"
+	currentState="{ pm.state }"
+	initialize="initSmartyPants()"
+	layout="absolute" 
+	xmlns:smartypants="com.adobe.ioc.smartypants.*" 
+	xmlns:net="http://net.expantra.smartypants/2008">
+
+	<mx:Script>
+		<![CDATA[
+			import net.expantra.smartypants.SmartyPants;
+			import com.adobe.Rules;
+						
+			[Inject]
+			[Bindable]
+			public var pm : MainPM;
+			
+			private var rules : Rules;
+			
+			private function initSmartyPants() : void
+			{
+				rules = new Rules( this, beans );
+			}
+		]]>
+	</mx:Script> 
+	<mx:Style source="styles/yourProfileStyle.css"/>
+
+	<smartypants:Beans id="beans"/>
+	<net:RequestInjection/>
+	
+	<mx:states>
+      <mx:State name="{ MainPM.AUTHENTICATED }">
+         <mx:RemoveChild target="{loginContainer}"/>
+         <mx:AddChild position="lastChild">
+   
+	 		<dashboard:Dashboard 
+            	id="dashboardContainer" 
+            	verticalCenter="0" 
+            	horizontalCenter="0"/>
+           
+         </mx:AddChild>
+      </mx:State>
+   </mx:states>
+            	
+	<view:LoginContainer
+		id="loginContainer" />
+
+</mx:Application>

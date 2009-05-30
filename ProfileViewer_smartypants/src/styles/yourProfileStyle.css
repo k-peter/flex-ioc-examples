@@ -1,0 +1,11 @@
+
+Application {
+	backgroundColor: #669999;
+  	backgroundGradientColors: #ffffff, #68808c;
+  	backgroundGradientAlphas: 0.41, 0.25;
+}
+
+.header{
+
+	font-size: 16px;
+}
