@@ -5,11 +5,11 @@
 	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex"
 	height="50">
 
-	<!-- this breaks parsley -->
-	<!--<mx:Metadata>
+	<mx:Metadata>
 		[Event(name="validateOrder",type="com.adobe.cairngorm.samples.store.event.ValidateOrderEvent")]
 		[ManagedEvents("validateOrder")]
-	</mx:Metadata>-->
+	</mx:Metadata>
+	
 	<mx:Script>
 	<![CDATA[
 		import com.adobe.cairngorm.samples.store.event.ValidateOrderEvent;		
