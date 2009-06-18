@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<mx:ComboBox 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	dataProvider="{ statesModel.state }"
+	labelField="name"
+	width="100%">
 <!--
 
 Copyright (c) 2006. Adobe Systems Incorporated.
@@ -37,11 +42,7 @@ POSSIBILITY OF SUCH DAMAGE.
 -->
 
 	
-<mx:ComboBox
-	xmlns:mx="http://www.adobe.com/2006/mxml" 	
-	width="100%"
-	dataProvider="{ statesModel.state }" 
-	labelField="name" >
+
 	
 	<mx:Model id="statesModel" source="/data/states.xml" />
 	

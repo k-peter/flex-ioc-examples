@@ -1,65 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
+<mx:VBox 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex"
+	height="100%"
+	styleName="outerProductThumbnail"
+	width="100%">
 
-Copyright (c) 2006. Adobe Systems Incorporated.
-All rights reserved.
 
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-
-  * Redistributions of source code must retain the above copyright notice,
-    this list of conditions and the following disclaimer.
-  * Redistributions in binary form must reproduce the above copyright notice,
-    this list of conditions and the following disclaimer in the documentation
-    and/or other materials provided with the distribution.
-  * Neither the name of Adobe Systems Incorporated nor the names of its
-    contributors may be used to endorse or promote products derived from this
-    software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
-LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-POSSIBILITY OF SUCH DAMAGE.
-
-@ignore
-
--->
-
-<!--
-	@version $Revision: 1.3 $
--->
-<mx:VBox
-	xmlns:mx="http://www.adobe.com/2006/mxml" 
-	width="100%"
-	height="100%" 
-	styleName="outerProductThumbnail">
 	
 	<mx:Script>
 	<![CDATA[
 		import com.adobe.cairngorm.samples.store.util.Comparable;
-		import com.adobe.cairngorm.model.ModelLocator;
-		import com.adobe.cairngorm.samples.store.vo.ProductVO;
-		import com.adobe.cairngorm.samples.store.model.ShopModelLocator;
-		
+		import com.adobe.cairngorm.samples.store.util.Comparator;
+
+		import mx.formatters.CurrencyFormatter;
+								
+		[Inject]
 		[Bindable]
-		public var model : ShopModelLocator = ShopModelLocator.getInstance();
+		public var productComparator : Comparator;
+		
+		[Inject]
+		[Bindable]
+        public var currencyFormatter : CurrencyFormatter;
+        
 		
 		private function addComparable( event : Event ) : void
 		{
-			ShopModelLocator.getInstance().productComparator.addComparable(
-				image,
-				Comparable( data ) );
+			productComparator.addComparable( image, Comparable( data ) );
 		}
 	]]>
 	</mx:Script>
-					  
+	
+	<spicefactory:Configure/>
+				  
     <mx:VBox
     	id="thumbComp"
     	width="100%"
@@ -81,7 +54,7 @@ POSSIBILITY OF SUCH DAMAGE.
 			height="20" />
 		
 		<mx:Label
-			text="{ model.currencyFormatter.format( data.price ) }" 
+			text="{ currencyFormatter.format( data.price ) }" 
 			height="20"
 			styleName="priceThumb" />
 			

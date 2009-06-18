@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<mx:HBox 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	horizontalAlign="center"
+	horizontalGap="4"
+	paddingTop="8"
+	width="100%">
 <!--
 
 Copyright (c) 2006. Adobe Systems Incorporated.
@@ -35,12 +41,7 @@ POSSIBILITY OF SUCH DAMAGE.
 <!--
 	@version $Revision:$
 -->
-<mx:HBox
-	xmlns:mx="http://www.adobe.com/2006/mxml" 
-	width="100%" 
-	paddingTop="8"
-	horizontalGap="4"
-	horizontalAlign="center">
+
 	
 	<mx:Script>
 		<![CDATA[

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Object 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:action="com.adobe.cairngorm.samples.store.ioc.action.*"
+	xmlns:actions="com.adobe.cairngorm.samples.store.ioc.actions.*"
+	xmlns:checkout="com.adobe.cairngorm.samples.store.view.checkout.*"
+	xmlns:control="com.adobe.cairngorm.samples.store.control.*"
+	xmlns:model="com.adobe.cairngorm.samples.store.model.*"
+	xmlns:pm="com.adobe.cairngorm.samples.store.model.pm.*"
+	xmlns:productchooser="com.adobe.cairngorm.samples.store.model.pm.productchooser.*"
+	xmlns:spicefactory="http://www.spicefactory.org/parsley"
+	xmlns:util="com.adobe.cairngorm.samples.store.util.*"
+	xmlns="*">
+
+	
+	<model:ShoppingCart/>
+	<mx:CurrencyFormatter
+		precision="2"/>
+	<model:Products/>
+	<model:State/>
+	<control:ShopController/>
+	<util:Comparator/>
+	
+	<model:TestPM/>
+	
+	<pm:ShoppingCartPM/>
+	<spicefactory:Object type="{ ProductDetailsPM }"/>
+	<productchooser:FilterControlsPM/>
+	
+	<!-- checkout -->
+	<checkout:GeneralInformationModel/>
+	<checkout:PaymentInformationModel/>
+
+	<!-- validators -->
+	<mx:ArrayCollection id="generalInfoValidators"/>
+	<mx:ArrayCollection id="paymentValidators"/>
+	
+	<!-- actions -->
+	<actions:GetProductsAction/>
+	<actions:AddProductToShoppingCartAction/>
+	<actions:DeleteProductFromShoppingCartAction/>
+	<actions:SortProductsAction/>
+	<action:FilterProductsAction/>
+	<actions:ValidateOrderAction/>
+	<actions:ValidateCreditCardAction/>
+	
+	
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.cairngorm.samples.store.model.pm.productdetails.ProductDetailsPM;
+					]]>
+	</mx:Script>
+	
+</mx:Object>

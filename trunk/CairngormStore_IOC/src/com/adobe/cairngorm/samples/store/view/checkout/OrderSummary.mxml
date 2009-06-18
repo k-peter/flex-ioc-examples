@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<mx:HBox 
+	xmlns:mx="http://www.adobe.com/2006/mxml">
 <!--
 Copyright (c) 2006. Adobe Systems Incorporated.
 All rights reserved.
@@ -34,14 +36,15 @@ POSSIBILITY OF SUCH DAMAGE.
 <!--
 	@version $Revision: 1.1 $
 -->
-<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml">
+
 
 	<mx:Script>
 	<![CDATA[
-
 		import com.adobe.cairngorm.samples.store.model.ShoppingCart;
+
 		import mx.formatters.CurrencyFormatter;
 
+				
 		[Bindable]
 		public var shoppingCart : ShoppingCart;
 		
