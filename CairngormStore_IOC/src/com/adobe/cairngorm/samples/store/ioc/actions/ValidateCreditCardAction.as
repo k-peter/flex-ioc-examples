@@ -1,6 +1,7 @@
 package com.adobe.cairngorm.samples.store.ioc.actions
 {
 	import com.adobe.cairngorm.samples.store.business.CreditCardDelegateStub;
+	import com.adobe.cairngorm.samples.store.event.CheckoutEvent;
 	import com.adobe.cairngorm.samples.store.event.PurchaseCompleteEvent;
 	import com.adobe.cairngorm.samples.store.event.ValidateCreditCardEvent;
 	import com.adobe.cairngorm.samples.store.model.ShoppingCart;
@@ -11,12 +12,16 @@ package com.adobe.cairngorm.samples.store.ioc.actions
 	
 	import mx.rpc.IResponder;
 	
+	import org.spicefactory.lib.reflect.types.Void;
+	
 	[Event(name="completePurchase",type="com.adobe.cairngorm.samples.store.event.PurchaseCompleteEvent")]
-	[ManagedEvents("completePurchase")]
+	[Event(name="invalidCreditCard",type="com.adobe.cairngorm.samples.store.event.CheckoutEvent")]
+	//Note to self: Blog about this syntax.. watch out for 
+	//[ManagedEvents("completePurchase","invalidCreditCard")]
+	//[ManagedEvents("filterProducts,sortProducts")]
+	[ManagedEvents("completePurchase,invalidCreditCard")]
 	public class ValidateCreditCardAction extends EventDispatcher implements IResponder
 	{
-		public var creditCardInvalid : Boolean;
-		
 		[Inject]
 		public var generalInfo : GeneralInformationModel;
 		[Inject]
@@ -39,15 +44,15 @@ package com.adobe.cairngorm.samples.store.ioc.actions
 		public function result( event : Object ) : void
 		{			
 			var validationPassed : Boolean = ( event.result == true );
-		  	creditCardInvalid = false;
 			
 			if ( validationPassed )
 			{				
-			  	executeNextCommand();
+				trace(">>>> valdidation passed");
+			  	dispatchEvent( new PurchaseCompleteEvent() );
 			}
 			else
-			{		  	
-			  	creditCardInvalid = true;
+			{		 
+				dispatchEvent( CheckoutEvent.newInvalidCreditCardEvent() ); 	
 			}
 		}
 	
@@ -55,16 +60,6 @@ package com.adobe.cairngorm.samples.store.ioc.actions
 		{
 		}
 
-		public function executeNextCommand() : void
-		{
-			var purchaseEvent : PurchaseCompleteEvent = new PurchaseCompleteEvent();
-						
-			purchaseEvent.generalInformation = generalInfo;
-			purchaseEvent.paymentInformation = paymentInfo;
-			purchaseEvent.shoppingCart = shoppingCart;
-			
-			dispatchEvent( purchaseEvent );
-		}
 	}
 
 }

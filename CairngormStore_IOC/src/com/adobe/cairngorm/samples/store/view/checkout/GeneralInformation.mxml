@@ -3,98 +3,87 @@
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:checkout="com.adobe.cairngorm.samples.store.view.checkout.*"
 	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex"
-	creationComplete="init();"
 	height="100%"
 	label="General Information"
-	width="100%">
+	width="100%" xmlns:validators="com.adobe.ac.validators.*">
+
+
 
 	<mx:Metadata>
 		[Event(name="newScreen", type="com.adobe.cairngorm.samples.store.event.NewScreenEvent")]
+		[Event(name="incompleteForm",type="com.adobe.cairngorm.samples.store.event.CheckoutEvent")]
+		[ManagedEvents("incompleteForm")]
 	</mx:Metadata>
 	<mx:Script>
 		<![CDATA[
-import com.adobe.cairngorm.samples.store.event.NewScreenEvent;
+			import com.adobe.cairngorm.samples.store.model.pm.checkout.GeneralInformationPM;
+			import com.adobe.cairngorm.samples.store.event.CheckoutEvent;
+			import com.adobe.cairngorm.samples.store.event.NewScreenEvent;
 
-import mx.collections.ArrayCollection;
-		   						
-			private static const NEXT_POSITION : int = 1;			
+			import mx.collections.ArrayCollection;
 
+			
 			[Inject]
 			[Bindable]
-			public var generalInformationModel : GeneralInformationModel;
+			public var pm : GeneralInformationPM;
 			
-			[Inject(id="generalInfoValidators")]
-			[Bindable]
-			public var generalInfoValidators : ArrayCollection;
-			
-			private function init() : void
-			{
-				generalInfoValidators.addItem( custNameValidator );
-				generalInfoValidators.addItem( addressValidator );
-				generalInfoValidators.addItem( cityValidator );
-				generalInfoValidators.addItem( zipValidator );
-				generalInfoValidators.addItem( emailValidator );
-			}
-			
-			private function newScreen() : void
-			{
-				var event : NewScreenEvent = new NewScreenEvent();
-				event.position = NEXT_POSITION;
-				
-				dispatchEvent( event );
-   			}
-		]]>
+			]]>
 	</mx:Script>
 
 	<spicefactory:Configure/>
 	
-	<mx:Validator id="custNameValidator" source="{ custName }" property="text" />
-	<mx:Validator id="addressValidator" source="{ address }" property="text" />
-	<mx:Validator id="cityValidator" source="{ city }" property="text" />
-	<mx:ZipCodeValidator id="zipValidator" source="{ zip }" property="text" />
-	<mx:EmailValidator id="emailValidator" source="{ email }" property="text" />	
+	<validators:ValidatorGroup id="validators">
+		<validators:validators>
+			<mx:Validator source="{ custName }" property="text" />
+			<mx:Validator source="{ address }" property="text" />
+			<mx:Validator source="{ city }" property="text" />
+			<mx:ZipCodeValidator source="{ zip }" property="text" />
+			<mx:EmailValidator source="{ email }" property="text" />	
+		</validators:validators>
+	</validators:ValidatorGroup>
+	
 
 	<mx:Form>
 		<mx:FormItem label="Name" required="true">
 			<mx:TextInput 
 				id="custName" 
 				width="200" 
-				change="generalInformationModel.name = custName.text"/>
+				change="pm.generalInformationModel.name = custName.text"/>
 		</mx:FormItem>
 
 		<mx:FormItem label="Address" required="true">
 			<mx:TextInput 
 				id="address" 
 				width="200" 
-				change="generalInformationModel.address = address.text"/>
+				change="pm.generalInformationModel.address = address.text"/>
 		</mx:FormItem>
 
 		<mx:FormItem label="City" required="true">
 			<mx:TextInput 
 				id="city" 
 				width="200" 
-				change="generalInformationModel.city = city.text"/>
+				change="pm.generalInformationModel.city = city.text"/>
 		</mx:FormItem>
 
 		<mx:FormItem label="State" required="true">
 			<checkout:StatePicker 
 				id="state" 
 				width="200" 
-				change="generalInformationModel.state = state.text"/>
+				change="pm.generalInformationModel.state = state.text"/>
 		</mx:FormItem>
 
 		<mx:FormItem label="Zip" required="true">
 			<mx:TextInput 
 				id="zip" 
 				width="100"
-				change="generalInformationModel.zip = zip.text" />
+				change="pm.generalInformationModel.zip = zip.text" />
 		</mx:FormItem>
 		
 		<mx:FormItem label="Email" required="true">
 			<mx:TextInput 
 				id="email" 
 				width="200" 
-				change="generalInformationModel.email = email.text"/>
+				change="pm.generalInformationModel.email = email.text"/>
 		</mx:FormItem>
 	</mx:Form>
 
@@ -102,7 +91,7 @@ import mx.collections.ArrayCollection;
 		width="100%" height="100%" 
 		styleName="bottomRightButton">
 			 
-		<mx:Button label="Continue" click="newScreen();" />
+		<mx:Button label="Continue" click="pm.moveToNext()" />
 	
 	</mx:VBox>
 

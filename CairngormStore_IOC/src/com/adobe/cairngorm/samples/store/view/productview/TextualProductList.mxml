@@ -5,6 +5,8 @@
 	height="100%"
 	width="100%">
 
+
+
 	<spicefactory:Configure/>   
 	<mx:Metadata>
 		[Event("select")]
@@ -18,7 +20,9 @@
 
 		import mx.controls.dataGridClasses.DataGridColumn;
 		import mx.formatters.CurrencyFormatter;
-												
+						
+										
+																
 		[Inject]
 		[Bindable]
 		public var productsHolder : Products;

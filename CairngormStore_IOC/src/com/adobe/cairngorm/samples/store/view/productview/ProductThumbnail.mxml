@@ -7,6 +7,8 @@
 	width="100%">
 
 
+
+
 	
 	<mx:Script>
 	<![CDATA[
@@ -14,7 +16,9 @@
 		import com.adobe.cairngorm.samples.store.util.Comparator;
 
 		import mx.formatters.CurrencyFormatter;
-								
+				
+						
+										
 		[Inject]
 		[Bindable]
 		public var productComparator : Comparator;

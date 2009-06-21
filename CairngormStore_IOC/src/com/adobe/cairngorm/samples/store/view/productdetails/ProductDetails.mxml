@@ -7,6 +7,8 @@
 
 
 
+
+
 	<mx:Script>
 	<![CDATA[
 		import com.adobe.cairngorm.samples.store.model.pm.productdetails.ProductDetailsPM;
@@ -15,7 +17,11 @@
 
 		import mx.core.DragSource;
 		import mx.managers.DragManager;		
+		
+		
 						
+		
+										
 						
 		[Inject]
 		[Bindable]

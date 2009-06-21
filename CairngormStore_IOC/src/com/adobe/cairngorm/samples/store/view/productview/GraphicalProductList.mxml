@@ -2,14 +2,15 @@
 <mx:Canvas 
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex"
-	height="100%"
 	width="100%">
+
+
 
 	<mx:Script>
 	<![CDATA[
 		import com.adobe.cairngorm.samples.store.model.Products;
 		import com.adobe.cairngorm.samples.store.model.ShoppingCart;
-						
+														
 		private var _productsHolder : Products;
 		
 		public function set productsHolder( value : Products ) : void
@@ -57,7 +58,8 @@
 	<mx:Label text="{ '? ' + shoppingCart }"/>
 	<mx:TileList id="tileListComp" 
 	   width="100%" 
-	   height="100%" 
+	   verticalScrollPolicy="off"
+	   horizontalScrollPolicy="off"
 		dataProvider="{ productsHolder.products }" 
 		itemRenderer="com.adobe.cairngorm.samples.store.view.productview.ProductThumbnail" 
 		columnWidth="122" rowHeight="118" 

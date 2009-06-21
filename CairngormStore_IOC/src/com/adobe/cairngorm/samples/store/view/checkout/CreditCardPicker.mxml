@@ -3,6 +3,8 @@
 	xmlns:mx="http://www.adobe.com/2006/mxml">
 
 
+
+
 	
 	<mx:Metadata>
 		[Event(name="change", type="flash.events.Event")]
@@ -11,7 +13,7 @@
 	<mx:Script>
 		<![CDATA[
 		import mx.validators.CreditCardValidatorCardType;			
-				
+								
 		public function getCardTypes() : Array 
 		{
 		    var cards : Array = new Array();
