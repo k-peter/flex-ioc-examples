@@ -6,6 +6,7 @@ package com.adobe.cairngorm.samples.store.model.pm.productchooser
 	
 	import flash.events.EventDispatcher;
 	
+	[Event(name="testEvent",type="com.adobe.cairngorm.samples.store.event.TestEvent")]
 	[Event(name="filterProducts",type="com.adobe.cairngorm.samples.store.event.FilterProductsEvent")]
 	[Event(name="sortProducts",type="com.adobe.cairngorm.samples.store.event.SortProductsEvent")]
 	[ManagedEvents("filterProducts,sortProducts")]

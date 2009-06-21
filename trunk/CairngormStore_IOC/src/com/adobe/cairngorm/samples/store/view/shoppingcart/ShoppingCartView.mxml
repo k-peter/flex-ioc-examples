@@ -4,6 +4,8 @@
 	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex"
 	title="Shopping Cart">
 
+
+
 	<!--<mx:Metadata>
 		[Event("select")]
 	</mx:Metadata>-->
@@ -15,7 +17,9 @@
 		import mx.core.IUIComponent;	
 		import mx.events.DragEvent;	
 		import mx.managers.DragManager;
-												
+				
+										
+																		
 		[Inject]
 		[Bindable]
 		public var pm : ShoppingCartPM;

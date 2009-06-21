@@ -4,28 +4,45 @@
 	xmlns:action="com.adobe.cairngorm.samples.store.ioc.action.*"
 	xmlns:actions="com.adobe.cairngorm.samples.store.ioc.actions.*"
 	xmlns:checkout="com.adobe.cairngorm.samples.store.view.checkout.*"
-	xmlns:control="com.adobe.cairngorm.samples.store.control.*"
+	xmlns:launcher="com.adobe.cairngorm.samples.store.model.pm.checkout.*"
+	xmlns:domain="com.adobe.cairngorm.samples.store.model.domain.*"
+	xmlns:messages="com.adobe.cairngorm.samples.store.view.messages.*"
 	xmlns:model="com.adobe.cairngorm.samples.store.model.*"
 	xmlns:pm="com.adobe.cairngorm.samples.store.model.pm.*"
 	xmlns:productchooser="com.adobe.cairngorm.samples.store.model.pm.productchooser.*"
 	xmlns:spicefactory="http://www.spicefactory.org/parsley"
 	xmlns:util="com.adobe.cairngorm.samples.store.util.*"
-	xmlns="*">
+	xmlns="*" xmlns:core="com.adobe.cairngorm.samples.store.model.pm.navigation.core.*">
 
-	
-	<model:ShoppingCart/>
+	<messages:MessageLauncher/>
+
+
+	<domain:OrderStatus/>
+	<model:ShoppingCart id="shoppingCart"/>
 	<mx:CurrencyFormatter
 		precision="2"/>
 	<model:Products/>
 	<model:State/>
-	<control:ShopController/>
 	<util:Comparator/>
-	
-	<model:TestPM/>
-	
+	<!-- pms -->
 	<pm:ShoppingCartPM/>
 	<spicefactory:Object type="{ ProductDetailsPM }"/>
 	<productchooser:FilterControlsPM/>
+	
+	<launcher:CheckoutPM>
+		<launcher:children>
+			<mx:ArrayCollection>
+				<launcher:GeneralInformationPM 
+					id="generalInformationPM"/>
+				<launcher:ShippingInformationPM 
+					id="shippingInformationPM"
+					deliverable="{ shoppingCart }"/>
+				<launcher:PaymentInformationPM
+					id="paymentInformationPM"/>
+				</mx:ArrayCollection>
+		</launcher:children>
+	</launcher:CheckoutPM>
+	
 	
 	<!-- checkout -->
 	<checkout:GeneralInformationModel/>
@@ -41,13 +58,15 @@
 	<actions:DeleteProductFromShoppingCartAction/>
 	<actions:SortProductsAction/>
 	<action:FilterProductsAction/>
-	<actions:ValidateOrderAction/>
 	<actions:ValidateCreditCardAction/>
+	<actions:CompletePurchaseAction/>
 	
 	
 	<mx:Script>
 		<![CDATA[
 			import com.adobe.cairngorm.samples.store.model.pm.productdetails.ProductDetailsPM;
+			import com.adobe.cairngorm.samples.store.model.pm.checkout.CheckoutPM;
+			import com.adobe.cairngorm.samples.store.model.pm.checkout.ShippingInformationPM;
 					]]>
 	</mx:Script>
 	

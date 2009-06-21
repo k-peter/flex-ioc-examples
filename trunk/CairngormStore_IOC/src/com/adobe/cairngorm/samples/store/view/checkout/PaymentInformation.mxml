@@ -3,69 +3,28 @@
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:checkout="com.adobe.cairngorm.samples.store.view.checkout.*"
 	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex"
-	creationComplete="init();"
 	height="100%"
 	label="Payment Information"
 	width="100%">
-
 	
 	<spicefactory:Configure/>
+	
 	<mx:Script>
 		<![CDATA[
-import mx.collections.ArrayCollection;
-		   		
+			import com.adobe.cairngorm.samples.store.model.pm.checkout.PaymentInformationPM;
+
 			[Inject]
 			[Bindable]
-			public var paymentInformationModel : PaymentInformationModel;
-
-			[Inject(id="paymentValidators")]
-			[Bindable]
-			public var paymentValidators : ArrayCollection;
-			
-			private function init() : void
-			{
-				paymentValidators.addItem( cardHolderValidator );
-			}
+			public var pm : PaymentInformationPM;
 		]]>
 	</mx:Script>
-		 			
-	<mx:Array id="months">
-		<mx:Number>1</mx:Number>
-		<mx:Number>2</mx:Number>
-		<mx:Number>3</mx:Number>
-		<mx:Number>4</mx:Number>
-		<mx:Number>5</mx:Number>
-		<mx:Number>6</mx:Number>
-		<mx:Number>7</mx:Number>
-		<mx:Number>8</mx:Number>
-		<mx:Number>9</mx:Number>
-		<mx:Number>10</mx:Number>
-		<mx:Number>11</mx:Number>
-		<mx:Number>12</mx:Number>		
-	</mx:Array>
-	
-	<mx:Array id="years">
-		<mx:Number>2005</mx:Number>
-		<mx:Number>2006</mx:Number>
-		<mx:Number>2007</mx:Number>
-		<mx:Number>2008</mx:Number>
-		<mx:Number>2009</mx:Number>
-		<mx:Number>2010</mx:Number>		
-	</mx:Array>
-	
-	<checkout:PaymentInformationModel id="paymentInformationModeddl">
-		<checkout:cardType>{ cardType.cardTypeCombo.selectedItem }</checkout:cardType>
-	</checkout:PaymentInformationModel>
-	
-    <mx:Validator id="cardHolderValidator" source="{ cardHolder }" property="text" />
-    
 	
 	<mx:Form>	
 		<mx:FormItem label="Card Type" required="true">
 			<checkout:CreditCardPicker 
 				id="cardType" 
 				width="130" 
-				change="paymentInformationModel.cardType = String(cardType.cardTypeCombo.selectedItem)"
+				change="pm.paymentInformationModel.cardType = String(cardType.cardTypeCombo.selectedItem)"
 				/>
 		</mx:FormItem>
 	
@@ -73,30 +32,30 @@ import mx.collections.ArrayCollection;
 			<mx:TextInput 
 				id="cardNumber" 
 				width="200"
-				change="paymentInformationModel.cardNumber = cardNumber.text" />
+				change="pm.paymentInformationModel.cardNumber = cardNumber.text" />
 		</mx:FormItem>
 	
 		<mx:FormItem label="Holder Name" required="true">
 			<mx:TextInput 
 				id="cardHolder" 
 				width="200" 
-				change="paymentInformationModel.cardHolder = cardHolder.text"/>
+				change="pm.paymentInformationModel.cardHolder = cardHolder.text"/>
 		</mx:FormItem>
 	
 		<mx:FormItem label="Expiration Month" required="true">
 			<mx:ComboBox 
 				id="cardExpMonth" 
 				width="65" 
-				dataProvider="{ months }" 
-				change="paymentInformationModel.cardExpMonth = String(cardExpMonth.selectedItem)"/>
+				dataProvider="{ pm.months }" 
+				change="pm.paymentInformationModel.cardExpMonth = String(cardExpMonth.selectedItem)"/>
 		</mx:FormItem>
 	
 		<mx:FormItem label="Expiration Year" required="true">
 			<mx:ComboBox 
 				id="cardExpYear" 
 				width="65" 
-				dataProvider="{ years }" 
-				change="paymentInformationModel.cardExpYear = String(cardExpYear.selectedItem)"/>
+				dataProvider="{ pm.years }" 
+				change="pm.paymentInformationModel.cardExpYear = String(cardExpYear.selectedItem)"/>
 		</mx:FormItem>	
 	</mx:Form>		
 

@@ -5,10 +5,12 @@
 	height="300"
 	width="400">
 
+
+
 	<mx:Script>
 		<![CDATA[
 			import com.adobe.cairngorm.samples.store.model.ShoppingCart;
-						
+												
 			
 			private var _shoppingCart : ShoppingCart;
 			

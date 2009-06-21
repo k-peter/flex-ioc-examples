@@ -15,47 +15,22 @@
 
 	<mx:Script>
 	<![CDATA[
-		import com.adobe.cairngorm.samples.store.control.ShopController;
+		import com.adobe.cairngorm.samples.store.view.messages.MessageLauncher;
 		import com.adobe.cairngorm.samples.store.event.GetProductsEvent;
 		import com.adobe.cairngorm.samples.store.ioc.Config;
 		import com.adobe.cairngorm.samples.store.model.pm.productdetails.ProductDetailsPM;
 		import com.adobe.cairngorm.samples.store.model.Products;
-		import com.adobe.cairngorm.samples.store.model.ShoppingCart;
 
 		import mx.containers.TitleWindow;
-		import mx.formatters.CurrencyFormatter;
 		import mx.managers.PopUpManager;
 
 		import org.spicefactory.parsley.core.Context;
 		import org.spicefactory.parsley.flex.FlexContextBuilder;
 		import org.spicefactory.parsley.flex.tag.Configure;
 		import org.spicefactory.parsley.messaging.MessageRouter;
-																													
-        	private var _shoppingCart : ShoppingCart;
-			
-			public function set shoppingCart( value : ShoppingCart ) : void
-			{
-				_shoppingCart = value;
-			}
-			
-			[Inject]
-			[Bindable]
-			public function get shoppingCart() : ShoppingCart
-			{
-				return _shoppingCart;
-			}
-        
+																				
         [Inject]
-        [Bindable]
-        public var currencyFormatter : CurrencyFormatter;
-        
-        [Inject]
-        [Bindable]
-        public var products : Products;
-        
-        [Inject]
-        [Bindable]
-        public var controller : ShopController;
+        public var messageLauncher : MessageLauncher;
         
         private var context : Context;
         private var router : MessageRouter;
@@ -68,6 +43,7 @@
         	
         	TitleWindow; PopUpManager;
         	context = FlexContextBuilder.build( Config );
+        	messageLauncher = MessageLauncher( context.getObjectByType( MessageLauncher ) );
         }
             
 		private function onCreationComplete() : void
@@ -78,10 +54,11 @@
 	]]>
 	</mx:Script>
 	
-	<spicefactory:Configure/>
 	<mx:Style source="cairngormstore.css" />
+
+	<spicefactory:Configure/>
 	
-	<mx:Label text="Cairngorm Store" styleName="appTitle" />
+	<mx:Label text="Cairngorm/Parsley 2 Store " styleName="appTitle" />
 	
 	<mx:HBox width="100%" height="555" horizontalGap="4" horizontalAlign="center">			
 		<view:BodyPanel 

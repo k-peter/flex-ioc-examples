@@ -1,19 +1,21 @@
 
 package com.adobe.cairngorm.samples.store.model
 {
+	import com.adobe.cairngorm.samples.store.event.ShoppingCartEvent;
+	import com.adobe.cairngorm.samples.store.event.TestEvent;
+	import com.adobe.cairngorm.samples.store.model.domain.DeliverableItem;
 	import com.adobe.cairngorm.samples.store.vo.ProductVO;
 	
-	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	
 	import mx.collections.ArrayCollection;
 	import mx.events.CollectionEvent;
 	
-	 
+	[Event(name="cartChanged",type="com.adobe.cairngorm.samples.store.event.ShoppingCartEvent")]
+	[ManagedEvents("cartChanged")]
 	[Bindable]
-	public class ShoppingCart extends EventDispatcher
+	public class ShoppingCart extends EventDispatcher implements DeliverableItem
 	{
-		
 		public var elements : ArrayCollection = new ArrayCollection();
 	
 		public var totalProductPrice : Number = 0;
@@ -85,13 +87,19 @@ package com.adobe.cairngorm.samples.store.model
 		
 		private function dispatchUpdate() : void
 		{
-			dispatchEvent( new Event("cartChanged") );
+			dispatchEvent( new ShoppingCartEvent() );
 		}
 		
 		[Bindable("cartChanged")]
 		public function get cartEmpty() : Boolean
 		{
 			return getElements().length == 0;
+		}
+		
+		[MessageHandler]
+		public function handlePurchaseComplete( purchaseEvent : TestEvent ) : void
+		{
+			trace(">>>> ");
 		}
 	}
 

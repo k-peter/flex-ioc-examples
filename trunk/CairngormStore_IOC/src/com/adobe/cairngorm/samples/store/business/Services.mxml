@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<cairngorm:ServiceLocator 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:cairngorm="http://www.adobe.com/2006/cairngorm">
+
 <!--
 Copyright (c) 2006. Adobe Systems Incorporated.
 All rights reserved.
@@ -34,9 +38,7 @@ POSSIBILITY OF SUCH DAMAGE.
 <!--
 	@version $Revision: 1.1 $
 -->
-<cairngorm:ServiceLocator
-	xmlns:mx="http://www.adobe.com/2006/mxml" 
-	xmlns:cairngorm="http://www.adobe.com/2006/cairngorm">
+
 
     <mx:RemoteObject id="productService" destination="productServiceImpl"
 							showBusyCursor="true">

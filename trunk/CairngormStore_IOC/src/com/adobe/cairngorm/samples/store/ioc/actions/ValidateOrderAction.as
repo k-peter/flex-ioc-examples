@@ -1,5 +1,6 @@
 package com.adobe.cairngorm.samples.store.ioc.actions
 {
+	import com.adobe.cairngorm.samples.store.event.CheckoutEvent;
 	import com.adobe.cairngorm.samples.store.event.ValidateCreditCardEvent;
 	import com.adobe.cairngorm.samples.store.event.ValidateOrderEvent;
 	import com.adobe.cairngorm.samples.store.model.ShoppingCart;
@@ -12,24 +13,25 @@ package com.adobe.cairngorm.samples.store.ioc.actions
 	import mx.validators.Validator;
 	
 	[Event(name="validateCreditCard",type="com.adobe.cairngorm.samples.store.event.ValidateCreditCardEvent")]
-	[ManagedEvents("validateCreditCard")]
+	[Event(name="incompleteForm",type="com.adobe.cairngorm.samples.store.event.CheckoutEvent")]
+	[ManagedEvents("validateCreditCard","incompleteForm")]
 	public class ValidateOrderAction extends EventDispatcher
 	{
-		public var formIncomplete : Boolean;
-		
 		[Inject]
 		public var shoppingCart : ShoppingCart;
+		
 		[Inject]
 		public var cardDetails : PaymentInformationModel;
+		
 		[Inject(id="generalInfoValidators")]
 		public var generalInfoValidators : ArrayCollection;
+		
 		[Inject(id="paymentValidators")]
 		public var paymentValidators : ArrayCollection;
 		
 		[MessageHandler]
 	 	public function execute( event : ValidateOrderEvent ) : void
 		{
-
 			if ( !shoppingCart.cartEmpty )
 			{
 				if ( validateCheckOutForm() )
@@ -38,7 +40,7 @@ package com.adobe.cairngorm.samples.store.ioc.actions
 				}
 				else
 				{
-					formIncomplete = true;
+					dispatchEvent( CheckoutEvent.newIncompleteFormEvent() );
 				}
 			}
 		}
@@ -76,6 +78,12 @@ package com.adobe.cairngorm.samples.store.ioc.actions
 			cardEvent.cardholderName = cardDetails.cardHolder;
 			cardEvent.cardNumber = cardDetails.cardNumber;
 			dispatchEvent( cardEvent );
+		}
+		
+		[MessageHandler]
+		public function testFunction( event : ValidateCreditCardEvent ) : void
+		{
+			trace("ping handling event: " + event );
 		}
 
 	}
