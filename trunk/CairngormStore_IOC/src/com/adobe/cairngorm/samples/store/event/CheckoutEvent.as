@@ -5,7 +5,7 @@ package com.adobe.cairngorm.samples.store.event
 	public class CheckoutEvent extends Event
 	{
 		public static const ORDER_CONFIRMED : String = "orderConfirmed";
-		public static const INVALID_CREDITCARD : String = "invalidCreditCard";
+		public static const UNAUTHORISED_CREDITCARD : String = "unauthorisedCreditCard";
 		public static const INCOMPLETE_FORM : String = "incompleteForm";
 		
 		public function CheckoutEvent( type : String )
@@ -15,7 +15,7 @@ package com.adobe.cairngorm.samples.store.event
 			switch( type )
 			{
 				case ORDER_CONFIRMED : break;
-				case INVALID_CREDITCARD : break;
+				case UNAUTHORISED_CREDITCARD : break;
 				case INCOMPLETE_FORM : break;
 				default : throw new Error( "Wrong type : " + type ); break;
 			}
@@ -26,9 +26,9 @@ package com.adobe.cairngorm.samples.store.event
 			return new CheckoutEvent( ORDER_CONFIRMED );
 		}
 		
-		public static function newInvalidCreditCardEvent() : CheckoutEvent
+		public static function newUnathorisedCreditCardEvent() : CheckoutEvent
 		{
-			return new CheckoutEvent( INVALID_CREDITCARD );
+			return new CheckoutEvent( UNAUTHORISED_CREDITCARD );
 		}
 		
 		public static function newIncompleteFormEvent() : CheckoutEvent

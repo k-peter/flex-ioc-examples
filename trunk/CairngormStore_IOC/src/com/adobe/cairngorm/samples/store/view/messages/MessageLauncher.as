@@ -1,9 +1,8 @@
 package com.adobe.cairngorm.samples.store.view.messages
 {
 	import com.adobe.cairngorm.samples.store.event.CheckoutEvent;
-	import com.adobe.cairngorm.samples.store.event.PurchaseCompleteEvent;
-	import com.adobe.cairngorm.samples.store.event.ShoppingCartEvent;
-	import com.adobe.cairngorm.samples.store.model.ShoppingCart;
+	import com.adobe.cairngorm.samples.store.event.CompletePurchaseEvent;
+	import com.adobe.cairngorm.samples.store.model.domain.shoppingcart.ShoppingCart;
 	
 	import flash.events.EventDispatcher;
 	
@@ -19,31 +18,27 @@ package com.adobe.cairngorm.samples.store.view.messages
 		private static const CREDITCARD_VERIFIED : String = "Your credit card has been verified and your order has been placed. Thank you for your order.";
 		private static const EMPTY_SHOPPING_CART : String = "You have no items in your shopping cart. Please select some items and proceed with your checkout.";
 		
-		[Inject]
-		[Bindable]
-		public var shoppingCart : ShoppingCart;
-	
 		[MessageHandler]
-		public function confirmOrder( event : PurchaseCompleteEvent ): void 
+		public function confirmOrder( event : CompletePurchaseEvent ): void 
 		{
 			trace("purchasecomplete");
 			Alert.show( CREDITCARD_VERIFIED, CONFIRMATION );		
 		}
 		
-		[MessageHandler(selector="invalidCreditCard")]
+		[MessageHandler(selector="unauthorisedCreditCard")]
 		public function informUserOfInvalidCreditCard( event : CheckoutEvent ) : void
 		{
 			Alert.show( INVALID_CREDITCARD, CREDITCARD_VALIDATION );	
 		}
 		
-		[MessageHandler(selector="cartChanged")]
+		/* [MessageHandler(selector="cartChanged")]
 		public function informUserOfEmptyShoppingCart( value : ShoppingCartEvent ) : void
 		{
 			if( shoppingCart.cartEmpty )
 			{
 				Alert.show( EMPTY_SHOPPING_CART, PROBLEM );	
 			}
-		}
+		} */
 		
 		[MessageHandler(selector="incompleteForm")]
 		public function informUserOfIncompleteForm( value : CheckoutEvent ): void

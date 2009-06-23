@@ -1,9 +1,7 @@
 
-package com.adobe.cairngorm.samples.store.model
+package com.adobe.cairngorm.samples.store.model.domain.shoppingcart
 {
-	import com.adobe.cairngorm.samples.store.event.ShoppingCartEvent;
-	import com.adobe.cairngorm.samples.store.event.TestEvent;
-	import com.adobe.cairngorm.samples.store.model.domain.DeliverableItem;
+	import com.adobe.cairngorm.samples.store.model.domain.IDeliverableItem;
 	import com.adobe.cairngorm.samples.store.vo.ProductVO;
 	
 	import flash.events.EventDispatcher;
@@ -11,10 +9,8 @@ package com.adobe.cairngorm.samples.store.model
 	import mx.collections.ArrayCollection;
 	import mx.events.CollectionEvent;
 	
-	[Event(name="cartChanged",type="com.adobe.cairngorm.samples.store.event.ShoppingCartEvent")]
-	[ManagedEvents("cartChanged")]
 	[Bindable]
-	public class ShoppingCart extends EventDispatcher implements DeliverableItem
+	public class ShoppingCart extends EventDispatcher implements IDeliverableItem, IShoppingCart
 	{
 		public var elements : ArrayCollection = new ArrayCollection();
 	
@@ -87,7 +83,7 @@ package com.adobe.cairngorm.samples.store.model
 		
 		private function dispatchUpdate() : void
 		{
-			dispatchEvent( new ShoppingCartEvent() );
+			dispatchEvent( new Event( "cartChanged" ) );
 		}
 		
 		[Bindable("cartChanged")]
@@ -96,11 +92,11 @@ package com.adobe.cairngorm.samples.store.model
 			return getElements().length == 0;
 		}
 		
-		[MessageHandler]
-		public function handlePurchaseComplete( purchaseEvent : TestEvent ) : void
+		public function get isValid() : Boolean
 		{
-			trace(">>>> ");
+			return !cartEmpty;
 		}
+		
 	}
 
 }

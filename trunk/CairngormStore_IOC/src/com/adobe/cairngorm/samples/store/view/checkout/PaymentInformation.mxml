@@ -5,26 +5,53 @@
 	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex"
 	height="100%"
 	label="Payment Information"
-	width="100%">
+	width="100%" xmlns:validators="com.adobe.ac.validators.*">
 	
 	<spicefactory:Configure/>
 	
 	<mx:Script>
 		<![CDATA[
+			import mx.controls.Alert;
+			import mx.events.ValidationResultEvent;
 			import com.adobe.cairngorm.samples.store.model.pm.checkout.PaymentInformationPM;
 
 			[Inject]
 			[Bindable]
 			public var pm : PaymentInformationPM;
+			
+			private function handleValidityChange( event : Event ) : void
+			{
+				pm.paymentInfo.isValid = validators.isValid;
+			}
 		]]>
 	</mx:Script>
+	
+	<validators:ValidatorGroup 
+		id="validators" 
+		validityChange="handleValidityChange( event )">
+		<validators:validators>
+			 <mx:CreditCardValidator 
+		        cardTypeSource="{ pm.paymentInfo }" 
+		        cardTypeProperty="cardType"
+		        cardNumberSource="{ pm.paymentInfo }" 
+		        cardNumberProperty="cardNumber"
+		        cardNumberListener="{ cardNumber }"
+		        trigger="{ cardNumber }"
+		        triggerEvent="valueCommit"
+		        invalid="trace('__invalid')"
+		        valid="trace('__valid')"/>
+			<mx:Validator source="{ cardHolder }" property="text" required="true"/>
+			<mx:Validator source="{ cardExpMonth }" property="text" required="true"/>
+			<mx:Validator source="{ cardExpYear }" property="text" required="true"/>
+		</validators:validators>
+	</validators:ValidatorGroup>
 	
 	<mx:Form>	
 		<mx:FormItem label="Card Type" required="true">
 			<checkout:CreditCardPicker 
 				id="cardType" 
 				width="130" 
-				change="pm.paymentInformationModel.cardType = String(cardType.cardTypeCombo.selectedItem)"
+				change="pm.paymentInfo.cardType = String(cardType.cardTypeCombo.selectedItem)"
 				/>
 		</mx:FormItem>
 	
@@ -32,30 +59,36 @@
 			<mx:TextInput 
 				id="cardNumber" 
 				width="200"
-				change="pm.paymentInformationModel.cardNumber = cardNumber.text" />
+				text="{ pm.paymentInfo.cardNumber }"
+				change="pm.paymentInfo.cardNumber = cardNumber.text" />
 		</mx:FormItem>
 	
 		<mx:FormItem label="Holder Name" required="true">
 			<mx:TextInput 
 				id="cardHolder" 
 				width="200" 
-				change="pm.paymentInformationModel.cardHolder = cardHolder.text"/>
+				text="{ pm.paymentInfo.cardHolder }"
+				change="pm.paymentInfo.cardHolder = cardHolder.text"/>
 		</mx:FormItem>
 	
 		<mx:FormItem label="Expiration Month" required="true">
 			<mx:ComboBox 
 				id="cardExpMonth" 
-				width="65" 
+				width="90" 
 				dataProvider="{ pm.months }" 
-				change="pm.paymentInformationModel.cardExpMonth = String(cardExpMonth.selectedItem)"/>
+				prompt="select..."
+				selectedIndex="{ pm.getExpiryMonth( pm.paymentInfo.cardExpMonth ) }"
+				change="pm.paymentInfo.cardExpMonth = String(cardExpMonth.selectedItem)"/>
 		</mx:FormItem>
 	
 		<mx:FormItem label="Expiration Year" required="true">
 			<mx:ComboBox 
 				id="cardExpYear" 
-				width="65" 
+				width="90" 
+				prompt="select..."
 				dataProvider="{ pm.years }" 
-				change="pm.paymentInformationModel.cardExpYear = String(cardExpYear.selectedItem)"/>
+				selectedIndex="{ pm.getExpYearIndex( pm.paymentInfo.cardExpYear ) }"
+				change="pm.paymentInfo.cardExpYear = String(cardExpYear.selectedItem)"/>
 		</mx:FormItem>	
 	</mx:Form>		
 

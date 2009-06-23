@@ -5,31 +5,37 @@
 	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex"
 	height="50">
 
-
-
 	<mx:Metadata>
 		[Event(name="validateCreditCard",type="com.adobe.cairngorm.samples.store.event.ValidateCreditCardEvent")]
-		[ManagedEvents("validateCreditCard")]
+		[Event(name="incompleteForm",type="com.adobe.cairngorm.samples.store.event.CheckoutEvent")]
+		[Event(name="productsGrid",type="com.adobe.cairngorm.samples.store.event.NavigateEvent")]
+		[Event(name="productsList",type="com.adobe.cairngorm.samples.store.event.NavigateEvent")]
+		[ManagedEvents("validateCreditCard,incompleteForm,productsGrid,productsList")]
 	</mx:Metadata>
+	
+	<spicefactory:Configure/>
 	
 	<mx:Script>
 	<![CDATA[
+		import com.adobe.cairngorm.samples.store.event.NavigateEvent;
+		import com.adobe.cairngorm.samples.store.model.domain.State;
+		import com.adobe.cairngorm.samples.store.event.CheckoutEvent;
+		import com.adobe.cairngorm.samples.store.model.domain.order.Order;
 		import com.adobe.cairngorm.samples.store.event.ValidateCreditCardEvent;
-		import com.adobe.cairngorm.samples.store.event.ValidateOrderEvent;		
-		import com.adobe.cairngorm.samples.store.model.State;
 		import com.adobe.cairngorm.samples.store.view.assets.CairngormStoreAssets;
 
 		import mx.core.UIComponent;		
 						
-								
-								
 					
 	[Inject]
 	[Bindable] 
 	public var state : State;
 	
+	[Inject]
+	public var order : Order;
+	
 	[Bindable] 
-	public var assets : CairngormStoreAssets;	
+	public var assets : CairngormStoreAssets = new CairngormStoreAssets();	
 			
 	public function controlViewToShow( workflowState : Number ) : UIComponent
 	{		
@@ -49,7 +55,7 @@
 	}
 	
 	
-	public function getProductGridButton( enforceBining : Number ) : Class
+	public function getProductListButton( enforceBining : Number ) : Class
 	{
 		var result : Class = assets.listOff;
 		
@@ -103,17 +109,24 @@
 		
 	private function showProductThumbnails():void
 	{
-		state.workflowState = State.VIEWING_PRODUCTS_IN_THUMBNAILS;			
+		dispatchEvent( new NavigateEvent( NavigateEvent.PRODUCTS_GRID ) );
 	}	
 	
 	private function showProductGrid() : void
 	{
-		state.workflowState = State.VIEWING_PRODUCTS_IN_GRID;
+		dispatchEvent( new NavigateEvent( NavigateEvent.PRODUCTS_LIST ) );
 	}		
 	
 	private function startCheckout() : void
 	{
-		dispatchEvent( new ValidateCreditCardEvent() );
+		if( order.isValid )
+		{
+			dispatchEvent( new ValidateCreditCardEvent() );
+		}
+		else
+		{
+			dispatchEvent( CheckoutEvent.newIncompleteFormEvent() );
+		}
 	}
 						
 	]]>
@@ -121,6 +134,9 @@
 	
 	<spicefactory:Configure/>
 	
+<!--		selectedChild="{ Container( controlViewToShow( state.workflowState ) ) }"
+		selectedIndex="{ pm.currentChild }"
+-->
 	<mx:ViewStack
 		id="controlStack" 
 		selectedChild="{ Container( controlViewToShow( state.workflowState ) ) }">
@@ -139,9 +155,9 @@
 
 	</mx:ViewStack>
 
-	<mx:Spacer width="100%" />
 
-	<mx:HBox horizontalGap="0">
+	<mx:HBox 
+		horizontalGap="0">
 
 		  <mx:Image
 			  source="{ getProductThumbnailsButton( state.workflowState ) }" 
@@ -150,7 +166,7 @@
 			  mouseOut="event.target.source=getProductThumbnailsButtonMouseOut();" />
 
 		  <mx:Image
-			  source="{ getProductGridButton( state.workflowState ) }" 
+			  source="{ getProductListButton( state.workflowState ) }" 
 			  mouseDown="showProductGrid();"
 			  mouseOver="event.target.source=assets.listRoll" 
 			  mouseOut="event.target.source=getProductGridButtonMouseOut();" />			

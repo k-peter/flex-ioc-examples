@@ -7,14 +7,9 @@
 	width="100%">
 
 	<spicefactory:Configure/>
-	<mx:Metadata>
-		[Event(	name="newScreen", 
-				type="com.adobe.cairngorm.samples.store.event.NewScreenEvent")]
-	</mx:Metadata>
 	<mx:Script>
 		<![CDATA[
 			import com.adobe.cairngorm.samples.store.model.pm.checkout.ShippingInformationPM;
-			
 			
 			[Inject]
 			[Bindable]
@@ -23,11 +18,12 @@
 		]]>
 	</mx:Script>
 	<spicefactory:Configure/>
+	
 	<mx:Form>
 		<mx:FormItem>
 			<mx:Repeater
 				id="shippingListComp"
-				dataProvider="{ pm.shippingModel.company }">
+				dataProvider="{ pm.shippingModel }">
 				
 				<mx:RadioButton
 					id="shippingChoiceComp"

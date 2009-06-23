@@ -4,67 +4,32 @@
 	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex"
 	width="100%">
 
-
-
 	<mx:Script>
 	<![CDATA[
-		import com.adobe.cairngorm.samples.store.model.Products;
-		import com.adobe.cairngorm.samples.store.model.ShoppingCart;
-														
-		private var _productsHolder : Products;
-		
-		public function set productsHolder( value : Products ) : void
-		{
-			_productsHolder = value;
-		}
+		import com.adobe.cairngorm.samples.store.model.pm.productchooser.GraphicalProductListPM;
 		
 		[Inject]
 		[Bindable]
-		public function get productsHolder() : Products 
-		{
-			return _productsHolder;
-		}
-		
-		private var _shoppingCart : ShoppingCart;
-			
-			public function set shoppingCart( value : ShoppingCart ) : void
-			{
-				_shoppingCart = value;
-			}
-			
-			[Inject]
-			[Bindable]
-			public function get shoppingCart() : ShoppingCart
-			{
-				return _shoppingCart;
-			}
-			
-		public static var SELECT_EVENT : String = "select";
-		
-		public function updateSelectedProduct( event : Object ) : void 
-		{
-			productsHolder.selectedItem = event.target.selectedItem;
-			dispatchEvent( new Event( SELECT_EVENT ) );
-		}
+		public var pm : GraphicalProductListPM;
 	
 	]]>
 	</mx:Script>
+	
 	<mx:Binding 
 		destination="tileListComp.selectedItem" 
-		source="{ productsHolder.selectedItem }" />
+		source="{ pm.products.selectedItem }" />
 	
 	<spicefactory:Configure/>
 	
-	<mx:Label text="{ '? ' + shoppingCart }"/>
 	<mx:TileList id="tileListComp" 
-	   width="100%" 
-	   verticalScrollPolicy="off"
-	   horizontalScrollPolicy="off"
-		dataProvider="{ productsHolder.products }" 
+		width="100%" 
+		verticalScrollPolicy="off"
+		horizontalScrollPolicy="off"
+		dataProvider="{ pm.products.products }" 
 		itemRenderer="com.adobe.cairngorm.samples.store.view.productview.ProductThumbnail" 
 		columnWidth="122" rowHeight="118" 
 		dragEnabled="true" 	
-		change="updateSelectedProduct( event );" 
+		change="pm.updateSelectedProduct( event );" 
 		borderStyle="none" />
 					
 </mx:Canvas>

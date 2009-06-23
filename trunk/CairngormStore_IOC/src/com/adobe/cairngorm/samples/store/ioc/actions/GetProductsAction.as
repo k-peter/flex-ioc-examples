@@ -2,8 +2,8 @@ package com.adobe.cairngorm.samples.store.ioc.actions
 {
 	import com.adobe.cairngorm.samples.store.business.ProductDelegateStub;
 	import com.adobe.cairngorm.samples.store.event.GetProductsEvent;
-	import com.adobe.cairngorm.samples.store.model.Products;
-	import com.adobe.cairngorm.samples.store.model.State;
+	import com.adobe.cairngorm.samples.store.model.domain.Products;
+	import com.adobe.cairngorm.samples.store.model.domain.State;
 	
 	import flash.events.EventDispatcher;
 	

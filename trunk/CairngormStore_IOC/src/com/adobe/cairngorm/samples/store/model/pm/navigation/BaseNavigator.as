@@ -11,8 +11,7 @@ package com.adobe.cairngorm.samples.store.model.pm.navigation
 	
 	public class BaseNavigator extends EventDispatcher implements INavigator
 	{
-		[Bindable]
-		public var currentChild : IShowable;
+		private var _currentChild : IShowable;
 		
 		private var _children : IList;
 		
@@ -60,6 +59,19 @@ package com.adobe.cairngorm.samples.store.model.pm.navigation
 			currentChild = IShowable( _children.getItemAt( value ) );
 			dispatchEvent( new Event("navigation") );
 		}
+		
+		[Bindable("navigation")]
+		public function get currentChild() : IShowable
+		{
+			return _currentChild;
+		}
+		
+		public function set currentChild( value : IShowable ) : void
+		{
+			_currentChild = value;
+			dispatchEvent( new Event("navigation") );
+		}
+
 
 		public function get canMoveToNext() : Boolean
 		{

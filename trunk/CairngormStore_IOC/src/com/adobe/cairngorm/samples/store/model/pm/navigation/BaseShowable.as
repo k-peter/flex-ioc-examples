@@ -32,5 +32,10 @@ package com.adobe.cairngorm.samples.store.model.pm.navigation
 			dispatchEvent( new NavigateEvent( NavigateEvent.MOVE_TO_PREVIOUS ) );
 		}
 		
+		public function get name() : String
+		{
+			throw new Error( "should be overriden" );
+		}
+		
 	}
 }

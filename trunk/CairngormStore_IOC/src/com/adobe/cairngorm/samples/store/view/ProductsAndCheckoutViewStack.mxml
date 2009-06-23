@@ -6,41 +6,14 @@
 	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex"
 	height="100%"
 	width="100%">
-
-
-
 	<mx:Script>
 	<![CDATA[
-		import com.adobe.cairngorm.samples.store.model.State;
+		import com.adobe.cairngorm.samples.store.model.pm.ProductsAndCheckoutPM;
 
-		import mx.core.UIComponent;
-		
-				
-								
 		[Inject]
 		[Bindable]
-		public var state : State;
-		
-		
+		public var pm : ProductsAndCheckoutPM;
 
-		public function bodyViewToShow( workflowState : Number ) : UIComponent
-		{	   	
-		   	var selectedChild : UIComponent;
-		   	
-		   	if( state.workflowState == State.VIEWING_PRODUCTS_IN_THUMBNAILS )
-		   	{
-		   		selectedChild = graphicalProductList;
-		   	} 
-		   	else if( state.workflowState == State.VIEWING_PRODUCTS_IN_GRID )
-		   	{
-		   		selectedChild = textualProductList;
-		   	} 
-		   	else if( state.workflowState == State.VIEWING_CHECKOUT )
-		   	{
-		   		selectedChild = checkout;
-		   	}
-		   	return selectedChild;
-		}		
 	]]>
 	</mx:Script>
 	
@@ -48,7 +21,7 @@
 
 	<mx:ViewStack
 		width="100%" height="100%"
-		selectedIndex="{ state.workflowState }">
+		selectedIndex="{ pm.selectedIndex }">
 		
 		<productview:GraphicalProductList
 			id="graphicalProductList" />

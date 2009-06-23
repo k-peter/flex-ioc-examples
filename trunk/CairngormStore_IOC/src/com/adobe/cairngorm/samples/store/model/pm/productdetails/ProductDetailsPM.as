@@ -1,7 +1,7 @@
 package com.adobe.cairngorm.samples.store.model.pm.productdetails
 {
-	import com.adobe.cairngorm.samples.store.event.UpdateShoppingCartEvent;
-	import com.adobe.cairngorm.samples.store.model.Products;
+	import com.adobe.cairngorm.samples.store.model.domain.Products;
+	import com.adobe.cairngorm.samples.store.model.domain.shoppingcart.IShoppingCart;
 	import com.adobe.cairngorm.samples.store.vo.ProductVO;
 	
 	import mx.binding.utils.BindingUtils;
@@ -25,6 +25,8 @@ package com.adobe.cairngorm.samples.store.model.pm.productdetails
 		[Bindable]
 		public var currencyFormatter : CurrencyFormatter;
 		
+		[Inject]
+		public var shoppingCart : IShoppingCart;
 		
 		public function ProductDetailsPM( products : Products )
 		{
@@ -34,14 +36,7 @@ package com.adobe.cairngorm.samples.store.model.pm.productdetails
 		
 		public function addProductToShoppingCart () : void
 		{
-		  var event : UpdateShoppingCartEvent =
-			  new UpdateShoppingCartEvent(
-				  UpdateShoppingCartEvent.ADD );
-		  
-			event.product = products.selectedItem;
-			event.quantity = quantity;
-		
-			dispatchEvent( event );
+			shoppingCart.addElement( products.selectedItem, quantity );
 		}	
 		
 		public function formatPrice( value : Number ) : String 

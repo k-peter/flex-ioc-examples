@@ -6,5 +6,6 @@ package com.adobe.ac.navigation
 	{
 		function get canShow() : Boolean;
 		function get canHide() : Boolean;
+		function get name() : String;
 	}
 }

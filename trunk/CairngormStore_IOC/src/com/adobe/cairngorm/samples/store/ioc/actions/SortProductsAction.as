@@ -1,7 +1,7 @@
 package com.adobe.cairngorm.samples.store.ioc.actions
 {
 	import com.adobe.cairngorm.samples.store.event.SortProductsEvent;
-	import com.adobe.cairngorm.samples.store.model.Products;
+	import com.adobe.cairngorm.samples.store.model.domain.Products;
 	
 	import mx.collections.Sort;
 	import mx.collections.SortField;

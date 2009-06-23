@@ -2,7 +2,7 @@ package com.adobe.cairngorm.samples.store.model.pm.productchooser
 {
 	import com.adobe.cairngorm.samples.store.event.FilterProductsEvent;
 	import com.adobe.cairngorm.samples.store.event.SortProductsEvent;
-	import com.adobe.cairngorm.samples.store.model.Products;
+	import com.adobe.cairngorm.samples.store.model.domain.Products;
 	
 	import flash.events.EventDispatcher;
 	
