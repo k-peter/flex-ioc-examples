@@ -12,53 +12,65 @@
 	xmlns:productchooser="com.adobe.cairngorm.samples.store.model.pm.productchooser.*"
 	xmlns:spicefactory="http://www.spicefactory.org/parsley"
 	xmlns:util="com.adobe.cairngorm.samples.store.util.*"
-	xmlns="*" xmlns:core="com.adobe.cairngorm.samples.store.model.pm.navigation.core.*">
+	xmlns="*" xmlns:core="com.adobe.cairngorm.samples.store.model.pm.navigation.core.*" xmlns:order="com.adobe.cairngorm.samples.store.model.domain.order.*" xmlns:shoppingcart="com.adobe.cairngorm.samples.store.model.domain.shoppingcart.*" xmlns:productview="com.adobe.cairngorm.samples.store.view.productview.*" xmlns:assets="com.adobe.cairngorm.samples.store.view.assets.*">
 
 	<messages:MessageLauncher/>
 
-
-	<domain:OrderStatus/>
-	<model:ShoppingCart id="shoppingCart"/>
 	<mx:CurrencyFormatter
 		precision="2"/>
-	<model:Products/>
-	<model:State/>
+
+	<order:Order />
+	<shoppingcart:ShoppingCart id="shoppingCart"/>
+	<domain:Products/>
+	<domain:State/>
+	<!-- checkout -->
+	<order:General/>
+	<order:Payment/>
+
+	
 	<util:Comparator/>
 	<!-- pms -->
 	<pm:ShoppingCartPM/>
 	<spicefactory:Object type="{ ProductDetailsPM }"/>
 	<productchooser:FilterControlsPM/>
 	
-	<launcher:CheckoutPM>
-		<launcher:children>
+	
+	<assets:CairngormStoreAssets/>
+	
+	<pm:ProductsAndCheckoutPM id="productsAndCheckoutPM">
+		<pm:children>
 			<mx:ArrayCollection>
-				<launcher:GeneralInformationPM 
-					id="generalInformationPM"/>
-				<launcher:ShippingInformationPM 
-					id="shippingInformationPM"
-					deliverable="{ shoppingCart }"/>
-				<launcher:PaymentInformationPM
-					id="paymentInformationPM"/>
-				</mx:ArrayCollection>
-		</launcher:children>
-	</launcher:CheckoutPM>
+				<!-- TODO: get best practice on configuring sub objects.
+					//i need to add an id here to get the injection to work
+				-->
+				<productchooser:GraphicalProductListPM 
+					id="graphicalProductsPM"/>
+				<productchooser:TextualProductListPM
+					id="textualProductsPM"/>
+				<launcher:CheckoutPM 
+					id="checkoutPM">
+					<launcher:children>
+						<mx:ArrayCollection>
+							<launcher:GeneralInformationPM 
+								id="generalInformationPM"/>
+							<launcher:ShippingInformationPM 
+								id="shippingInformationPM"
+								deliverable="{ shoppingCart }"/>
+							<launcher:PaymentInformationPM
+								id="paymentInformationPM"/>
+							</mx:ArrayCollection>
+					</launcher:children>
+				</launcher:CheckoutPM>
+			</mx:ArrayCollection>
+		</pm:children>
+	</pm:ProductsAndCheckoutPM>
 	
-	
-	<!-- checkout -->
-	<checkout:GeneralInformationModel/>
-	<checkout:PaymentInformationModel/>
-
-	<!-- validators -->
-	<mx:ArrayCollection id="generalInfoValidators"/>
-	<mx:ArrayCollection id="paymentValidators"/>
 	
 	<!-- actions -->
 	<actions:GetProductsAction/>
-	<actions:AddProductToShoppingCartAction/>
-	<actions:DeleteProductFromShoppingCartAction/>
 	<actions:SortProductsAction/>
-	<action:FilterProductsAction/>
-	<actions:ValidateCreditCardAction/>
+	<actions:FilterProductsAction/>
+	<actions:AuthoriseCreditCardAction/>
 	<actions:CompletePurchaseAction/>
 	
 	

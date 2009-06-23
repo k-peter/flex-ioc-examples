@@ -1,7 +1,7 @@
 package com.adobe.cairngorm.samples.store.ioc.actions
 {
 	import com.adobe.cairngorm.samples.store.event.CheckoutEvent;
-	import com.adobe.cairngorm.samples.store.event.PurchaseCompleteEvent;
+	import com.adobe.cairngorm.samples.store.event.CompletePurchaseEvent;
 	import com.adobe.cairngorm.samples.store.model.domain.OrderStatus;
 	
 	import flash.events.EventDispatcher;
@@ -10,18 +10,10 @@ package com.adobe.cairngorm.samples.store.ioc.actions
 	[ManagedEvents("orderConfirmed")]
 	public class CompletePurchaseAction extends EventDispatcher
 	{
-		//[Inject]
-		//public var orderStatus : OrderStatus;
-		
 		[MessageHandler]
-		public function execute( purchaseEvent : PurchaseCompleteEvent ) : void
+		public function execute( purchaseEvent : CompletePurchaseEvent ) : void
 		{
-	   		//var generalInformation : GeneralInformationModel = purchaseEvent.generalInformation;
-			//var paymentInformation : PaymentInformationModel = purchaseEvent.paymentInformation;
-			//var shoppingCart : ShoppingCart = purchaseEvent.shoppingCart;
-		   	
-			//orderStatus.orderConfirmed = true;
-			
+			//place your order here.. just dispatching an order confirmed event for now.
 			dispatchEvent( CheckoutEvent.newOrderConfirmedEvent() );
 		}
 	}

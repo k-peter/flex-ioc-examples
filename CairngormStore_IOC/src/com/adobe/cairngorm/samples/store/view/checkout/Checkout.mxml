@@ -11,18 +11,10 @@
 	<mx:Script>
 	<![CDATA[
 		import com.adobe.cairngorm.samples.store.model.pm.checkout.CheckoutPM;
-		import com.adobe.cairngorm.samples.store.event.NewScreenEvent;
 						
 		[Inject]
 		[Bindable]
 		public var pm : CheckoutPM;
-		
-		private function handleClick( event : Event ) : void
-		{
-			trace( event );
-			accordionComp.getHeaderAt( 1 ).enabled = false;
-			accordionComp.getHeaderAt( 2 ).enabled = false;
-		}
 	
 	 ]]>
 	</mx:Script>
@@ -35,6 +27,7 @@
 		creationPolicy="all"
 		historyManagementEnabled="false"
 		selectedIndex="{ pm.selectedIndex }"
+		headerStyleName="myAccordionHeader"
 		click="pm.selectedIndex = accordionComp.selectedIndex">
 
 		<checkout:GeneralInformation 

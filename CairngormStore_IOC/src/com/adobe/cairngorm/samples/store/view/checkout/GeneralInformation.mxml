@@ -5,20 +5,20 @@
 	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex"
 	height="100%"
 	label="General Information"
-	width="100%" xmlns:validators="com.adobe.ac.validators.*">
+	width="100%" xmlns:validators="com.adobe.ac.validators.*" xmlns:controls="com.adobe.cairngorm.samples.store.view.controls.*">
 
 
 
 	<mx:Metadata>
-		[Event(name="newScreen", type="com.adobe.cairngorm.samples.store.event.NewScreenEvent")]
 		[Event(name="incompleteForm",type="com.adobe.cairngorm.samples.store.event.CheckoutEvent")]
 		[ManagedEvents("incompleteForm")]
 	</mx:Metadata>
 	<mx:Script>
 		<![CDATA[
+			import mx.events.ValidationResultEvent;
+			import com.adobe.ac.validators.ValidatorGroup;
 			import com.adobe.cairngorm.samples.store.model.pm.checkout.GeneralInformationPM;
 			import com.adobe.cairngorm.samples.store.event.CheckoutEvent;
-			import com.adobe.cairngorm.samples.store.event.NewScreenEvent;
 
 			import mx.collections.ArrayCollection;
 
@@ -27,12 +27,19 @@
 			[Bindable]
 			public var pm : GeneralInformationPM;
 			
+			private function handleValidityChange( event : Event ) : void
+			{
+				pm.generalInfo.isValid = validators.isValid;
+			}
+			
 			]]>
 	</mx:Script>
 
 	<spicefactory:Configure/>
 	
-	<validators:ValidatorGroup id="validators">
+	<validators:ValidatorGroup 
+		id="validators" 
+		validityChange="handleValidityChange( event )">
 		<validators:validators>
 			<mx:Validator source="{ custName }" property="text" />
 			<mx:Validator source="{ address }" property="text" />
@@ -42,57 +49,55 @@
 		</validators:validators>
 	</validators:ValidatorGroup>
 	
-
 	<mx:Form>
 		<mx:FormItem label="Name" required="true">
 			<mx:TextInput 
 				id="custName" 
 				width="200" 
-				change="pm.generalInformationModel.name = custName.text"/>
+				change="pm.generalInfo.name = custName.text"/>
 		</mx:FormItem>
 
 		<mx:FormItem label="Address" required="true">
 			<mx:TextInput 
 				id="address" 
 				width="200" 
-				change="pm.generalInformationModel.address = address.text"/>
+				change="pm.generalInfo.address = address.text"/>
 		</mx:FormItem>
 
 		<mx:FormItem label="City" required="true">
 			<mx:TextInput 
 				id="city" 
 				width="200" 
-				change="pm.generalInformationModel.city = city.text"/>
+				change="pm.generalInfo.city = city.text"/>
 		</mx:FormItem>
 
 		<mx:FormItem label="State" required="true">
 			<checkout:StatePicker 
 				id="state" 
 				width="200" 
-				change="pm.generalInformationModel.state = state.text"/>
+				change="pm.generalInfo.state = state.text"/>
 		</mx:FormItem>
 
 		<mx:FormItem label="Zip" required="true">
 			<mx:TextInput 
 				id="zip" 
 				width="100"
-				change="pm.generalInformationModel.zip = zip.text" />
+				change="pm.generalInfo.zip = zip.text" />
 		</mx:FormItem>
 		
 		<mx:FormItem label="Email" required="true">
 			<mx:TextInput 
 				id="email" 
 				width="200" 
-				change="pm.generalInformationModel.email = email.text"/>
+				change="pm.generalInfo.email = email.text"/>
 		</mx:FormItem>
 	</mx:Form>
 
 	<mx:VBox
 		width="100%" height="100%" 
 		styleName="bottomRightButton">
-			 
 		<mx:Button label="Continue" click="pm.moveToNext()" />
 	
 	</mx:VBox>
-
+	
 </mx:VBox>

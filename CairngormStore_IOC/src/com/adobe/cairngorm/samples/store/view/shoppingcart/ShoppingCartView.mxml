@@ -4,11 +4,6 @@
 	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex"
 	title="Shopping Cart">
 
-
-
-	<!--<mx:Metadata>
-		[Event("select")]
-	</mx:Metadata>-->
 	<mx:Script>
 	<![CDATA[
 		import com.adobe.cairngorm.samples.store.model.pm.ShoppingCartPM;

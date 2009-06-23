@@ -1,4 +1,4 @@
-package com.adobe.cairngorm.samples.store.model
+package com.adobe.cairngorm.samples.store.model.domain
 {
 	[Bindable]
 	public class State

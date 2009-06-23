@@ -11,7 +11,7 @@ package com.adobe.cairngorm.samples.store.event
 		
 		public function ValidateCreditCardEvent()
 		{
-			super( EVENT_VALIDATE_CREDIT_CARD, true );
+			super( EVENT_VALIDATE_CREDIT_CARD );
 		}
 	}
 }

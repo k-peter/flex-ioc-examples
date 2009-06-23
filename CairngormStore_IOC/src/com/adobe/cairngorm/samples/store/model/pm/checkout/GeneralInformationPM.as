@@ -1,9 +1,8 @@
 package com.adobe.cairngorm.samples.store.model.pm.checkout
 {
-	import com.adobe.ac.navigation.event.NavigateEvent;
 	import com.adobe.ac.validators.ValidatorGroup;
+	import com.adobe.cairngorm.samples.store.model.domain.order.General;
 	import com.adobe.cairngorm.samples.store.model.pm.navigation.BaseShowable;
-	import com.adobe.cairngorm.samples.store.view.checkout.GeneralInformationModel;
 	
 	[Event(name="navigate", 
 			type="com.adobe.ac.navigation.events.NavigateEvent")]
@@ -14,13 +13,12 @@ package com.adobe.cairngorm.samples.store.model.pm.checkout
 		
 		[Inject]
 		[Bindable]
-		public var generalInformationModel : GeneralInformationModel;
+		public var generalInfo : General;
 		
-		override public function get canHide():Boolean
+		override public function get name() : String
 		{
-			return false;
+			return "GENERAL_INFORMATION";
 		}
-		
 
 	}
 }

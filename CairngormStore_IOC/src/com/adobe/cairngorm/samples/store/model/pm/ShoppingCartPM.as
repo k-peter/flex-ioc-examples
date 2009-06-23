@@ -1,8 +1,7 @@
 package com.adobe.cairngorm.samples.store.model.pm
 {
-	import com.adobe.cairngorm.samples.store.event.UpdateShoppingCartEvent;
-	import com.adobe.cairngorm.samples.store.model.ShoppingCart;
-	import com.adobe.cairngorm.samples.store.model.State;
+	import com.adobe.cairngorm.samples.store.event.NavigateEvent;
+	import com.adobe.cairngorm.samples.store.model.domain.shoppingcart.ShoppingCart;
 	import com.adobe.cairngorm.samples.store.vo.ProductVO;
 	
 	import flash.events.EventDispatcher;
@@ -11,12 +10,10 @@ package com.adobe.cairngorm.samples.store.model.pm
 	
 	[Event(name="addProductToShoppingCart",type="com.adobe.cairngorm.samples.store.event.UpdateShoppingCartEvent")]
 	[Event(name="deleteProductFromShoppingCart",type="com.adobe.cairngorm.samples.store.event.UpdateShoppingCartEvent")]
-	[ManagedEvents("deleteProductFromShoppingCart,addProductToShoppingCart")]
+	[Event(name="checkout",type="com.adobe.cairngorm.samples.store.event.NavigateEvent")]
+	[ManagedEvents("deleteProductFromShoppingCart,addProductToShoppingCart,checkout")]
 	public class ShoppingCartPM extends EventDispatcher
 	{
-		[Inject]
-		[Bindable]
-		public var state : State;
 		
 		[Inject]
 		[Bindable]
@@ -31,30 +28,18 @@ package com.adobe.cairngorm.samples.store.model.pm
 		
 		public function addProductToShoppingCart( product : ProductVO ) : void 
 		{
-			var event : UpdateShoppingCartEvent 
-				= new UpdateShoppingCartEvent( UpdateShoppingCartEvent.ADD );
-					
-			event.product = product;
-			event.quantity = 1;
-			
-			dispatchEvent( event );
+			shoppingCart.addElement( product, 1 );
 		}
 			
 		public function deleteProductFromShoppingCart() : void 
 		{
-			var event : UpdateShoppingCartEvent = 
-				new UpdateShoppingCartEvent( UpdateShoppingCartEvent.DELETE );
-			
-			event.product = selectedItem;
-			
-			dispatchEvent( event );
+			shoppingCart.deleteElement( selectedItem );
 		}
 		
 		public function checkoutClicked() : void
 		{
-			state.workflowState = State.VIEWING_CHECKOUT;
+			dispatchEvent( new NavigateEvent( NavigateEvent.CHECKOUT ) );
 		}		
-		
 			
 		public function formatString( value : String ) : String 
 		{

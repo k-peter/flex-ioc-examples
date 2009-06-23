@@ -1,4 +1,4 @@
-package com.adobe.cairngorm.samples.store.ioc.action
+package com.adobe.cairngorm.samples.store.ioc.actions
 {
 	import com.adobe.cairngorm.samples.store.event.FilterProductsEvent;
 	import com.adobe.cairngorm.samples.store.util.Comparator;
