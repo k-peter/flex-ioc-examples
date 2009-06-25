@@ -1,6 +1,6 @@
 package com.adobe.cairngorm.samples.store.ioc.actions
 {
-	import com.adobe.cairngorm.samples.store.business.CreditCardDelegateStub;
+	import com.adobe.cairngorm.samples.store.business.ICreditCardDelegate;
 	import com.adobe.cairngorm.samples.store.event.CheckoutEvent;
 	import com.adobe.cairngorm.samples.store.event.CompletePurchaseEvent;
 	import com.adobe.cairngorm.samples.store.event.ValidateCreditCardEvent;
@@ -27,15 +27,17 @@ package com.adobe.cairngorm.samples.store.ioc.actions
 		[Inject]
 		public var shoppingCart : ShoppingCart;
 	
+		[Inject]
+		public var delegate : ICreditCardDelegate;
+		
 		[MessageHandler]
 		public function execute( cardEvent : ValidateCreditCardEvent ) : void
 		{
- 			var delegate : CreditCardDelegateStub = new CreditCardDelegateStub( this );		
-		
+					
 			var cardholderName : String = cardEvent.cardholderName;
 			var cardNumber : String = cardEvent.cardNumber;
-		
-			delegate.validateCreditCard( cardholderName, cardNumber );
+			delegate.addResponder( this );
+			delegate.authoriseCreditCard( cardholderName, cardNumber );
 
  		}	  
 	

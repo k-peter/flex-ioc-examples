@@ -2,7 +2,7 @@ package com.adobe.cairngorm.samples.store.model.pm.navigation
 {
 	import com.adobe.ac.navigation.INavigator;
 	import com.adobe.ac.navigation.IShowable;
-	import com.adobe.ac.navigation.event.NavigateEvent;
+	import com.adobe.ac.navigation.event.NavigationEvent;
 	
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
@@ -25,14 +25,13 @@ package com.adobe.cairngorm.samples.store.model.pm.navigation
 			_children = value;
 			for each( var showable : IShowable in _children )
 			{
-				showable.addEventListener( NavigateEvent.MOVE_TO_NEXT, handleMoveToNext );
-				showable.addEventListener( NavigateEvent.MOVE_TO_PREVIOUS, handleMoveToPrevious );
+				showable.addEventListener( NavigationEvent.MOVE_TO_NEXT, handleMoveToNext );
 			}		
 			
 			currentChild = IShowable( _children.getItemAt( 0 ) );
 		}	
 		
-		private function handleMoveToNext( event : NavigateEvent ) : void
+		private function handleMoveToNext( event : NavigationEvent ) : void
 		{
 			if( canMoveToNext )
 			{
@@ -40,7 +39,7 @@ package com.adobe.cairngorm.samples.store.model.pm.navigation
 			}
 		}
 		
-		private function handleMoveToPrevious( event : NavigateEvent ) : void
+		private function handleMoveToPrevious( event : NavigationEvent ) : void
 		{
 			if( canMoveToPrevious )
 			{

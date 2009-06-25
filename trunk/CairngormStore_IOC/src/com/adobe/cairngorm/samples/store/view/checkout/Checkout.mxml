@@ -2,16 +2,17 @@
 <mx:VBox 
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:checkout="com.adobe.cairngorm.samples.store.view.checkout.*"
+	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex"
 	height="100%"
 	paddingTop="0"
 	styleName="checkout"
-	width="100%" 
-	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex">
+	width="100%">
+
 
 	<mx:Script>
 	<![CDATA[
 		import com.adobe.cairngorm.samples.store.model.pm.checkout.CheckoutPM;
-						
+								
 		[Inject]
 		[Bindable]
 		public var pm : CheckoutPM;

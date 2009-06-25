@@ -4,6 +4,7 @@
 	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex"
 	height="100%"
 	width="100%">
+
 	
 	<spicefactory:Configure/>	
 	
@@ -11,7 +12,7 @@
 	<![CDATA[
 		import com.adobe.cairngorm.samples.store.model.pm.productchooser.TextualProductListPM;
 		import com.adobe.cairngorm.samples.store.vo.ProductVO;
-	
+					
 		[Inject]
 		[Bindable]
 		public var pm : TextualProductListPM;

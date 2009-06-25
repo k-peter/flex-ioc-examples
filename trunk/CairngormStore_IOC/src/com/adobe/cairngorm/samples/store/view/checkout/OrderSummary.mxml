@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:HBox 
-	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex">
+
 	<mx:Script>
 	<![CDATA[
 		import com.adobe.cairngorm.samples.store.model.domain.shoppingcart.ShoppingCart;
 
 		import mx.formatters.CurrencyFormatter;
 		
+				
 		[Inject]	
 		[Bindable]
 		public var shoppingCart : ShoppingCart;

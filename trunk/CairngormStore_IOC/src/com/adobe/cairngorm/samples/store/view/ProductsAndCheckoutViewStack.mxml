@@ -6,10 +6,11 @@
 	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex"
 	height="100%"
 	width="100%">
+
 	<mx:Script>
 	<![CDATA[
 		import com.adobe.cairngorm.samples.store.model.pm.ProductsAndCheckoutPM;
-
+		
 		[Inject]
 		[Bindable]
 		public var pm : ProductsAndCheckoutPM;

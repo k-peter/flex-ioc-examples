@@ -4,9 +4,6 @@
 	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex"
 	height="300"
 	width="400">
-
-
-
 	<mx:Metadata>
 		[Event(name="getProducts",type="com.adobe.cairngorm.samples.store.event.GetProductsEvent")]
 		[ManagedEvents("getProducts")]
@@ -15,7 +12,7 @@
 		<![CDATA[
 			import com.adobe.cairngorm.samples.store.event.GetProductsEvent;
 			import com.adobe.cairngorm.samples.store.model.TestPM;
-																					
+																											
 			[Inject]
 			[Bindable]
 			public var pm : TestPM;

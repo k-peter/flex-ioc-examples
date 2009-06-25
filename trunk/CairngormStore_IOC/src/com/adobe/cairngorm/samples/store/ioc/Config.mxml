@@ -1,41 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Object 
 	xmlns:mx="http://www.adobe.com/2006/mxml"
-	xmlns:action="com.adobe.cairngorm.samples.store.ioc.action.*"
 	xmlns:actions="com.adobe.cairngorm.samples.store.ioc.actions.*"
-	xmlns:checkout="com.adobe.cairngorm.samples.store.view.checkout.*"
-	xmlns:launcher="com.adobe.cairngorm.samples.store.model.pm.checkout.*"
+	xmlns:assets="com.adobe.cairngorm.samples.store.view.assets.*"
+	xmlns:business="com.adobe.cairngorm.samples.store.business.*"
 	xmlns:domain="com.adobe.cairngorm.samples.store.model.domain.*"
+	xmlns:launcher="com.adobe.cairngorm.samples.store.model.pm.checkout.*"
 	xmlns:messages="com.adobe.cairngorm.samples.store.view.messages.*"
-	xmlns:model="com.adobe.cairngorm.samples.store.model.*"
+	xmlns:order="com.adobe.cairngorm.samples.store.model.domain.order.*"
 	xmlns:pm="com.adobe.cairngorm.samples.store.model.pm.*"
 	xmlns:productchooser="com.adobe.cairngorm.samples.store.model.pm.productchooser.*"
+	xmlns:shoppingcart="com.adobe.cairngorm.samples.store.model.domain.shoppingcart.*"
 	xmlns:spicefactory="http://www.spicefactory.org/parsley"
 	xmlns:util="com.adobe.cairngorm.samples.store.util.*"
-	xmlns="*" xmlns:core="com.adobe.cairngorm.samples.store.model.pm.navigation.core.*" xmlns:order="com.adobe.cairngorm.samples.store.model.domain.order.*" xmlns:shoppingcart="com.adobe.cairngorm.samples.store.model.domain.shoppingcart.*" xmlns:productview="com.adobe.cairngorm.samples.store.view.productview.*" xmlns:assets="com.adobe.cairngorm.samples.store.view.assets.*">
+	xmlns="*">
 
 	<messages:MessageLauncher/>
-
+	<util:Comparator/>
 	<mx:CurrencyFormatter
 		precision="2"/>
 
 	<order:Order />
 	<shoppingcart:ShoppingCart id="shoppingCart"/>
 	<domain:Products/>
-	<domain:State/>
-	<!-- checkout -->
 	<order:General/>
 	<order:Payment/>
 
 	
-	<util:Comparator/>
 	<!-- pms -->
 	<pm:ShoppingCartPM/>
 	<spicefactory:Object type="{ ProductDetailsPM }"/>
 	<productchooser:FilterControlsPM/>
-	
-	
-	<assets:CairngormStoreAssets/>
+	<pm:ProductsAndCheckoutControlBarPM/>
 	
 	<pm:ProductsAndCheckoutPM id="productsAndCheckoutPM">
 		<pm:children>
@@ -73,13 +69,14 @@
 	<actions:AuthoriseCreditCardAction/>
 	<actions:CompletePurchaseAction/>
 	
+	<!-- delegates -->
+	<business:ProductDelegateStub/>
+	<business:CreditCardDelegateStub/>
 	
 	<mx:Script>
 		<![CDATA[
 			import com.adobe.cairngorm.samples.store.model.pm.productdetails.ProductDetailsPM;
-			import com.adobe.cairngorm.samples.store.model.pm.checkout.CheckoutPM;
-			import com.adobe.cairngorm.samples.store.model.pm.checkout.ShippingInformationPM;
-					]]>
+		]]>
 	</mx:Script>
 	
 </mx:Object>

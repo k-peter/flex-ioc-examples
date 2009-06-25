@@ -1,9 +1,9 @@
 package com.adobe.cairngorm.samples.store.ioc.actions
 {
-	import com.adobe.cairngorm.samples.store.business.ProductDelegateStub;
+	import com.adobe.cairngorm.samples.store.business.IProductDelegate;
 	import com.adobe.cairngorm.samples.store.event.GetProductsEvent;
+	import com.adobe.cairngorm.samples.store.event.NavigateEvent;
 	import com.adobe.cairngorm.samples.store.model.domain.Products;
-	import com.adobe.cairngorm.samples.store.model.domain.State;
 	
 	import flash.events.EventDispatcher;
 	
@@ -17,39 +17,38 @@ package com.adobe.cairngorm.samples.store.ioc.actions
 	public class GetProductsAction extends EventDispatcher implements IResponder
 	{
 		[Inject]
-		public var state : State;
-		
-		[Inject]
 		public var productsHolder : Products;
 		
+		[Inject]
+		public var delegate : IProductDelegate;
 		
-	    [MessageHandler]
-	    public function execute( event : GetProductsEvent ) : void 
-	    {
-	        if( productsHolder.products == null )
+		 [MessageHandler]
+		 public function execute( event : GetProductsEvent ) : void 
+		 {
+			  if( productsHolder.products == null )
 			{
-			    var delegate : ProductDelegateStub = new ProductDelegateStub( this );
-			    delegate.getProducts();
+				 delegate.addResponder( this );
+				 delegate.getProducts();
 			}
 			else
 			{
 				Alert.show( "Products already retrieved!" );
 				return;
 			}
-	    }
-	    
-	    public function result( event : Object ) : void
+		 }
+		 
+		public function result( event : Object ) : void
 		{				
 			var products : ICollectionView = ICollectionView( event.result );
 			
 			var sort :Sort = new Sort();
-		   sort.fields = [ new SortField( "name", true ) ];
-		   products.sort = sort;
-		   products.refresh();
-	   
+			sort.fields = [ new SortField( "name", true ) ];
+			products.sort = sort;
+			products.refresh();
+		
 			productsHolder.selectedItem = products[ 0 ];
 			productsHolder.products = products;
-			state.workflowState = State.VIEWING_PRODUCTS_IN_THUMBNAILS;
+			dispatchEvent( new NavigateEvent( NavigateEvent.CHECKOUT ) );
 		}
 	
 		public function fault( event : Object ) : void

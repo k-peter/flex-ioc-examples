@@ -1,15 +1,12 @@
 package com.adobe.cairngorm.samples.store.model.pm.navigation
 {
 	import com.adobe.ac.navigation.IShowable;
-	import com.adobe.ac.navigation.event.NavigateEvent;
+	import com.adobe.ac.navigation.event.NavigationEvent;
 	
 	import flash.events.EventDispatcher;
 	
 	[Event( name="moveToNext",
-			type="com.adobe.ac.navigation.event.NavigateEvent")]
-
-	[Event( name="moveToPrevious",
-			type="com.adobe.ac.navigation.event.NavigateEvent")]
+			type="com.adobe.ac.navigation.event.NavigationEvent")]
 	public class BaseShowable extends EventDispatcher implements IShowable
 	{
 		public function get canShow():Boolean
@@ -24,12 +21,12 @@ package com.adobe.cairngorm.samples.store.model.pm.navigation
 		
 		public function moveToNext() : void
 		{
-			dispatchEvent( new NavigateEvent( NavigateEvent.MOVE_TO_NEXT ) );
+			dispatchEvent( new NavigationEvent( NavigationEvent.MOVE_TO_NEXT ) );
 		}
 		
 		public function moveToPrevious() : void
 		{
-			dispatchEvent( new NavigateEvent( NavigateEvent.MOVE_TO_PREVIOUS ) );
+			//not implemented
 		}
 		
 		public function get name() : String

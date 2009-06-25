@@ -6,14 +6,10 @@
 	styleName="fitlerControls"
 	width="100%">
 
-
- 		
-					
-	
 	<mx:Script>
 		<![CDATA[
 			import com.adobe.cairngorm.samples.store.model.pm.productchooser.FilterControlsPM;
-											
+														
 		[Inject]
 		[Bindable]
 		public var pm : FilterControlsPM;
