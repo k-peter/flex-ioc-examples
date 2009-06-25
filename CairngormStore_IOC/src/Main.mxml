@@ -12,13 +12,14 @@
 	preinitialize="initIOC()"
 	styleName="main"
 	width="100%">
+
 	<mx:Script>
 	<![CDATA[
-		import com.adobe.cairngorm.samples.store.model.domain.Products;
-		import com.adobe.cairngorm.samples.store.view.messages.MessageLauncher;
 		import com.adobe.cairngorm.samples.store.event.GetProductsEvent;
 		import com.adobe.cairngorm.samples.store.ioc.Config;
+		import com.adobe.cairngorm.samples.store.model.domain.Products;
 		import com.adobe.cairngorm.samples.store.model.pm.productdetails.ProductDetailsPM;
+		import com.adobe.cairngorm.samples.store.view.messages.MessageLauncher;
 
 		import mx.containers.TitleWindow;
 		import mx.managers.PopUpManager;
@@ -27,7 +28,9 @@
 		import org.spicefactory.parsley.flex.FlexContextBuilder;
 		import org.spicefactory.parsley.flex.tag.Configure;
 		import org.spicefactory.parsley.messaging.MessageRouter;
-																				
+										
+				
+																												
         [Inject]
         public var messageLauncher : MessageLauncher;
         

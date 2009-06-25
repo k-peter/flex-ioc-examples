@@ -3,18 +3,18 @@
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:checkout="com.adobe.cairngorm.samples.store.view.checkout.*"
 	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex"
+	xmlns:validators="com.adobe.ac.validators.*"
 	height="100%"
 	label="Payment Information"
-	width="100%" xmlns:validators="com.adobe.ac.validators.*">
+	width="100%">
+
 	
 	<spicefactory:Configure/>
 	
 	<mx:Script>
 		<![CDATA[
-			import mx.controls.Alert;
-			import mx.events.ValidationResultEvent;
 			import com.adobe.cairngorm.samples.store.model.pm.checkout.PaymentInformationPM;
-
+			
 			[Inject]
 			[Bindable]
 			public var pm : PaymentInformationPM;

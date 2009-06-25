@@ -4,6 +4,7 @@
 	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex"
 	title="Shopping Cart">
 
+
 	<mx:Script>
 	<![CDATA[
 		import com.adobe.cairngorm.samples.store.model.pm.ShoppingCartPM;
@@ -13,6 +14,7 @@
 		import mx.events.DragEvent;	
 		import mx.managers.DragManager;
 				
+										
 										
 																		
 		[Inject]

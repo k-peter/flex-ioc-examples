@@ -5,15 +5,10 @@ package com.adobe.cairngorm.samples.store.business
 	import mx.rpc.IResponder;
 	import mx.rpc.events.ResultEvent;
 	
-	public class ProductDelegateStub
+	public class ProductDelegateStub implements IProductDelegate
 	{
 		private var responder : IResponder;
 
-		public function ProductDelegateStub( responder : IResponder )
-		{
-			this.responder = responder;
-		}
-		
 		public function getProducts() : void
 		{			
 			responder.result( 
@@ -25,5 +20,11 @@ package com.adobe.cairngorm.samples.store.business
 						) 
 					);
 		}
+		
+		public function addResponder( responder : IResponder ) : void
+		{
+			this.responder = responder;
+		}
+		
 	}
 }

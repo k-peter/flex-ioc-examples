@@ -5,10 +5,6 @@
 	styleName="productDetails"
 	title="Product Details">
 
-
-
-
-
 	<mx:Script>
 	<![CDATA[
 		import com.adobe.cairngorm.samples.store.model.pm.productdetails.ProductDetailsPM;
@@ -19,14 +15,10 @@
 		import mx.managers.DragManager;		
 		
 		
-						
-		
 										
-						
 		[Inject]
 		[Bindable]
 		public var pm : ProductDetailsPM;
-			
 		
 		public function beginDrag( event : MouseEvent ) : void
 		{

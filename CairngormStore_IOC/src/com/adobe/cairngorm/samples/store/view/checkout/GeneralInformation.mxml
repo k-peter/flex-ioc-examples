@@ -3,9 +3,11 @@
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:checkout="com.adobe.cairngorm.samples.store.view.checkout.*"
 	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex"
+	xmlns:validators="com.adobe.ac.validators.*"
 	height="100%"
 	label="General Information"
-	width="100%" xmlns:validators="com.adobe.ac.validators.*" xmlns:controls="com.adobe.cairngorm.samples.store.view.controls.*">
+	width="100%">
+
 
 
 
@@ -15,12 +17,10 @@
 	</mx:Metadata>
 	<mx:Script>
 		<![CDATA[
-			import mx.events.ValidationResultEvent;
 			import com.adobe.ac.validators.ValidatorGroup;
-			import com.adobe.cairngorm.samples.store.model.pm.checkout.GeneralInformationPM;
 			import com.adobe.cairngorm.samples.store.event.CheckoutEvent;
-
-			import mx.collections.ArrayCollection;
+			import com.adobe.cairngorm.samples.store.model.pm.checkout.GeneralInformationPM;
+									
 
 			
 			[Inject]

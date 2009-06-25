@@ -5,172 +5,38 @@
 	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex"
 	height="50">
 
-	<mx:Metadata>
-		[Event(name="validateCreditCard",type="com.adobe.cairngorm.samples.store.event.ValidateCreditCardEvent")]
-		[Event(name="incompleteForm",type="com.adobe.cairngorm.samples.store.event.CheckoutEvent")]
-		[Event(name="productsGrid",type="com.adobe.cairngorm.samples.store.event.NavigateEvent")]
-		[Event(name="productsList",type="com.adobe.cairngorm.samples.store.event.NavigateEvent")]
-		[ManagedEvents("validateCreditCard,incompleteForm,productsGrid,productsList")]
-	</mx:Metadata>
-	
-	<spicefactory:Configure/>
-	
 	<mx:Script>
 	<![CDATA[
-		import com.adobe.cairngorm.samples.store.event.NavigateEvent;
-		import com.adobe.cairngorm.samples.store.model.domain.State;
-		import com.adobe.cairngorm.samples.store.event.CheckoutEvent;
-		import com.adobe.cairngorm.samples.store.model.domain.order.Order;
-		import com.adobe.cairngorm.samples.store.event.ValidateCreditCardEvent;
-		import com.adobe.cairngorm.samples.store.view.assets.CairngormStoreAssets;
-
-		import mx.core.UIComponent;		
-						
-					
-	[Inject]
-	[Bindable] 
-	public var state : State;
-	
-	[Inject]
-	public var order : Order;
-	
-	[Bindable] 
-	public var assets : CairngormStoreAssets = new CairngormStoreAssets();	
-			
-	public function controlViewToShow( workflowState : Number ) : UIComponent
-	{		
-		if( state.workflowState == State.VIEWING_PRODUCTS_IN_THUMBNAILS )
-		{
-			return filterCtrlComp;
-		}
-		else if( state.workflowState == State.VIEWING_PRODUCTS_IN_GRID )
-		{
-			return gridCtrlComp;
-		}
-		else if( state.workflowState == State.VIEWING_CHECKOUT )
-		{
-			return checkoutCtrlComp;
-		}
-		throw new Error( "Invalid workflow state" );
-	}
-	
-	
-	public function getProductListButton( enforceBining : Number ) : Class
-	{
-		var result : Class = assets.listOff;
-		
-		if ( state.workflowState == State.VIEWING_PRODUCTS_IN_GRID )
-		{
-			result = assets.listOn;
-		}
-		
-		return result;	
-	}
-	
-	
-	public function getProductThumbnailsButton( enforceBining : Number ) : Class
-	{
-		var result : Class = assets.thumbOff;
-		
-		if ( state.workflowState == State.VIEWING_PRODUCTS_IN_THUMBNAILS )
-		{
-			result = assets.thumbOn;
-		}
-		
-		return result;
-	}
-	
-	
-	public function getProductThumbnailsButtonMouseOut() : Class
-	{
-		var result : Class = assets.thumbOff;
-		
-		if ( state.workflowState == State.VIEWING_PRODUCTS_IN_THUMBNAILS )
-		{
-			result = assets.thumbOn;
-		}
-		
-		return result;
-	}
-	
-	
-	public function getProductGridButtonMouseOut() : Class
-	{
-		var result : Class = assets.listOff;
-		
-		if ( state.workflowState == State.VIEWING_PRODUCTS_IN_GRID )
-		{
-			result = assets.listOn;
-		}
-		
-		return result;
-	}	
-			
-		
-	private function showProductThumbnails():void
-	{
-		dispatchEvent( new NavigateEvent( NavigateEvent.PRODUCTS_GRID ) );
-	}	
-	
-	private function showProductGrid() : void
-	{
-		dispatchEvent( new NavigateEvent( NavigateEvent.PRODUCTS_LIST ) );
-	}		
-	
-	private function startCheckout() : void
-	{
-		if( order.isValid )
-		{
-			dispatchEvent( new ValidateCreditCardEvent() );
-		}
-		else
-		{
-			dispatchEvent( CheckoutEvent.newIncompleteFormEvent() );
-		}
-	}
-						
+		import com.adobe.cairngorm.samples.store.model.pm.ProductsAndCheckoutControlBarPM;
+				[Inject]
+		[Bindable]
+		public var pm : ProductsAndCheckoutControlBarPM;
 	]]>
 	</mx:Script>	
-	
 	<spicefactory:Configure/>
-	
-<!--		selectedChild="{ Container( controlViewToShow( state.workflowState ) ) }"
-		selectedIndex="{ pm.currentChild }"
--->
 	<mx:ViewStack
 		id="controlStack" 
-		selectedChild="{ Container( controlViewToShow( state.workflowState ) ) }">
-
+		selectedIndex="{ pm.selectedIndex }">
 		<chooser:FilterControls id="filterCtrlComp" />
-
 		<mx:HBox id="gridCtrlComp" />
-
 		<mx:HBox id="checkoutCtrlComp">
-		
 			<mx:Button
 				label="Complete Purchase" 
-				click="startCheckout();" />
-				
+				click="pm.startCheckout();" />
 		</mx:HBox>
-
 	</mx:ViewStack>
-
-
+	<mx:Spacer width="100%"/>
 	<mx:HBox 
 		horizontalGap="0">
-
 		  <mx:Image
-			  source="{ getProductThumbnailsButton( state.workflowState ) }" 
-			  mouseDown="showProductThumbnails();"
-			  mouseOver="event.target.source=assets.thumbRoll"
-			  mouseOut="event.target.source=getProductThumbnailsButtonMouseOut();" />
-
+			  source="{ pm.getProductThumbnailsButton() }" 
+			  mouseDown="pm.showProductThumbnails()"
+			  mouseOver="event.target.source = pm.assets.thumbRoll"
+			  mouseOut="event.target.source = pm.getProductThumbnailsButton()" />
 		  <mx:Image
-			  source="{ getProductListButton( state.workflowState ) }" 
-			  mouseDown="showProductGrid();"
-			  mouseOver="event.target.source=assets.listRoll" 
-			  mouseOut="event.target.source=getProductGridButtonMouseOut();" />			
-				
+			  source="{ pm.getProductListButton() }" 
+			  mouseDown="pm.showProductGrid()"
+			  mouseOver="event.target.source = pm.assets.listRoll" 
+			  mouseOut="event.target.source = pm.getProductListButton()" />			
 	</mx:HBox>
-	
 </mx:ControlBar>

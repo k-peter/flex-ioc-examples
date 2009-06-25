@@ -6,11 +6,12 @@
 	label="Shipping Information"
 	width="100%">
 
+
 	<spicefactory:Configure/>
 	<mx:Script>
 		<![CDATA[
 			import com.adobe.cairngorm.samples.store.model.pm.checkout.ShippingInformationPM;
-			
+						
 			[Inject]
 			[Bindable]
 			public var pm : ShippingInformationPM;

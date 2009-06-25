@@ -4,10 +4,11 @@
 	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex"
 	width="100%">
 
+
 	<mx:Script>
 	<![CDATA[
 		import com.adobe.cairngorm.samples.store.model.pm.productchooser.GraphicalProductListPM;
-		
+				
 		[Inject]
 		[Bindable]
 		public var pm : GraphicalProductListPM;
