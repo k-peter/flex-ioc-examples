@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:checkout="com.adobe.samplestore.view.checkout.*"
+	xmlns:productview="com.adobe.samplestore.view.productview.*"
+	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex"
+	height="100%"
+	width="100%">
+
+	<mx:Script>
+	<![CDATA[
+		import com.adobe.samplestore.model.pm.ProductsAndCheckoutPM;
+		
+		[Inject]
+		[Bindable]
+		public var pm : ProductsAndCheckoutPM;
+
+	]]>
+	</mx:Script>
+	
+	<spicefactory:Configure/>
+
+	<mx:ViewStack
+		width="100%" height="100%"
+		selectedIndex="{ pm.selectedIndex }">
+		
+		<productview:GraphicalProductList
+			id="graphicalProductList" />
+													 
+		<productview:TextualProductList
+			id="textualProductList"/>
+								  
+		<checkout:Checkout
+			id="checkout" />
+	</mx:ViewStack>
+</mx:Canvas>
