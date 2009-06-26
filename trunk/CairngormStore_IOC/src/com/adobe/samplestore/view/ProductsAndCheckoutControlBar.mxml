@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:ControlBar 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:chooser="com.adobe.samplestore.view.productchooser.*"
+	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex"
+	height="50">
+
+	<mx:Script>
+	<![CDATA[
+		import com.adobe.samplestore.model.pm.ProductsAndCheckoutControlBarPM;
+				[Inject]
+		[Bindable]
+		public var pm : ProductsAndCheckoutControlBarPM;
+	]]>
+	</mx:Script>	
+	<spicefactory:Configure/>
+	<mx:ViewStack
+		id="controlStack" 
+		selectedIndex="{ pm.selectedIndex }">
+		<chooser:FilterControls id="filterCtrlComp" />
+		<mx:HBox id="gridCtrlComp" />
+		<mx:HBox id="checkoutCtrlComp">
+			<mx:Button
+				label="Complete Purchase" 
+				click="pm.startCheckout();" />
+		</mx:HBox>
+	</mx:ViewStack>
+	<mx:Spacer width="100%"/>
+	<mx:HBox 
+		horizontalGap="0">
+		  <mx:Image
+			  source="{ pm.getProductThumbnailsButton() }" 
+			  mouseDown="pm.showProductThumbnails()"
+			  mouseOver="event.target.source = pm.assets.thumbRoll"
+			  mouseOut="event.target.source = pm.getProductThumbnailsButton()" />
+		  <mx:Image
+			  source="{ pm.getProductListButton() }" 
+			  mouseDown="pm.showProductGrid()"
+			  mouseOver="event.target.source = pm.assets.listRoll" 
+			  mouseOut="event.target.source = pm.getProductListButton()" />			
+	</mx:HBox>
+</mx:ControlBar>

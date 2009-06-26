@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex"
+	height="100%"
+	styleName="fitlerControls"
+	width="100%">
+
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.samplestore.model.pm.productchooser.FilterControlsPM;
+														
+		[Inject]
+		[Bindable]
+		public var pm : FilterControlsPM;
+		
+		private function onSliderChange( event : Event ) : void
+		{
+			var fromPrice : uint = event.target.values[ 0 ];
+			var toPrice : uint = event.target.values[ 1 ];
+			
+			pm.filterProductsByPrice( fromPrice, toPrice );
+		}
+		
+		
+						
+		]]>
+	</mx:Script>
+	
+	<spicefactory:Configure/>
+	
+	<mx:Label text="Price range" />
+	
+	<mx:HSlider
+		id="priceSliderComp" 
+		width="150" 
+		minimum="0"
+		maximum="150" 
+		tickInterval="10"
+		snapInterval="1"
+		thumbCount="2" 
+		values="[ 0, 150 ]"
+		labels="[ 0, 150 ]" 
+		liveDragging="true" 
+		change="onSliderChange( event );" 
+		thumbPress="pm.unselectProduct();" />
+	
+	<mx:Label text="Sort by" />
+	
+	<mx:ComboBox
+		id="comboBoxComp"
+		width="70" 
+		change="pm.sortProducts( comboBoxComp.selectedItem.data );">
+					 
+		<mx:dataProvider>
+			<mx:Array>
+				<mx:Object label="Name" data="name" />
+				<mx:Object label="Price" data="price" />
+			</mx:Array>
+		</mx:dataProvider>
+		
+	</mx:ComboBox>
+	
+</mx:HBox>

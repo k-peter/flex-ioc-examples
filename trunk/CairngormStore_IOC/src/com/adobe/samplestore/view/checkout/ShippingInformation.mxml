@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex"
+	height="100%"
+	label="Shipping Information"
+	width="100%">
+
+
+	<spicefactory:Configure/>
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.samplestore.model.pm.checkout.ShippingInformationPM;
+						
+			[Inject]
+			[Bindable]
+			public var pm : ShippingInformationPM;
+			
+		]]>
+	</mx:Script>
+	<spicefactory:Configure/>
+	
+	<mx:Form>
+		<mx:FormItem>
+			<mx:Repeater
+				id="shippingListComp"
+				dataProvider="{ pm.shippingModel }">
+				
+				<mx:RadioButton
+					id="shippingChoiceComp"
+					groupName="shipping"
+					label="{ shippingListComp.currentItem.name }"
+					selected="true"
+					data="{ parseFloat( shippingListComp.currentItem.rate ) }"
+					click="pm.updateShippingOptions( event.target.data );" />
+					
+			</mx:Repeater>
+		</mx:FormItem>
+	</mx:Form>
+	
+	<mx:VBox
+		width="100%" height="100%" 
+		styleName="bottomRightButton">
+			 
+		<mx:Button label="Continue" click="pm.moveToNext();" />
+	
+	</mx:VBox>
+	
+</mx:VBox>
