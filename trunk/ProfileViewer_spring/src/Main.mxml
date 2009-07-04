@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Application 
 	xmlns:mx="http://www.adobe.com/2006/mxml"
-	xmlns:control="com.adobe.login.control.*"
 	xmlns:dashboard="com.adobe.dashboard.view.*"
+	currentState="{ pm.state }"
 	xmlns:handler="com.adobe.login.control.handler.*"
 	xmlns:view="com.adobe.login.view.*"
-	currentState="{ pm.state }"
+	xmlns:control="com.adobe.login.control.*"
 	initialize="init()"
 	layout="absolute" 
 	xmlns:springActionscript="com.adobe.ioc.springActionscript.*">
 
 	<mx:Script>
 		<![CDATA[
+			import com.adobe.util.logging.LogUtil;
 			import com.adobe.ioc.springActionscript.ContextLoader;
 			import com.adobe.dashboard.presentationModel.user.ProfilePM;
 			import com.adobe.login.control.handler.LoginHandler;
