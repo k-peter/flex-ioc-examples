@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Object 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:domain="com.adobe.dashboard.domain.*"
+	xmlns:handler="com.adobe.login.control.handler.*"
+	xmlns:local="*"
+	xmlns:presentationModel="com.adobe.login.presentationModel.*"
+	xmlns:presentationModel1="com.adobe.dashboard.presentationModel.*"
+	xmlns:service="com.adobe.login.service.*"
+	xmlns:spicefactory="http://www.spicefactory.org/parsley"
+	xmlns:user="com.adobe.dashboard.presentationModel.user.*">
+
+	<!-- pms -->
+	<local:MainPM/>
+	<presentationModel:LoginPM/>
+	<user:ProfilePM/>
+	<presentationModel1:SummaryPM/>
+
+	<spicefactory:Object
+		type="{ DashboardPM }"/>
+	<spicefactory:Object
+		type="{ DetailsPM }"/>
+	<spicefactory:Object
+		type="{ FriendsPM }"/>
+	
+	<handler:LoginAction/>
+	
+	<domain:User/>
+	<domain:Friends/>
+	<service:LoginDelegate/>
+	
+	<mx:RemoteObject
+		destination="PARSLEY_DESTINATION"/>
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.dashboard.presentationModel.DashboardPM;
+			import com.adobe.dashboard.presentationModel.user.DetailsPM;
+			import com.adobe.dashboard.presentationModel.user.FriendsPM;
+		]]>
+	</mx:Script>
+</mx:Object>
