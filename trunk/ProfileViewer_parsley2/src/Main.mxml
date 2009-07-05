@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:dashboard="com.adobe.dashboard.view.*"
+	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex"
+	xmlns:view="com.adobe.login.view.*"
+	currentState="{ mainPM.state }"
+	layout="absolute"
+	preinitialize="initIOC()">
+
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.dashboard.domain.Friends;
+			import com.adobe.dashboard.domain.User;
+			import com.adobe.dashboard.presentationModel.DashboardPM;
+			import com.adobe.dashboard.presentationModel.user.DetailsPM;
+			import com.adobe.dashboard.presentationModel.user.FriendsPM;
+			import com.adobe.ioc.parsley.Config;
+
+			import org.spicefactory.parsley.core.Context;
+			import org.spicefactory.parsley.flex.FlexContextBuilder;
+																		
+			[Inject]
+			[Bindable]
+			public var mainPM : MainPM;
+			
+			private var context : Context;
+			
+			private function initIOC() : void
+	        {
+	        	//due to constructor bug
+	        	//see: Parsley manual section 4.1
+	        	new DashboardPM( new User() );
+	        	new FriendsPM( new Friends() );
+	        	new DetailsPM( new User() );
+	        	
+	        	context = FlexContextBuilder.build( Config );
+	        }			
+		]]>
+	</mx:Script> 
+	<mx:Style source="styles/yourProfileStyle.css"/>
+	
+	<spicefactory:Configure/>
+		
+	<mx:states>
+      <mx:State name="{ MainPM.AUTHENTICATED }">
+         <mx:RemoveChild target="{loginContainer}"/>
+         <mx:AddChild position="lastChild">
+   
+	 		<dashboard:Dashboard 
+            	id="dashboardContainer" 
+            	verticalCenter="0" 
+            	horizontalCenter="0"/>
+           
+         </mx:AddChild>
+      </mx:State>
+   </mx:states>
+            	
+	<view:LoginContainer
+		id="loginContainer" />
+
+</mx:Application>

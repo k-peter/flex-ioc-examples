@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:spicefactory="http://www.spicefactory.org/parsley/flex"
+	height="100%"
+	title="Friends"
+	width="100%">
+
+
+
+
+
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.dashboard.presentationModel.user.FriendsPM;
+			
+			[Inject]						
+			[Bindable]
+			public var pm : FriendsPM;
+		]]>
+	</mx:Script>
+	
+	<spicefactory:Configure/>	
+		
+	<mx:DataGrid
+		width="100%"
+		height="100%"
+		dataProvider="{ pm.friends.friendsList }">
+		<mx:columns>
+			<mx:DataGridColumn dataField="forename"/>
+			<mx:DataGridColumn dataField="surname"/>
+			<mx:DataGridColumn dataField="nickname"/>
+		</mx:columns>
+	</mx:DataGrid>
+</mx:Panel>
