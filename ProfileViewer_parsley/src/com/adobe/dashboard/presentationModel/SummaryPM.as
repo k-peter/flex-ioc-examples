@@ -13,7 +13,6 @@ package com.adobe.dashboard.presentationModel
 		
 		public function SummaryPM()
 		{
-			
 			BindingUtils.bindProperty( this, "numberOfFriends", this, ["friends", "friendsList", "length"] );
 		}
 	}
