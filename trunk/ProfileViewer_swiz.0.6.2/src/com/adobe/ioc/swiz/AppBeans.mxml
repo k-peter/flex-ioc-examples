@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BeanLoader xmlns="org.swizframework.util.*" 
+			xmlns:mx="http://www.adobe.com/2006/mxml" 
+			xmlns:user="com.adobe.dashboard.presentationModel.user.*" 
+			xmlns:domain="com.adobe.dashboard.domain.*" xmlns:local="*" xmlns:presentationModel="com.adobe.dashboard.presentationModel.*" xmlns:login="com.adobe.login.presentationModel.*" xmlns:control="com.adobe.login.control.*" xmlns:handler="com.adobe.login.control.handler.*" xmlns:service="com.adobe.login.service.*">
+	
+	<handler:LoginHandler 
+		id="loginHandler"/>
+	
+	<local:MainPM
+		id="mainPM"/>
+	
+	<login:LoginPM
+		id="loginPM"/>
+		
+	<presentationModel:DashboardPM
+		id="dashboardPM"/>
+	
+	<user:ProfilePM
+		id="profilePM"/>
+	
+	<presentationModel:SummaryPM
+		id="summaryPM"/>
+	
+	<user:DetailsPM 
+		id="detailsPM"/>
+	
+	<user:FriendsPM
+		id="friendsPM"/>
+		
+	<domain:User 
+		id="user">
+		<domain:forename>Swiz</domain:forename>
+	</domain:User>
+	
+	<domain:Friends
+		id="friends"/>	
+		
+	<service:LoginDelegate
+		id="loginDelegate"/>
+		
+		
+	<mx:RemoteObject
+		id="remoteObject"
+		destination="SWIZ_REMOTE_OBJECT"/>
+		
+</BeanLoader>

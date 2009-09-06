@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:control="com.adobe.login.control.*"
+	xmlns:dashboard="com.adobe.dashboard.view.*"
+	xmlns:handler="com.adobe.login.control.handler.*"
+	xmlns:view="com.adobe.login.view.*"
+	preinitialize="onPreInitialize()"
+	creationComplete="initMainBeans()"
+	currentState="{ pm.state }"
+	layout="absolute">
+
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.login.control.handler.LoginHandler;
+			import com.adobe.ioc.swiz.AppBeans;
+			import org.swizframework.Swiz;
+						
+			[Bindable]
+			[Autowire(bean="mainPM")]
+			public var pm : MainPM;
+			
+			
+			[Autowire(bean="loginHandler")]
+			public var loginHandler : LoginHandler;
+			
+			
+			private function onPreInitialize() : void 
+			{
+				Swiz.getInstance().loadBeans( [ AppBeans ] );
+			}
+			
+			private function initMainBeans() : void
+			{
+				pm = MainPM( Swiz.getBean( "mainPM" ) );
+				loginHandler = LoginHandler( Swiz.getBean( "loginHandler" ) );
+			}
+			
+		]]>
+	</mx:Script> 
+	<mx:Style source="styles/yourProfileStyle.css"/>
+	
+	
+	<mx:states>
+      <mx:State name="{ MainPM.AUTHENTICATED }">
+         <mx:RemoveChild target="{ loginContainer }"/>
+         <mx:AddChild position="lastChild">
+   
+	 		<dashboard:Dashboard 
+            	id="dashboardContainer" 
+            	verticalCenter="0" 
+            	horizontalCenter="0"/>
+           
+         </mx:AddChild>
+      </mx:State>
+   </mx:states>
+            	
+	<view:LoginContainer
+		id="loginContainer" />
+
+</mx:Application>

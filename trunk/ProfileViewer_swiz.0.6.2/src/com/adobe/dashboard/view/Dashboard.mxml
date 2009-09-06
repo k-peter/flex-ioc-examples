@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:user="com.adobe.dashboard.view.user.*"
+	xmlns:view="com.adobe.dashboard.view.*"
+	height="100%"
+	width="100%">
+
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.dashboard.presentationModel.DashboardPM;
+						
+			[Bindable]
+			[Autowire(bean="dashboardPM")]
+			public var pm : DashboardPM;
+		]]>
+	</mx:Script>
+	
+	<mx:VBox
+		width="80%"
+		height="80%"
+		horizontalCenter="0"
+		verticalCenter="0">
+		<mx:Label 
+			text="Welcome { pm.capitalise( pm.user.forename ) } { pm.user.surname }"
+			styleName="header"/>
+		<user:ProfilePod />
+		<view:SummaryBar />
+	</mx:VBox>
+</mx:Canvas>
