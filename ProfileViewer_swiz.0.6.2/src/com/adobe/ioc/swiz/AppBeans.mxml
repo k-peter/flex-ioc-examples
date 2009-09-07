@@ -2,8 +2,22 @@
 <BeanLoader xmlns="org.swizframework.util.*" 
 			xmlns:mx="http://www.adobe.com/2006/mxml" 
 			xmlns:user="com.adobe.dashboard.presentationModel.user.*" 
-			xmlns:domain="com.adobe.dashboard.domain.*" xmlns:local="*" xmlns:presentationModel="com.adobe.dashboard.presentationModel.*" xmlns:login="com.adobe.login.presentationModel.*" xmlns:control="com.adobe.login.control.*" xmlns:handler="com.adobe.login.control.handler.*" xmlns:service="com.adobe.login.service.*">
+			xmlns:domain="com.adobe.dashboard.domain.*" xmlns:local="*" xmlns:presentationModel="com.adobe.dashboard.presentationModel.*" xmlns:login="com.adobe.login.presentationModel.*" xmlns:control="com.adobe.login.control.*" xmlns:handler="com.adobe.login.control.handler.*" xmlns:service="com.adobe.login.service.*" xmlns:swiz="http://swiz.swizframework.org">
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.dashboard.presentationModel.DashboardPM;
+		]]>
+	</mx:Script>
 	
+	<!--
+	<swiz:SwizConfig>
+		<beanLoaders>
+			<BeanLoader>
+				
+			</BeanLoader>
+		</beanLoaders>
+	</swiz:SwizConfig>
+	-->
 	<handler:LoginHandler 
 		id="loginHandler"/>
 	
@@ -12,9 +26,12 @@
 	
 	<login:LoginPM
 		id="loginPM"/>
-		
-	<presentationModel:DashboardPM
-		id="dashboardPM"/>
+	
+	<factory:Prototype 
+		id="dashboardPM"
+		xmlns:factory="org.swizframework.factory.*"
+		classReference="{ DashboardPM }" 
+		constructorArguments="{[ user ]}" />
 	
 	<user:ProfilePM
 		id="profilePM"/>
