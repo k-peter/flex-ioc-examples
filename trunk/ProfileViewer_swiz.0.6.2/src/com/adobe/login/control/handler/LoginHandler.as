@@ -11,7 +11,7 @@ package com.adobe.login.control.handler
 
 	public class LoginHandler implements IResponder
 	{
-		[Autowire(bean="mainPM")]
+		[Autowire]
 		public var client : AuthenticationClient;
 		
 		[Autowire]
@@ -20,7 +20,7 @@ package com.adobe.login.control.handler
 		[Autowire]
 		public var friends : Friends;
 		
-		[Autowire(bean="loginDelegate")]
+		[Autowire]
 		public var delegate : LoginDelegate;
 		
 		[Mediate(event="LOGIN", properties="username,password")]
