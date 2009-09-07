@@ -13,7 +13,7 @@ package com.adobe.login.service
 	{
 		private static const LOGIN_DELEGATE : String  = "LOGIN_DELEGATE";
 		
-			[Autowire(bean="loginHandler")]
+			[Autowire]
 			public var responder : IResponder;
 			
 			[Autowire]

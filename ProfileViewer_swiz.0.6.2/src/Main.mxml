@@ -43,6 +43,7 @@
 		xmlns:swizframework="org.swizframework.*"
 		strict="true"
 		mediateBubbledEvents="true"
+		viewPackages="com.adobe.login.view,com.adobe.dashboard.view"
 		beanLoaders="{[ AppBeans ]}"
 		logEventLevel="{ LogEventLevel.WARN }"/>
 
