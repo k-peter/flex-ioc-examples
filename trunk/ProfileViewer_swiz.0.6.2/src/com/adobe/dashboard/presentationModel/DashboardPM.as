@@ -8,7 +8,7 @@ package com.adobe.dashboard.presentationModel
 		[Autowire(bean="user")]
 		public var user : User;
 		
-		public function DashboardPM( user : User = null )
+		public function DashboardPM( user : User )
 		{
 			this.user = user;
 		}
