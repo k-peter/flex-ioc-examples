@@ -11,17 +11,12 @@
 	<mx:Script>
 		<![CDATA[
 			import mx.logging.LogEventLevel;
-			import com.adobe.login.control.handler.LoginHandler;
 			import com.adobe.ioc.swiz.AppBeans;
 			import org.swizframework.Swiz;
 						
 			[Bindable]
-			[Autowire(bean="mainPM")]
+			[Autowire]
 			public var pm : MainPM;
-			
-			
-			[Autowire(bean="loginHandler")]
-			public var loginHandler : LoginHandler;
 			
 		]]>
 	</mx:Script> 
@@ -33,12 +28,6 @@
 		includeCategory="true" 
 		includeTime="true" />
 	
-	
-		<!--
-		TODO:
-		eventPackages="example.event"
-		viewPackages="example.view"
-		-->
 	<swizframework:SwizConfig 
 		xmlns:swizframework="org.swizframework.*"
 		strict="true"

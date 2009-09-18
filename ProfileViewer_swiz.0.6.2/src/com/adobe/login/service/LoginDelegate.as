@@ -1,45 +1,30 @@
 package com.adobe.login.service
 {
-	import com.adobe.login.control.event.LoginResultEvent;
 	import com.adobe.login.service.mock.MockModelFactory;
 	import com.adobe.util.logging.LogUtil;
 	
 	import mx.logging.ILogger;
-	import mx.rpc.IResponder;
+	import mx.rpc.AsyncToken;
 	import mx.rpc.remoting.RemoteObject;
+	
+	import org.swizframework.util.TestUtil;
 	
 	
 	public class LoginDelegate
 	{
-		private static const LOGIN_DELEGATE : String  = "LOGIN_DELEGATE";
-		
-			[Autowire]
-			public var responder : IResponder;
-			
-			[Autowire]
-			public var remoteObject : RemoteObject;
+		//only included for illustrative purposes
+		//to show that swiz has configured it correctly.
+		[Autowire]
+		public var remoteObject : RemoteObject;
 		
 		private var log : ILogger = LogUtil.getLogger( this );
 		
-		public function LoginDelegate( responder : IResponder = null ) 
+		public function authenticate( username : String, password : String ) : AsyncToken
 		{
-			this.responder = responder;
+			var mockResult : * = { user : MockModelFactory.createUser( username ), 
+														friends : MockModelFactory.createFriends() }
+							
+			return TestUtil.mockResult( mockResult );
 		}
-		
-		public function authenticate( username : String, password : String ) : void
-		{
-			log.info("remote object destination {0}", remoteObject.destination );
-		
-			if( username.indexOf( "invalidUsername" ) == -1 )
-			{
-				responder.result( 
-						new LoginResultEvent( 
-								MockModelFactory.createUser( username ), 
-								MockModelFactory.createFriends()
-								) 
-							);
-			}
-		}
-		
 	}
 }
